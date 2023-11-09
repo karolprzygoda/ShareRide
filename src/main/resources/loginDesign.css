@@ -1,0 +1,143 @@
+/*panel z nazwa systemu oraz ikona*/
+.left-form{
+    -fx-background-color:linear-gradient(to bottom right, #3a7bd5, #3a6073);
+    -fx-border-color:#000;
+    -fx-border-width:.0px 0px .0px .0px;
+}
+/*panel logowania*/
+.right-form{
+    -fx-background-color:#fff;
+    -fx-border-color:#000;
+    -fx-border-width:.0px 0px .0px .0px;
+}
+/*panel rejestracji*/
+.register-form{
+    -fx-background-color:#fff;
+    -fx-border-color:#000;
+    -fx-border-width:.0px 0px .0px .0px;
+}
+/*Tekst wyswietlany nad formularzem rejestracji*/
+.register-form-head-label{
+    -fx-border-color:#3a7bd5;
+    -fx-border-width:.0px 0px .0px 5px; /*dodanie niebieskiego paska przed tekstem*/
+    -fx-padding: 0 0 0 5px;
+}
+
+/*komponent wyboru daty z javafx*/
+.date-picker{
+    -fx-font-family:"Arial";
+    -fx-font-size:12px;
+    -fx-focus-color: #3a7bd5;
+}
+
+/*przyciski ze strzalkami w komponencie wyboru daty*/
+.date-picker .arrow-button {
+	-fx-background-color: #3a7bd5;
+	-fx-background-radius: 0;
+	-fx-cursor:hand;
+}
+
+/*ikona kalendarza na przycisku komponentu do wyboru daty*/
+.date-picker .arrow-button .arrow {
+	-fx-background-color: white;
+	-fx-pref-width: 15px; /* dostosuj szerokość kalendarza */
+    -fx-pref-height: 15px; /* dostosuj wysokość kalendarza */
+
+}
+/*komorka kalendarza*/
+.date-picker .cell {
+	-fx-background-color: white;
+}
+/*komorka kalendarza po najechaniu kursorem*/
+.date-picker .cell:hover {
+	-fx-background-color: #d1d1d1;
+}
+/*komorka kalendarza po nacisnieciu na nia*/
+.date-picker .cell:focused {
+	-fx-background-color: #d1d1d1;
+}
+/*tlo paska z rokiem i miesiacem*/
+.date-picker-popup .month-year-pane {
+	-fx-background-color: #3a7bd5;
+	-fx-font-family:"Arial";
+}
+/*napisy na gornym pasku kalendarza*/
+.date-picker-popup .month-year-pane .label {
+	-fx-text-fill: white;
+	-fx-font-family:"Arial";
+}
+/*komórki numeru tygodnia w miesiącu kalendarza*/
+.date-picker-popup .week-number-cell {
+	-fx-text-fill: #3a7bd5;
+	-fx-font-family:"Arial";
+}
+
+/*strzalki do przesuwania w kalendarzu*/
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+	-fx-background-color: white;
+}
+
+.date-picker-popup .spinner .button  {
+	-fx-background-color: transparent;
+	-fx-cursor:hand;
+}
+
+/*element do wprowadzania tekstu*/
+.textfield{
+    -fx-background-color:#eee;
+    -fx-border-color:white;
+    -fx-prompt-text-fill:#8d8d8d;
+    -fx-font-size:13px;
+    -fx-font-family:"Tahoma";
+}
+/*element do wprowadzania tekstu po jego zaznaczeniu/nacisnieciu*/
+.textfield:focused{
+    -fx-border-color:#3a7bd5;
+    -fx-border-width:1.5px;
+}
+
+/*przycisk logowania/rejestracji*/
+.login-btn{
+    -fx-background-color:#3a7bd5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-border-radius: 25 25 25 25;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Interstate";
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+/*przycisk logowania/rejestracji po najechaniu na niego kursorem*/
+.login-btn:hover{
+    -fx-background-color:linear-gradient(to bottom, #3a7bd5, #3a6073);
+}
+/*przycisk zamkniecia okna*/
+.close{
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+    -fx-background-insets: 0;
+}
+/*przycisk zamkniecia okna po najechaniu na niego kursorem*/
+.close:hover{
+    -fx-background-color:#ff4f6c;
+}
+/*przycisk minimalizacji okna*/
+.minimize{
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+    -fx-background-insets: 0;
+}
+/*przycisk minimalizacji okna po najechaniu na niego kursorem*/
+.minimize:hover{
+    -fx-background-color:#ff4f6c;
+}
+
+/*tekst pod logiem*/
+.logotext{
+    -fx-color:#000;
+    -fx-font-family:"Interstate";
+    -fx-font-size:60px;
+    -fx-font-weight: bold;
+}

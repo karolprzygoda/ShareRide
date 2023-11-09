@@ -1,0 +1,54 @@
+/*gorna bnelka okna akceptacji warunkow uzytkowania*/
+.top-form{
+    -fx-background-color: white;
+    -fx-border-color:#000000;
+    -fx-border-width:.0px 0px .10px .0px;
+}
+
+/*prostokoncik na którym znajduje się logo systemu*/
+.rectangle-form{
+    -fx-background-color:linear-gradient(to bottom right, #3a7bd5, #3a6073);
+    -fx-border-color:#000;
+    -fx-border-width:.0px 0px .0px .0px;
+}
+
+/*przycisk zaakceptowania warunkow uzytkowania*/
+.accept-btn{
+    -fx-background-color:#3a7bd5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-border-radius: 25 25 25 25;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Interstate";
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+/*przycisk zaakceptowania warunkow uzytkowania po najechaniu na niego kursorem*/
+.accept-btn:hover{
+    -fx-background-color:linear-gradient(to bottom, #3a7bd5, #3a6073);
+}
+
+/*przycisk braku akceptacji warunkow uzytkowania*/
+.decline-btn{
+    -fx-background-color:#FF5F6D;
+    -fx-background-radius: 25 25 25 25;
+    -fx-border-radius: 25 25 25 25;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Interstate";
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+
+/*przycisk braku akceptacji warunkow uzytkowania po najechaniu na niego kursorem*/
+.decline-btn:hover{
+    -fx-background-color:linear-gradient(to bottom, #FF5F6D, #FFC371);
+}
+
+/*obramowanie okna akceptacji warunkow uzytkowania*/
+.borders{
+    -fx-border-color: black;
+    -fx-border-width: 1.5px 1.5px 1.5px 1.5px;
+}
