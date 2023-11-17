@@ -11,11 +11,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="borders" stylesheets="@../../../regulationsDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sharerideclient.RegulationsController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="borders" stylesheets="@../regulationsDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SharerideClient.RegulationsController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../regulationsDesign.css">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../regulationsDesign.css">
          <children>
-            <Button fx:id="acceptBtn" layoutX="157.0" layoutY="335.0" mnemonicParsing="false" onAction="#accept" prefHeight="40.0" prefWidth="100.0" styleClass="accept-btn" stylesheets="@../../../regulationsDesign.css" text="Potwierdź" />
+            <Button fx:id="acceptBtn" layoutX="157.0" layoutY="335.0" mnemonicParsing="false" onAction="#accept" prefHeight="40.0" prefWidth="100.0" styleClass="accept-btn" stylesheets="@../regulationsDesign.css" text="Potwierdź" />
             <Button fx:id="cancelBtn" layoutX="350.0" layoutY="335.0" mnemonicParsing="false" onAction="#cancel" prefHeight="40.0" prefWidth="100.0" styleClass="decline-btn" text="Anuluj" />
             <CheckBox fx:id="checkBox" layoutX="20.0" layoutY="276.0" mnemonicParsing="false" text="Akceptuje warunki użytkowania">
                <font>
@@ -30,7 +30,7 @@
                   <Cursor fx:constant="DISAPPEAR" />
                </cursor>
             </TextArea>
-            <AnchorPane id="top-form" prefHeight="40.0" prefWidth="596.0" styleClass="top-form" stylesheets="@../../../regulationsDesign.css">
+            <AnchorPane id="top-form" prefHeight="40.0" prefWidth="596.0" styleClass="top-form" stylesheets="@../regulationsDesign.css">
                <children>
                   <AnchorPane layoutX="556.0" layoutY="5.0" prefHeight="30.0" prefWidth="30.0" styleClass="rectangle-form">
                      <children>

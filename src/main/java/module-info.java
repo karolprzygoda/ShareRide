@@ -1,8 +1,8 @@
-module com.example.sharerideclient {
+module SharerideClient {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.example.sharerideclient to javafx.fxml;
-    exports com.example.sharerideclient;
+    opens SharerideClient to javafx.fxml;
+    exports SharerideClient;
 }
