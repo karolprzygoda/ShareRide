@@ -31,7 +31,8 @@ public class RegulationsController {
      * Metoda jest wywoływana po kliknięciu przycisku "cancelBtn". Zamyka okno akceptacji warunków użytkowania bez rejestrowania użytkownika
      * @author Karol Przygoda
      */
-    public void cancel() {
+    @FXML
+    private void cancel() {
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
     }
@@ -44,7 +45,8 @@ public class RegulationsController {
      * Jeżeli użytkownik nie zaznaczy check boxa wyświetla tekst informujący o tym ze konieczne jest jego zaznaczenie
      * @author Karol Przygoda
      */
-    public void accept() {
+    @FXML
+    private void accept() {
         if (checkBox.isSelected()) {
             accepted = true;
             Stage stage = (Stage) acceptBtn.getScene().getWindow();

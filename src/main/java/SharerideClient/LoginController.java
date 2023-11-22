@@ -12,14 +12,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Scanner;
-
 
 /**
  * Kontroler interfejsu logowania i rejestracji konta
@@ -88,7 +83,7 @@ public class LoginController {
     private Label phoneNumberFieldValidationInfo;
 
 
-    private boolean nameCheckFlag, lastNameCheckFlag, mailCheckFlag, phoneNumberCheckFlag, passwordCheckFlag, errorFlag = false;
+    private boolean nameCheckFlag, lastNameCheckFlag, mailCheckFlag, phoneNumberCheckFlag, passwordCheckFlag;
 
 
     /**
@@ -103,7 +98,8 @@ public class LoginController {
      *
      * @author Karol Przygoda
      */
-    public void switchForm(ActionEvent event) {
+    @FXML
+    private void switchForm(ActionEvent event) {
 
         TranslateTransition slider = new TranslateTransition();
 
@@ -125,15 +121,16 @@ public class LoginController {
      * <p>
      * Metoda `login()` jest odpowiedzialna za weryfikację danych logowania
      * użytkownika w bazie danych. Na podstawie wprowadzonych
-     * danych, metoda wysyła przechywcone dane do serwera za pomocą metody {@linkplain LoginController#sendLoginInfoToServer(String, String)}
+     * danych, metoda wysyła przechywcone dane do serwera za pomocą metody {@linkplain ServerController#sendLoginInfoToServer(String, String)}
      * , serwer sprawdza ich występowanie w bazie danych.
-     * Następnie odbiera odpowiedź od serwera za pomocą metody {@linkplain  LoginController#getFeedBackFromServer(Scene)}
+     * Następnie odbiera odpowiedź od serwera za pomocą metody {@linkplain  ServerController#getFeedBackFromServer()}
      * Jeśli dopasowanie zostanie znalezione, metoda wylacza okno logowania i przechodzi do okna głównego
      * W przeciwnym wypadku użytkownik zostaje poinformowany za pomocą okna alertu o wprowadzeniu nie zgadzających się ze sobą danych
      *
      * @author Karol Przygoda
      */
-    public void login() {
+    @FXML
+    private void login() {
 
         Alert alert;
         if (mailTextField.getText().isEmpty() || passwordTextField.getText().isEmpty())
@@ -150,15 +147,15 @@ public class LoginController {
             String mail = mailTextField.getText();
             String password = passwordTextField.getText();
 
-            sendLoginInfoToServer(mail,password);
+            ServerController.sendLoginInfoToServer(mail,password);
 
-            if(getFeedBackFromServer(loginBtn.getScene()))
+            if(ServerController.getFeedBackFromServer())
             {
                 loginBtn.getScene().getWindow().hide();
             }
             else
             {
-                if(!errorFlag) {
+                if(!ServerController.errorFlag) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Błąd Logowania");
                     alert.setHeaderText(null);
@@ -174,15 +171,18 @@ public class LoginController {
      * Metoda obsługująca proces rejestracji użytkownika.
      * <p>
      * Metoda `register()` jest odpowiedzialna za pośrednie wysłanie wypełnionych danych
-     * nowo rejestrującego się użytkownika za pomocą metody: {@linkplain LoginController#checkIfRegulationsAccepted()} do serwera. Metoda sprawdza, czy
-     * wszystkie wymagane pola rejestracyjne zostały uzupełnione. Następnie
+     * nowo rejestrującego się użytkownika za pomocą metody: {@linkplain ServerController#sendRegisterInfoToServer(String, String, String, String, LocalDate, String)} do serwera.
+     * Metoda sprawdza, czy wszystkie wymagane pola rejestracyjne zostały uzupełnione za pomocą metody {@linkplain  LoginController#checkIfEmpty()}. Następnie
      * sprawdzane jest, czy poszczególne pola spełniają określone warunki takie jak odpowiedni format tekstu lub brak znaków zakazanych
-     * między innymi za pomocą metod: {@linkplain LoginController#checkIfRegulationsAccepted()} oraz {@linkplain LoginController#checkIfEmpty()}
+     * za pomocą metod: {@linkplain LoginController#checkMail()}, {@linkplain LoginController#checkName()}, {@linkplain LoginController#checkPassword()} {@linkplain LoginController#checkLastName()}
+     * {@linkplain LoginController#checkPhoneNumber()} kolejnym krokiem jest sprawdzenie czy użytkownik posiada 18 lat jeżeli wszystkie warunki zostaną spełnione wyświetla się okno
+     * modalne które jest którym zarządza klasa {@linkplain RegulationsController}. Ostatnim etapem rejestracji jest wysłanie danych do serwera oraz odebranie z niego informacji zwrotnej
+     * do wyświetlenia informacji zwrotnej służy metoda {@linkplain ServerController#displayRegistrationServerFeedback(boolean)}.
      *
      * @author Karol Przygoda
      */
-    public void register() throws IOException {
-
+    @FXML
+    private void register() throws IOException {
 
         Alert alert;
 
@@ -219,18 +219,22 @@ public class LoginController {
             alert.setContentText("Hasła się różnią !");
             alert.showAndWait();
         }
-        else
+        else if(checkIfRegulationsAccepted())
         {
-            checkIfRegulationsAccepted();
-        }
+            ServerController.sendRegisterInfoToServer(register_nameTextField.getText(),register_lastNameTextField.getText(),
+                                    register_mailTextField.getText(), register_phoneNumberTextField.getText(),
+                                    register_datePickerTextField.getValue(), register_passwordTextField.getText());
 
+            ServerController.displayRegistrationServerFeedback(ServerController.getFeedBackFromServer());
+            clearRegisterFields();
+        }
     }
 
 
     /**
      * Zamyka aplikację i kończy jej działanie.
      * <p>
-     * Metoda jest wywoływana po kliknięciu przycisku "closeBtn". Zamyka okno aplikacji oraz kończy jej działanie.
+     * Metoda jest wywoływana po kliknięciu przycisku "closeBtn".Zamyka połączenie z serwerem, zamyka okno aplikacji oraz kończy jej działanie.
      * Metoda uzyskuje dostęp do obiektu Stage, reprezentującego
      * aktualne okno aplikacji, za pomocą metody `getScene().getWindow()`. Następnie wywołuje metodę `close()` na tym obiekcie,
      * powodując zamknięcie okna i zakończenie działania aplikacji.
@@ -238,7 +242,8 @@ public class LoginController {
      * @author Karol Przygoda
      */
     @FXML
-    public void close() {
+    private void close() throws IOException {
+        LoginView.socket.close();
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
     }
@@ -253,103 +258,9 @@ public class LoginController {
      * @author Karol Przygoda
      */
     @FXML
-    public void minimize() {
+    private void minimize() {
         Stage stage = (Stage) minBtn.getScene().getWindow();
         stage.setIconified(true);
-    }
-
-    /**
-     * Wysyła informacje wprowadzone przez użytkownika w przypadku logowania
-     * <p>
-     * Metoda jest wywoływana po kliknięciu przycisku "loginBtn". Tworzony jest nowy obiekt PrintWritera za pomocą którego
-     * metoda wysyła komende do serwera informując go ze użytkownik próbuje się zalogować, następnie wysyła dane wprowadzone przez użytkownika
-     * w celu sprawdzenia ich występowania
-     * @param mail adres mailowy wprowadzony przez użytkownika
-     * @param password hasło wprowadzone przez użytkownika
-     * @author Karol Przygoda
-     */
-    private void sendLoginInfoToServer(String mail, String password) {
-        try{
-            PrintWriter out = new PrintWriter(new OutputStreamWriter(LoginView.socket.getOutputStream()), true);
-            out.println("LOGIN");
-            out.println(mail);
-            out.println(password);
-        }catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Wysyła informacje wprowadzone przez użytkownika w przypadku rejestracji
-     * <p>
-     * Metoda jest wywoływana po kliknięciu przycisku "loginBtn". Tworzony jest nowy obiekt PrintWritera za pomocą którego
-     * metoda wysyła komende do serwera informując go ze użytkownik próbuje się zalogować, następnie wysyła dane wprowadzone przez użytkownika
-     * w celu sprawdzenia ich występowania
-     * @param name imie wprowadzone przez uzytkownika
-     * @param lastName nazwisko wprowadzone przez uzytkownika
-     * @param mail adres mailowy wprowdzony przez uzytkownika
-     * @param phoneNumber numer telefonu wprowadzony przez uzytkowniak
-     * @param birthDate data urodzenia wprowadzona przez uzytkownika
-     * @param password haslo wprowadzone przez uzytkownika
-     * @author Karol Przygoda
-     */
-    private void sendRegisterInfoToServer(String name, String lastName, String mail, String phoneNumber, LocalDate birthDate, String password) {
-        try{
-            PrintWriter out = new PrintWriter(new OutputStreamWriter(LoginView.socket.getOutputStream()), true);
-            out.println("REGISTER");
-            out.println(name);
-            out.println(lastName);
-            out.println(mail);
-            out.println(phoneNumber);
-            out.println(birthDate);
-            out.println(password);
-        }catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Odbiera informacje zwrotną wysłaną przez serwer
-     * <p>
-     * Metoda jest wywoływana w metodach {@linkplain LoginController#login()} oraz w metodzie {@linkplain LoginController#checkIfRegulationsAccepted()}
-     * w celu przekazania odpowiedzi serwera czy rejestracja lub logowanie się powiodło
-     * jeżeli serwer napotkał problem i nie wysłał wiadomości użytkownik jest o tym informowany flaga errorFlag jest ustawiana na true aby komunikat wyswietlil sie poprawnie
-     * @param scene aktualnie uzywana scena przekazywana jest w celu wskazania gdzie zostanie wyswietlony alert w przypadku problemu
-     * @return true jeżeli klient otrzymal informacje od serwera, false jeżeli klient nie otrzymał infromacji od serwera
-     * @author Karol Przygoda
-     */
-    private boolean getFeedBackFromServer(Scene scene) {
-        try{
-            Scanner scanner = new Scanner(LoginView.socket.getInputStream());
-
-            if(scanner.hasNextLine())
-            {
-                boolean serverFeedBack = scanner.nextBoolean();
-
-                scanner.reset();
-
-                return serverFeedBack;
-            }
-            else {
-                scanner.reset();
-                Alert alert;
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Błąd serwera");
-                alert.setHeaderText(null);
-                alert.setContentText("Serwer napotkał problem");
-                alert.showAndWait();
-                //scene.getWindow().hide();
-                errorFlag = true;
-                return false;
-            }
-
-        }catch (IOException e)
-        {
-            e.printStackTrace();
-            return false;
-        }
     }
 
     /**
@@ -362,10 +273,11 @@ public class LoginController {
      * ponadto wyświetli sie krótki komunikat informujący użytkownika o problemie dzieje się to do momentu kiedy użytkownik nie poprawi pola tekstowego
      * @author Karol Przygoda
      */
-    public void checkName() {
+    @FXML
+    private void checkName() {
         register_nameTextField.addEventFilter(KeyEvent.ANY, event -> {
             String currentText = register_nameTextField.getText() + event.getCharacter();
-            if (currentText.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?].*")) {
+            if (currentText.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?_\\[\\]\"].*")) {
                 register_nameTextField.setStyle("-fx-border-color: red");
                 nameFieldValidationInfo.setVisible(true);
                 nameCheckFlag = false;
@@ -387,10 +299,11 @@ public class LoginController {
      * ponadto wyświetli sie krótki komunikat informujący użytkownika o problemie dzieje się to do momentu kiedy użytkownik nie poprawi pola tekstowego
      * @author Karol Przygoda
      */
-    public void checkLastName() {
+    @FXML
+    private void checkLastName() {
         register_lastNameTextField.addEventFilter(KeyEvent.ANY, event -> {
             String currentText = register_lastNameTextField.getText() + event.getCharacter();
-            if (currentText.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?].*")) {
+            if (currentText.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?_\\[\\]\"].*")) {
                 register_lastNameTextField.setStyle("-fx-border-color: red");
                 lastNameFieldValidationInfo.setVisible(true);
                 lastNameCheckFlag = false;
@@ -412,7 +325,8 @@ public class LoginController {
      * ponadto wyświetli sie krótki komunikat informujący użytkownika o problemie dzieje się to do momentu kiedy użytkownik nie poprawi pola tekstowego
      * @author Karol Przygoda
      */
-    public void checkMail() {
+    @FXML
+    private void checkMail() {
         register_mailTextField.addEventFilter(KeyEvent.ANY, event -> {
             String currentText = register_mailTextField.getText();
             if (!currentText.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
@@ -438,7 +352,8 @@ public class LoginController {
      * ponadto wyświetli sie krótki komunikat informujący użytkownika o problemie dzieje się to do momentu kiedy użytkownik nie poprawi pola tekstowego
      * @author Karol Przygoda
      */
-    public void checkPhoneNumber() {
+    @FXML
+    private void checkPhoneNumber() {
         register_phoneNumberTextField.addEventFilter(KeyEvent.ANY, event -> {
             String currentText = register_phoneNumberTextField.getText();
             if (!currentText.matches("\\d{9}") ) {
@@ -464,7 +379,8 @@ public class LoginController {
      * ponadto wyświetli sie krótki komunikat informujący użytkownika o problemie dzieje się to do momentu kiedy użytkownik nie poprawi pola tekstowego
      * @author Karol Przygoda
      */
-    public void checkPassword() {
+    @FXML
+    private void checkPassword() {
         register_passwordTextField.addEventFilter(KeyEvent.ANY, event -> {
             String currentText = register_passwordTextField.getText() + event.getCharacter();
             if (!currentText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&-+=()])(?=\\S+$).{8,20}$")) {
@@ -488,7 +404,8 @@ public class LoginController {
      * @return true jeżeli wszystkie pola w formularzu rejestracji są uzupełnione false jeżeli jakieś pole nie jest uzupełnione
      * @author Karol Przygoda
      */
-    public boolean checkIfEmpty() {
+    @FXML
+    private boolean checkIfEmpty() {
         return register_nameTextField.getText().isEmpty()    // sprawdzanie czy wszytskie pola formularza rejestracji zostaly wypelnione
                 || register_lastNameTextField.getText().isEmpty()
                 || register_mailTextField.getText().isEmpty()
@@ -504,17 +421,16 @@ public class LoginController {
      * <p>
      * Metoda ta tworzy nowa Scene jako okno modalne do której przekazywany jest plik fxml z zawartością warunków użytkowania checkboxem potwierdzenia
      * przyciskiem potwierdzenia oraz anulowania. Metoda ta jest ostanim etapem rejstracji oraz ostatnim etapem funckji {@linkplain LoginController#register()} jeżeli użytkownik
-     * zaakceptował warunki użytkownia metoda pobiera wprowadzone dane przez użytkownika a następnie wysyła je do serwera za pomocą metody {@linkplain LoginController#sendLoginInfoToServer(String, String)}
+     * zaakceptował warunki użytkownia metoda pobiera wprowadzone dane przez użytkownika a następnie wysyła je do serwera za pomocą metody {@linkplain ServerController#sendLoginInfoToServer(String, String)}
      * nastepnie metoda obiera informacje zwrotną od serwera jeżeli serwer zaakceptował wprowadzone dane użytkownik informowany jest o prawidłowej rejestracji w przeciwnym wypadku jeżeli
      * nie nastąpiło zerwanie połączenia użytkownik informowany jest o zarejestowanym już adresie mailowym
      * @author Karol Przygoda
      */
-    public void checkIfRegulationsAccepted() throws IOException {
+    private boolean checkIfRegulationsAccepted() throws IOException {
         Stage modalStage = new Stage();
         modalStage.initModality(Modality.APPLICATION_MODAL);
         modalStage.initStyle(StageStyle.UTILITY);
         modalStage.setTitle("Warunki użytkowania");
-        Alert alert;
 
         FXMLLoader fxmlLoader = new FXMLLoader(LoginView.class.getResource("regulationsView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
@@ -522,50 +438,23 @@ public class LoginController {
         modalStage.setScene(scene);
         modalStage.showAndWait();//wyswietl okno zawierajace informacje dotyczace warunkow uzytkowania
 
-        if (RegulationsController.accepted) { // jezeli uzytkownik zaakceptowal warunki uzytkowania to wyczysc wszytskie pola i poinformuj o prawidlowej rejestracji
-
-            String name = register_nameTextField.getText();
-            String lastName = register_lastNameTextField.getText();
-            String mail = register_mailTextField.getText();
-            String phoneNumber = register_phoneNumberTextField.getText();
-            String password = register_passwordTextField.getText();
-            LocalDate birthDate = register_datePickerTextField.getValue();
-
-            sendRegisterInfoToServer(name, lastName, mail, phoneNumber, birthDate, password);
-
-            if (getFeedBackFromServer(register_loginBtn.getScene())) {
-                alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Rejestracja powiodła się");
-                alert.setHeaderText(null);
-                register_nameTextField.setText("");
-                register_lastNameTextField.setText("");
-                register_phoneNumberTextField.setText("");
-                register_mailTextField.setText("");
-                register_passwordTextField.setText("");
-                register_passwordConfirmTextField.setText("");
-                register_datePickerTextField.setValue(null);
-                alert.setContentText("Zarejestrowano pomyślnie");
-                alert.showAndWait();
-                RegulationsController.accepted = false;
-            }
-
-            else
-            {
-                if(!errorFlag) {
-                    RegulationsController.accepted = false;
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Błąd rejestracji");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Wprowadzony adres mailowy już jest zarejestrowany");
-                    alert.showAndWait();
-                }
-            }
-        }
+        // jezeli uzytkownik zaakceptowal warunki uzytkowania to zwroc true
+        return RegulationsController.accepted;
     }
 
-    //pytania do Doktora
-    //czy dla każdego pola tekstowego powinna być osobna metoda nasluchujaca czy zrobic to w jednej
-    //czy po kazdym nacisnieciu przycisku powinnien sie tworzyc nowy obiekt Scannera lub PrintWritera czy stworzyc po jednym obiekcie
 
+    /**
+     * Czyści pola tekstowe w formularzu rejestracji
+     * @author Karol Przygoda
+     */
+    private void clearRegisterFields() {
+        register_nameTextField.setText("");
+        register_lastNameTextField.setText("");
+        register_phoneNumberTextField.setText("");
+        register_mailTextField.setText("");
+        register_passwordTextField.setText("");
+        register_passwordConfirmTextField.setText("");
+        register_datePickerTextField.setValue(null);
+    }
 
 }
