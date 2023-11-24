@@ -82,7 +82,6 @@ public class LoginController {
     @FXML
     private Label phoneNumberFieldValidationInfo;
 
-
     private boolean nameCheckFlag, lastNameCheckFlag, mailCheckFlag, phoneNumberCheckFlag, passwordCheckFlag;
 
 
@@ -123,14 +122,14 @@ public class LoginController {
      * użytkownika w bazie danych. Na podstawie wprowadzonych
      * danych, metoda wysyła przechywcone dane do serwera za pomocą metody {@linkplain ServerController#sendLoginInfoToServer(String, String)}
      * , serwer sprawdza ich występowanie w bazie danych.
-     * Następnie odbiera odpowiedź od serwera za pomocą metody {@linkplain  ServerController#getFeedBackFromServer()}
+     * Następnie odbiera odpowiedź od serwera za pomocą metody {@linkplain  ServerController#getLoginFeedBackFromServer()}
      * Jeśli dopasowanie zostanie znalezione, metoda wylacza okno logowania i przechodzi do okna głównego
      * W przeciwnym wypadku użytkownik zostaje poinformowany za pomocą okna alertu o wprowadzeniu nie zgadzających się ze sobą danych
      *
      * @author Karol Przygoda
      */
     @FXML
-    private void login() {
+    private void login() throws IOException{
 
         Alert alert;
         if (mailTextField.getText().isEmpty() || passwordTextField.getText().isEmpty())
@@ -149,9 +148,13 @@ public class LoginController {
 
             ServerController.sendLoginInfoToServer(mail,password);
 
-            if(ServerController.getFeedBackFromServer())
+            if(ServerController.getLoginFeedBackFromServer())
             {
                 loginBtn.getScene().getWindow().hide();
+                Stage stage = new Stage();
+                ClientDashBoardView clientDashBoardView = new ClientDashBoardView();
+                clientDashBoardView.start(stage);
+
             }
             else
             {
@@ -225,7 +228,7 @@ public class LoginController {
                                     register_mailTextField.getText(), register_phoneNumberTextField.getText(),
                                     register_datePickerTextField.getValue(), register_passwordTextField.getText());
 
-            ServerController.displayRegistrationServerFeedback(ServerController.getFeedBackFromServer());
+            ServerController.displayRegistrationServerFeedback(ServerController.getRegisterFeedBackFromServer());
             clearRegisterFields();
         }
     }
@@ -441,7 +444,6 @@ public class LoginController {
         // jezeli uzytkownik zaakceptowal warunki uzytkowania to zwroc true
         return RegulationsController.accepted;
     }
-
 
     /**
      * Czyści pola tekstowe w formularzu rejestracji

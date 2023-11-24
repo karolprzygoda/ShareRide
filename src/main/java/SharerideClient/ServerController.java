@@ -15,6 +15,9 @@ public class ServerController {
 
     static protected boolean errorFlag = false;
 
+    static protected int id;
+
+
     /**
      * Wysyła informacje wprowadzone przez użytkownika w przypadku logowania
      * <p>
@@ -70,12 +73,12 @@ public class ServerController {
     /**
      * Odbiera informacje zwrotną wysłaną przez serwer
      * <p>
-     * Metoda odbiera odpowiedzi od serwera o tym czy rejestracja lub logowanie się powiodło
+     * Metoda odbiera odpowiedzi od serwera o tym czy rejestracja się powiodła
      * jeżeli serwer napotkał problem i nie wysłał wiadomości użytkownik jest o tym informowany flaga errorFlag jest ustawiana na true aby komunikat wyswietlil sie poprawnie
      * @return true jeżeli klient otrzymal informacje od serwera, false jeżeli klient nie otrzymał infromacji od serwera
      * @author Karol Przygoda
      */
-    static protected boolean getFeedBackFromServer() {
+    static protected boolean getRegisterFeedBackFromServer() {
 
         try{
             Scanner scanner = new Scanner(LoginView.socket.getInputStream());
@@ -104,11 +107,49 @@ public class ServerController {
         }
     }
 
+    /**
+     * Odbiera informacje zwrotną wysłaną przez serwer
+     * <p>
+     * Metoda odbiera odpowiedzi od serwera o tym czy logowanie się powiodło
+     * jeżeli serwer napotkał problem i nie wysłał wiadomości użytkownik jest o tym informowany flaga errorFlag jest ustawiana na true aby komunikat wyswietlil sie poprawnie
+     * dodatkowo metoda pobiera id użytkownika który się zalogował w celu wykoania poprawnie późniejszych operacji związanych z tym użytkownikiem
+     * @return true jeżeli klient otrzymal informacje od serwera, false jeżeli klient nie otrzymał infromacji od serwera
+     * @author Karol Przygoda
+     */
+    static protected boolean getLoginFeedBackFromServer() {
+
+        try{
+            Scanner scanner = new Scanner(LoginView.socket.getInputStream());
+
+            if(scanner.hasNextLine())
+            {
+                boolean serverFeedBack = scanner.nextBoolean();
+                id = scanner.nextInt();
+
+                return serverFeedBack;
+            }
+            else {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd serwera");
+                alert.setHeaderText(null);
+                alert.setContentText("Serwer napotkał problem");
+                alert.showAndWait();
+                errorFlag = true;
+                return false;
+            }
+
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     /**
      * Wyświetla odpowiedni komunikat na podstawie innformacji zwrotnej od serwera
      * <p>
-     * Metoda wyświetla kouminat o powodzeniu rejestracji jeżeli metoda {@linkplain ServerController#getFeedBackFromServer()} zwróci true
+     * Metoda wyświetla kouminat o powodzeniu rejestracji jeżeli metoda {@linkplain ServerController#getRegisterFeedBackFromServer()} zwróci true
      * w przeciwnym wypadku jeżeli nie zaszedł błąd serwera metoda wyświetli komunikat o zarejestrowanym adresie mailowym w bazie danych
      * @author Karol Przygoda
      */
@@ -138,4 +179,53 @@ public class ServerController {
         }
     }
 
+    /**
+     * Wysyła rządanie pobrania imienia klienta który się zalogował
+     * @param id id użytkownika który jest zalogowanyw bierzącej sesji
+     * @author Karol Przygoda
+     */
+    static protected void sendClientNameRequest(int id) {
+        try {
+            PrintWriter out = new PrintWriter(new OutputStreamWriter(LoginView.socket.getOutputStream()), true);
+            out.println("NAME");
+            out.println(id);
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Odbiera odpowiedz od serwera w postaci Imienio zalogowanego użytkownika w bierzącej sesji
+     * @return Imie użytkownika zalogowanego w bierzącej sesji
+     * @author Karol Przygoda
+     */
+    static protected String getClientName() {
+        try{
+            Scanner scanner = new Scanner(LoginView.socket.getInputStream());
+
+            if(scanner.hasNextLine())
+            {
+                String name = scanner.nextLine();
+
+                return name;
+            }
+            else {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd serwera");
+                alert.setHeaderText(null);
+                alert.setContentText("Serwer napotkał problem");
+                alert.showAndWait();
+                errorFlag = true;
+                return null;
+            }
+
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
 }
