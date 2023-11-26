@@ -14,6 +14,7 @@ import java.io.IOException;
 /**
  * Klasa odpowiedzialna za uruchomienie panelu zarządzania klienta w aplikacji Desktop Shop.
  * Zarządza inicjalizacją sceny, obsługą zdarzeń myszy oraz konfiguracją okna Stage.
+ * @author Karol Przygoda
  */
 public class ClientDashBoardView {
 
@@ -25,6 +26,7 @@ public class ClientDashBoardView {
      *
      * @param stage Obiekt Stage, na którym ma być wyświetlony panel.
      * @throws IOException W przypadku problemów z załadowaniem pliku FXML.
+     * @author Karol Przygoda
      */
     public void start(Stage stage) throws IOException {
 

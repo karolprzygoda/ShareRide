@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 
 /**
  * Kontroler interfejsu uzytkownika
+ * @author Karol Przygoda
  */
 public class ClientDashBoardController implements Initializable {
 
@@ -143,6 +144,7 @@ public class ClientDashBoardController implements Initializable {
      * Metoda uzyskuje dostęp do obiektu Stage, reprezentującego
      * aktualne okno aplikacji, za pomocą metody `getScene().getWindow()`. Następnie wywołuje metodę `close()` na tym obiekcie,
      * powodując zamknięcie okna i zakończenie działania aplikacji.
+     * @author Karol Przygoda
      */
     @FXML
     private void close() {
@@ -155,6 +157,7 @@ public class ClientDashBoardController implements Initializable {
      * Metoda jest wywoływana po kliknięciu przycisku "minBtn". Minimalizuje aktualne okno aplikacji, zmniejszając je do ikony
      * na pasku zadań. Metoda uzyskuje dostęp do obiektu Stage, reprezentującego aktualne okno aplikacji, za pomocą metody
      * `getScene().getWindow()`. Następnie wywołuje metodę `setIconified(true)` na tym obiekcie, powodując minimalizację okna.
+     * @author Karol Przygoda
      */
     @FXML
     private void minimize() {
@@ -170,6 +173,7 @@ public class ClientDashBoardController implements Initializable {
      * zostaje zgłoszony wyjątek typu RuntimeException.
      *
      * @throws RuntimeException jeśli wystąpił błąd podczas wylogowywania użytkownika
+     * @author Karol PRzygoda
      */
     @FXML
     private void logout() {
@@ -198,6 +202,7 @@ public class ClientDashBoardController implements Initializable {
      * Na podstawie źródła zdarzenia (event.getSource()), metoda zmienia widoczność odpowiednich paneli oraz
      * dostosowuje styl tła przycisków nawigacji.
      * @param event zdarzenie, które wywołało metodę (kliknięcie na przycisk nawigacji)
+     * @author Karol Przygoda
      */
     @FXML
     private void switchForm(ActionEvent event) {
@@ -443,6 +448,7 @@ public class ClientDashBoardController implements Initializable {
 
     /**
      * Przypisuje opcje wyboru Płci dla comboBox-a
+     * @author Karol Przygoda
      */
     private void Gender() {
         List<String> listS = new ArrayList<>();
@@ -461,6 +467,7 @@ public class ClientDashBoardController implements Initializable {
      * Ustawia styl tła przycisku "announcementsBtn" na przezroczysty. Wyświetla nazwę klienta zalogowanego użytkownika.
      * @param url             URL sceny, która została załadowana
      * @param resourceBundle zasoby powiązane z kontrolerem widoku
+     * @Author Karol Przygoda
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
