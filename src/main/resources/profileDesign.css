@@ -1,0 +1,40 @@
+.deleteAcc-btn{
+    -fx-background-color:#FF5F6D;
+    -fx-background-radius: 25 25 25 25;
+    -fx-border-radius: 25 25 25 25;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Interstate";
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+
+.deleteAcc-btn:hover{
+    -fx-background-color:linear-gradient(to bottom, #FF5F6D, #FFC371);
+}
+
+.updateAcc-btn{
+    -fx-background-color:#3a7bd5;
+    -fx-background-radius: 25 25 25 25;
+    -fx-border-radius: 25 25 25 25;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Interstate";
+    -fx-font-weight: bold;
+    -fx-background-insets: 0;
+}
+/*przycisk logowania/rejestracji po najechaniu na niego kursorem*/
+.updateAcc-btn:hover{
+    -fx-background-color:linear-gradient(to bottom, #3a7bd5, #3a6073);
+}
+
+.combo-box{
+    -fx-background-color:transparent;
+    -fx-border-color: #000;
+    -fx-border-width:0.5px;
+    -fx-border-radius:4px;
+    -fx-font-family:"Arial";
+    -fx-font-size:12px;
+}
