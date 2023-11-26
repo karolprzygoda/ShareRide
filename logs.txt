@@ -1,0 +1,36 @@
+[Database][2023-11-26 17:28:06] Connected
+[Database][2023-11-26 17:28:06] Users table created (if didn't exist)
+[Server][2023-11-26 17:28:06] Server started on port: 5000
+[Server][2023-11-26 17:28:45] New connection: 127.0.0.1
+[Server][2023-11-26 17:28:56] 127.0.0.1 tries to login
+[Database][2023-11-26 17:30:14] Connected
+[Database][2023-11-26 17:30:14] Users table created (if didn't exist)
+[Server][2023-11-26 17:30:14] Server started on port: 5000
+[Server][2023-11-26 17:30:26] New connection: 127.0.0.1
+[Server][2023-11-26 17:30:28] 127.0.0.1 tries to login
+[Server][2023-11-26 17:30:28] 127.0.0.1 denied to login, not in database
+[Database][2023-11-26 17:33:20] Connected
+[Database][2023-11-26 17:33:20] Users table created (if didn't exist)
+[Server][2023-11-26 17:33:20] Server started on port: 5000
+[Server][2023-11-26 17:33:24] New connection: 127.0.0.1
+[Server][2023-11-26 17:33:29] 127.0.0.1 tries to login
+[Server][2023-11-26 17:33:29] 127.0.0.1 denied to login, not in database
+[Server][2023-11-26 17:35:00] New connection: 127.0.0.1
+[Server][2023-11-26 17:35:02] 127.0.0.1 tries to login
+[Server][2023-11-26 17:35:02] 127.0.0.1 denied to login, not in database
+[Database][2023-11-26 17:38:59] Connected
+[Database][2023-11-26 17:38:59] Users table created (if didn't exist)
+[Server][2023-11-26 17:38:59] Server started on port: 5000
+[Server][2023-11-26 17:39:01] New connection: 127.0.0.1
+[Database][2023-11-26 17:41:44] Connected
+[Database][2023-11-26 17:41:44] Users table created (if didn't exist)
+[Server][2023-11-26 17:41:44] Server started on port: 5000
+[Server][2023-11-26 17:41:49] New connection: 127.0.0.1
+[ServerVerification][2023-11-26 17:42:15] User accepted
+[Server][2023-11-26 17:42:15] 127.0.0.1 tries to register
+[Database][2023-11-26 17:42:15] Registering mail not found in database
+[Database][2023-11-26 17:42:15] New user added
+[Server][2023-11-26 17:42:15] 127.0.0.1 registered
+[Server][2023-11-26 17:42:28] 127.0.0.1 tries to login
+[Server][2023-11-26 17:42:28] 127.0.0.1 logged in
+[Server][2023-11-26 17:42:41] New connection: 127.0.0.1

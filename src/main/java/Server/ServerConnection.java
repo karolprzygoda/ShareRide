@@ -1,21 +1,13 @@
 package Server;
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class ServerConnection {
-    // constructor with port
+    private final Logs log = new Logs("Server");
     public ServerConnection(int port) {
         PostgreSQL postgreSQL = new PostgreSQL();
         postgreSQL.startConnection();
@@ -23,11 +15,14 @@ public class ServerConnection {
         //postgreSQL.removeEveryUsers();
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Server on port: " + port);
+            log.writeLog("Server started on port: " + port);
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("New connection: " + clientSocket.getInetAddress().getHostAddress());
-                new Thread(()-> handleClient(clientSocket,postgreSQL)).start();//obsługa nowego klienta w osobnym wątku
+                log.writeLog("New connection: " + clientSocket.getInetAddress().getHostAddress());
+
+                new Thread(()-> handleClient(clientSocket, postgreSQL, log)).start();//obsługa nowego klienta w osobnym wątku
 
             }
         } catch (IOException e) {
@@ -46,7 +41,7 @@ public class ServerConnection {
 
         java.sql.Date sqlDate = java.sql.Date.valueOf(birthDate);
 
-        return Register.CreateUser(name,lastName,mail,phoneNumber,null, sqlDate,password);
+        return Verification.CreateUser(name,lastName,mail,phoneNumber,null, sqlDate,password);
     }
 
     /**
@@ -59,10 +54,11 @@ public class ServerConnection {
      * @param postgreSQL obiekt klasy {@linkplain PostgreSQL} używany do wywołania odpowiedniej metody rejestracji lub logowania
      * @author Karol Przygoda
      */
-    private static void handleClient(Socket clientSocket, PostgreSQL postgreSQL) {
+    private static void handleClient(Socket clientSocket, PostgreSQL postgreSQL, Logs log) {
         try {
                 Scanner scanner = new Scanner(clientSocket.getInputStream());
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(),true);
+                String hostAddress = clientSocket.getInetAddress().getHostAddress();
 
                 while (scanner.hasNextLine())
                 {
@@ -70,33 +66,48 @@ public class ServerConnection {
 
                     if (type.equals("LOGIN"))
                     {
+                        log.writeLog(hostAddress + " tries to login");
+
                         String mail = scanner.nextLine();
                         String password = scanner.nextLine();
 
                         if (postgreSQL.loginUser(mail, password))
                         {
                             out.println(true);
+							out.println(postgreSQL.id);
+                            log.writeLog(hostAddress + " logged in");
+
                         } else
                         {
                             out.println(false);
+                            log.writeLog(hostAddress + " denied to login, not in database");
                         }
                     } else if (type.equals("REGISTER"))
                     {
                         User newUser = TranslateConnection(scanner);
+                        log.writeLog(hostAddress + " tries to register");
 
                         if (newUser != null)
                         {
                             if (!postgreSQL.registerCheckMail(newUser.getEmail()))
                             {
-                                postgreSQL.addUser(newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getPhoneNumber(),
-                                                    newUser.getDateOfBirth(), newUser.getPassword());
+                                postgreSQL.addUser(newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getPhoneNumber(), newUser.getDateOfBirth(), newUser.getPassword());
                                 out.println(true);
+                                log.writeLog(hostAddress + " registered");
                             } else
                             {
                                 out.println(false);
+                                log.writeLog(hostAddress + " denied to register, used email");
                             }
                         }
-                     }
+                        else {
+                            log.writeLog(hostAddress + " denied to register, server verification block");
+                        }
+                     }else if (type.equals("NAME"))//jeżeli klient wysłał żądnie wysłania imienia
+                    {
+                        int id = scanner.nextInt();
+                        out.println(postgreSQL.selectNamme(id));
+                    }
                 }
 
                 scanner.close();

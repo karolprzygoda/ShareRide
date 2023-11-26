@@ -5,16 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 public class PostgreSQL {
+	
+    protected Integer id;//pole przechowujace id uzytkownika ktory sie zalogowal
 
     private final String url = "jdbc:postgresql://localhost:5432/wspolnedojazdy";
     private final String user = "postgres";
     private final String password = "Password123!";
+    private final Logs log = new Logs("Database");
 
     private Connection connection;
     public void startConnection() {
         try {
             connection = DriverManager.getConnection(url, user, password);
             System.out.println("Połączono z bazą danych." + connection);
+            log.writeLog("Connected");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -49,8 +53,10 @@ public class PostgreSQL {
 
             if (affectedRows > 0) {
                 System.out.println("Dodano użytkownika do bazy danych.");
+                log.writeLog("New user added");
             } else {
                 System.out.println("Nie udało się dodać użytkownika do bazy danych.");
+                log.writeLog("Isert user error");
             }
 
 
@@ -70,8 +76,10 @@ public class PostgreSQL {
 
             if (affectedRows > 0) {
                 System.out.println("Usunięto użytkownika");
+                log.writeLog("User removed");
             } else {
                 System.out.println("Nie znaleziono użytkownika o podanym ID.");
+                log.writeLog("User removing error, ID not found");
             }
 
         } catch (SQLException e) {
@@ -87,6 +95,7 @@ public class PostgreSQL {
             preparedStatement.executeUpdate();
 
             System.out.println("Usunięto wszystkich użytkowników.");
+            log.writeLog("All users removed");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -108,6 +117,7 @@ public class PostgreSQL {
         try (PreparedStatement preparedStatement = connection.prepareStatement(createTableSQL)) {
             preparedStatement.execute();
             System.out.println("Tabela uzytkownicy została utworzona (jeśli nie istniała).");
+            log.writeLog("Users table created (if didn't exist)");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Błąd SQL: " + e.getMessage());
@@ -115,25 +125,34 @@ public class PostgreSQL {
     }
 
     public boolean loginUser(String email, String password) {
-        String sql = "SELECT * FROM users WHERE email = ? AND haslo = ?";
+        String sql = "SELECT * FROM users WHERE email = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                boolean loggedIn = resultSet.next();
-                if (loggedIn) {
-                    System.out.println("Użytkownik zalogowany pomyślnie.");
+                if (resultSet.next()) {
+                    String storedPassword = resultSet.getString("haslo");
+
+                    boolean passwordMatch = Password.matchPassword(password, storedPassword);
+
+                    if (passwordMatch) {
+                        System.out.println("Użytkownik zalogowany pomyślnie.");
+						 id = resultSet.getInt("id");//przeslanie do klienta id zalogowanego uzytkownika
+                        return true;
+                    } else {
+                        System.out.println("Błąd logowania. Nieprawidłowe dane.");
+                        return false;
+                    }
                 } else {
                     System.out.println("Błąd logowania. Nieprawidłowe dane.");
+                    return false;
                 }
-                return loggedIn;
             }
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Błędne dane logowania: " + e.getMessage());
+            return false;
         }
-        return false;
     }
     public boolean registerCheckMail(String email) {
         String sql = "SELECT * FROM users WHERE email = ?";
@@ -143,8 +162,12 @@ public class PostgreSQL {
                 boolean used = resultSet.next();
                 if (used) {
                     System.out.println("Email w użyciu!.");
+                    log.writeLog("Error, registering mail found in database");
+
                 } else {
                     System.out.println("Email wolny!");
+                    log.writeLog("Registering mail not found in database");
+
                 }
                 return used;
             }
@@ -154,4 +177,32 @@ public class PostgreSQL {
         }
         return false;
     }
+
+    /**
+     * Pobiera imie aktualnie użytkownika zalogowanego w aktualnej sesji
+     * @param id użytkownika zalogowanego w aktualnej sesji
+     * @return Imię użytkownika, jeżeli wszystko poszło pomyślnie. Null, jeżeli coś poszło nie tak
+     */
+	 public String selectNamme(int id) {
+        String sql = "SELECT imie FROM users WHERE id = ?";
+        String name;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                name = resultSet.getString("imie");
+                System.out.println("Wysłano imie");
+                return name;
+            } else {
+                System.out.println("Coś poszło nie tak!");
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Błędny email: " + e.getMessage());
+            return null;
+        }
+    }
+	
 }
