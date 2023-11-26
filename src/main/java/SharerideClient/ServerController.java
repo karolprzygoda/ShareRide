@@ -124,7 +124,9 @@ public class ServerController {
             if(scanner.hasNextLine())
             {
                 boolean serverFeedBack = scanner.nextBoolean();
-                id = scanner.nextInt();
+                if(serverFeedBack) {
+                    id = scanner.nextInt();
+                }
 
                 return serverFeedBack;
             }
