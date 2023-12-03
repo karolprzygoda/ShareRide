@@ -191,6 +191,37 @@ public class UserProfileController implements Initializable {
     private Label ridesCountLabel;
 
     /**
+     * Tekst wyświetlający się, jeżeli użytkownik wprowadzi za długi ciąg znaków do pola {@linkplain  UserProfileController#profile_updateNameField}
+     * @see UserProfileController#update()
+     * @see UserProfileController#checkName()
+     */
+    @FXML
+    private Label nameFieldStringLengthValidationInfo;
+    /**
+     * Tekst wyświetlający się, jeżeli użytkownik wprowadzi za długi ciąg znaków do pola {@linkplain  UserProfileController#profile_updateLastNameField}
+     * @see UserProfileController#update()
+     * @see UserProfileController#checkLastName()
+     */
+    @FXML
+    private Label lastNameFieldStringLengthValidationInfo;
+
+    /**
+     * Tekst wyświetlający się, jeżeli użytkownik wprowadzi za długi ciąg znaków do pola {@linkplain UserProfileController#profile_updateMailField}
+     * @see UserProfileController#update()
+     * @see UserProfileController#checkMail()
+     */
+    @FXML
+    private Label mailFieldStringLengthValidationInfo;
+
+    /**
+     * Tekst wyświetlający się, jeżeli użytkownik wprowadzi za długi ciąg znaków do pola {@linkplain  UserProfileController#profile_updatePasswordField}
+     * @see UserProfileController#update()
+     * @see UserProfileController#checkPassword()
+     */
+    @FXML
+    private Label passwordFieldStringLengthValidationInfo;
+
+    /**
      * Tablica przechowująca możliwe wybory płci
      * @see UserProfileController#gender()
      */
@@ -221,10 +252,20 @@ public class UserProfileController implements Initializable {
             if (currentText.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?_\\[\\]\"].*")) {
                 profile_updateNameField.setStyle("-fx-border-color: red");
                 profile_nameFieldValidationInfo.setVisible(true);
+                nameFieldStringLengthValidationInfo.setVisible(false);
                 nameCheckFlag = false;
-            } else {
+            }
+            else if(currentText.length() > 50)
+            {
+                profile_updateNameField.setStyle("-fx-border-color: red");
+                nameFieldStringLengthValidationInfo.setVisible(true);
+                profile_nameFieldValidationInfo.setVisible(false);
+                nameCheckFlag = false;
+            }
+            else {
                 profile_updateNameField.setStyle("");
                 profile_nameFieldValidationInfo.setVisible(false);
+                nameFieldStringLengthValidationInfo.setVisible(false);
                 nameCheckFlag = true;
             }
         });
@@ -248,10 +289,20 @@ public class UserProfileController implements Initializable {
             if (currentText.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?_\\[\\]\"].*")) {
                 profile_updateLastNameField.setStyle("-fx-border-color: red");
                 profile_lastNameFieldValidationInfo.setVisible(true);
+                lastNameFieldStringLengthValidationInfo.setVisible(false);
                 lastNameCheckFlag = false;
-            } else {
+            }
+            else if(currentText.length() > 50)
+            {
+                profile_updateLastNameField.setStyle("-fx-border-color: red");
+                lastNameFieldStringLengthValidationInfo.setVisible(true);
+                profile_lastNameFieldValidationInfo.setVisible(false);
+                lastNameCheckFlag = false;
+            }
+            else {
                 profile_updateLastNameField.setStyle("");
                 profile_lastNameFieldValidationInfo.setVisible(false);
+                lastNameFieldStringLengthValidationInfo.setVisible(false);
                 lastNameCheckFlag = true;
             }
         });
@@ -274,10 +325,20 @@ public class UserProfileController implements Initializable {
             String currentText = profile_updateMailField.getText();
             if (!currentText.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
                 profile_mailFieldValidationInfo.setVisible(true);
+                mailFieldStringLengthValidationInfo.setVisible(false);
                 profile_updateMailField.setStyle("-fx-border-color: red");
                 mailCheckFlag = false;
-            } else {
+            }
+            else if(currentText.length() > 100)
+            {
+                profile_updateMailField.setStyle("-fx-border-color: red");
+                mailFieldStringLengthValidationInfo.setVisible(true);
+                profile_lastNameFieldValidationInfo.setVisible(false);
+                mailCheckFlag = false;
+            }
+            else {
                 profile_mailFieldValidationInfo.setVisible(false);
+                mailFieldStringLengthValidationInfo.setVisible(false);
                 profile_updateMailField.setStyle("");
                 mailCheckFlag = true;
             }
@@ -328,12 +389,22 @@ public class UserProfileController implements Initializable {
     private void checkPassword() {
         profile_updatePasswordField.addEventFilter(KeyEvent.ANY, event -> {
             String currentText = profile_updatePasswordField.getText() + event.getCharacter();
-            if (!currentText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&-+=()])(?=\\S+$).{8,20}$")) {
+            if (!currentText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&-+=()])(?=\\S+$).{8,}$")) {
                 profile_passwordFieldValidationInfo.setVisible(true);
+                passwordFieldStringLengthValidationInfo.setVisible(false);
                 profile_updatePasswordField.setStyle("-fx-border-color: red");
                 passwordCheckFlag = false;
-            } else {
+            }
+            else if(currentText.length() > 255)
+            {
+                profile_updatePasswordField.setStyle("-fx-border-color: red");
+                passwordFieldStringLengthValidationInfo.setVisible(true);
                 profile_passwordFieldValidationInfo.setVisible(false);
+                passwordCheckFlag = false;
+            }
+            else {
+                profile_passwordFieldValidationInfo.setVisible(false);
+                passwordFieldStringLengthValidationInfo.setVisible(false);
                 profile_updatePasswordField.setStyle("");
                 passwordCheckFlag = true;
             }

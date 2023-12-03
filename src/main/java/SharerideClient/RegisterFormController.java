@@ -128,6 +128,37 @@ public class RegisterFormController {
     private Button register_registerBtn;
 
     /**
+     * Tekst wyświetlający się, jeżeli użytkownik wprowadzi za długi ciąg znaków do pola {@linkplain  RegisterFormController#register_nameTextField}
+     * @see RegisterFormController#register()
+     * @see RegisterFormController#checkName()
+     */
+    @FXML
+    private Label nameFieldStringLengthValidationInfo;
+    /**
+     * Tekst wyświetlający się, jeżeli użytkownik wprowadzi za długi ciąg znaków do pola {@linkplain  RegisterFormController#register_lastNameTextField}
+     * @see RegisterFormController#register()
+     * @see RegisterFormController#checkLastName()
+     */
+    @FXML
+    private Label lastNameFieldStringLengthValidationInfo;
+
+    /**
+     * Tekst wyświetlający się, jeżeli użytkownik wprowadzi za długi ciąg znaków do pola {@linkplain  RegisterFormController#register_mailTextField}
+     * @see RegisterFormController#register()
+     * @see RegisterFormController#checkMail()
+     */
+    @FXML
+    private Label mailFieldStringLengthValidationInfo;
+
+    /**
+     * Tekst wyświetlający się, jeżeli użytkownik wprowadzi za długi ciąg znaków do pola {@linkplain  RegisterFormController#register_passwordTextField}
+     * @see RegisterFormController#register()
+     * @see RegisterFormController#checkPassword()
+     */
+    @FXML
+    private Label passwordFieldStringLengthValidationInfo;
+
+    /**
      * Flagi odpowiedzialne za sprawdzenie, czy konkretne pola formularza rejestracji są uzupełnione poprawnie
      * @see RegisterFormController#register()
      */
@@ -225,10 +256,19 @@ public class RegisterFormController {
             if (currentText.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?_\\[\\]\"].*")) {
                 register_nameTextField.setStyle("-fx-border-color: red");
                 nameFieldValidationInfo.setVisible(true);
+                nameFieldStringLengthValidationInfo.setVisible(false);
                 nameCheckFlag = false;
-            } else {
+            } else if(currentText.length() > 50)
+            {
+                register_nameTextField.setStyle("-fx-border-color: red");
+                nameFieldStringLengthValidationInfo.setVisible(true);
+                nameFieldValidationInfo.setVisible(false);
+                nameCheckFlag = false;
+            }
+            else {
                 register_nameTextField.setStyle("");
                 nameFieldValidationInfo.setVisible(false);
+                nameFieldStringLengthValidationInfo.setVisible(false);
                 nameCheckFlag = true;
             }
         });
@@ -252,10 +292,20 @@ public class RegisterFormController {
             if (currentText.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?_\\[\\]\"].*")) {
                 register_lastNameTextField.setStyle("-fx-border-color: red");
                 lastNameFieldValidationInfo.setVisible(true);
+                lastNameFieldStringLengthValidationInfo.setVisible(false);
                 lastNameCheckFlag = false;
-            } else {
+            }
+            else if(currentText.length() > 50)
+            {
+                register_lastNameTextField.setStyle("-fx-border-color: red");
+                lastNameFieldStringLengthValidationInfo.setVisible(true);
+                lastNameFieldValidationInfo.setVisible(false);
+                lastNameCheckFlag = false;
+            }
+            else {
                 register_lastNameTextField.setStyle("");
                 lastNameFieldValidationInfo.setVisible(false);
+                lastNameFieldStringLengthValidationInfo.setVisible(false);
                 lastNameCheckFlag = true;
             }
         });
@@ -278,10 +328,20 @@ public class RegisterFormController {
             String currentText = register_mailTextField.getText();
             if (!currentText.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}")) {
                 mailFieldValidationInfo.setVisible(true);
+                mailFieldStringLengthValidationInfo.setVisible(false);
                 register_mailTextField.setStyle("-fx-border-color: red");
                 mailCheckFlag = false;
-            } else {
+            }
+            else if(currentText.length() > 100)
+            {
+                register_mailTextField.setStyle("-fx-border-color: red");
+                mailFieldStringLengthValidationInfo.setVisible(true);
                 mailFieldValidationInfo.setVisible(false);
+                mailCheckFlag = false;
+            }
+            else {
+                mailFieldValidationInfo.setVisible(false);
+                mailFieldStringLengthValidationInfo.setVisible(false);
                 register_mailTextField.setStyle("");
                 mailCheckFlag = true;
             }
@@ -332,12 +392,22 @@ public class RegisterFormController {
     private void checkPassword() {
         register_passwordTextField.addEventFilter(KeyEvent.ANY, event -> {
             String currentText = register_passwordTextField.getText() + event.getCharacter();
-            if (!currentText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&-+=()])(?=\\S+$).{8,20}$")) {
+            if (!currentText.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%^&-+=()])(?=\\S+$).{8,}$")) {
                 passwordFieldValidationInfo.setVisible(true);
+                passwordFieldStringLengthValidationInfo.setVisible(false);
                 register_passwordTextField.setStyle("-fx-border-color: red");
                 passwordCheckFlag = false;
-            } else {
+            }
+            else if(currentText.length() > 255)
+            {
+                register_passwordTextField.setStyle("-fx-border-color: red");
+                passwordFieldStringLengthValidationInfo.setVisible(true);
                 passwordFieldValidationInfo.setVisible(false);
+                passwordCheckFlag = false;
+            }
+            else {
+                passwordFieldValidationInfo.setVisible(false);
+                passwordFieldStringLengthValidationInfo.setVisible(false);
                 register_passwordTextField.setStyle("");
                 passwordCheckFlag = true;
             }

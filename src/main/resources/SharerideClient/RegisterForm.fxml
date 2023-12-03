@@ -84,5 +84,25 @@
             <Font name="Arial" size="11.0" />
          </font>
       </Label>
+      <Label fx:id="nameFieldStringLengthValidationInfo" layoutX="72.0" layoutY="92.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono za długi ciąg znaków" textFill="RED" visible="false">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lastNameFieldStringLengthValidationInfo" layoutX="72.0" layoutY="152.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono za długi ciąg znaków" textFill="RED" visible="false">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="mailFieldStringLengthValidationInfo" layoutX="72.0" layoutY="212.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono za długi ciąg znaków" textFill="RED" visible="false">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="passwordFieldStringLengthValidationInfo" layoutX="72.0" layoutY="332.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono za długi ciąg znaków" textFill="RED" visible="false">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
