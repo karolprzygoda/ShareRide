@@ -4,6 +4,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class PostgreSQL {
 	
     protected Integer id;//pole przechowujace id uzytkownika ktory sie zalogowal
@@ -36,9 +40,9 @@ public class PostgreSQL {
     }
 
     public void addUser(String imie, String nazwisko, String email,  String numerTelefonu
-                                 , java.sql.Date dataUrodzenia, String haslo) {
-        String sql = "INSERT INTO users(imie, nazwisko, email, numer_telefonu, data_urodzenia, haslo) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+                                 , java.sql.Date dataUrodzenia, String haslo, java.sql.Date dataDolaczenia) {
+        String sql = "INSERT INTO users(imie, nazwisko, email, numer_telefonu, data_urodzenia, haslo, plec, data_dolaczenia) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
@@ -48,6 +52,8 @@ public class PostgreSQL {
             preparedStatement.setString(4, numerTelefonu);
             preparedStatement.setDate(5, dataUrodzenia);
             preparedStatement.setString(6, haslo);
+            preparedStatement.setString(7, "Wole nie podawać");
+            preparedStatement.setDate(8, dataDolaczenia);
 
             int affectedRows = preparedStatement.executeUpdate();
 
@@ -110,9 +116,10 @@ public class PostgreSQL {
                 + "nazwisko VARCHAR(50) NOT NULL,"
                 + "email VARCHAR(100) UNIQUE NOT NULL,"
                 + "numer_telefonu VARCHAR(15)  NOT NULL,"
-                + "plec VARCHAR(10),"
+                + "plec VARCHAR(16),"
                 + "data_urodzenia DATE  NOT NULL,"
-                + "haslo VARCHAR(255) NOT NULL"
+                + "haslo VARCHAR(255) NOT NULL,"
+                + "data_dolaczenia DATE NOT NULL"
                 + ")";
         try (PreparedStatement preparedStatement = connection.prepareStatement(createTableSQL)) {
             preparedStatement.execute();
@@ -183,7 +190,7 @@ public class PostgreSQL {
      * @param id użytkownika zalogowanego w aktualnej sesji
      * @return Imię użytkownika, jeżeli wszystko poszło pomyślnie. Null, jeżeli coś poszło nie tak
      */
-	 public String selectNamme(int id) {
+	 public String selectName(int id) {
         String sql = "SELECT imie FROM users WHERE id = ?";
         String name;
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -204,5 +211,77 @@ public class PostgreSQL {
             return null;
         }
     }
-	
+    public List<String> selectProfileInfo(int id) {
+        String sql = "SELECT imie,nazwisko,email,numer_telefonu,plec,data_urodzenia,data_dolaczenia FROM users WHERE id = ?";
+        List<String> profileInfo = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                profileInfo.add(resultSet.getString("imie"));
+                profileInfo.add(resultSet.getString("nazwisko"));
+                profileInfo.add(resultSet.getString("plec"));
+                profileInfo.add(resultSet.getString("email"));
+                profileInfo.add(resultSet.getString("numer_telefonu"));
+                profileInfo.add(resultSet.getString("data_urodzenia"));
+                profileInfo.add(resultSet.getString("data_dolaczenia"));
+                System.out.println("Wysłano dane");
+                return profileInfo;
+            } else {
+                System.out.println("Coś poszło nie tak!");
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Błędny email: " + e.getMessage());
+            return null;
+        }
+    }
+    /**
+     * Aktualizuje dane użytkownika w bazie danych na podstawie podanego identyfikatora (id)
+     * zgodnie z przekazanymi polami i ich nowymi wartościami przekazanymi w mapie.
+     *
+     * @param id             Identyfikator użytkownika, którego dane mają być zaktualizowane.
+     * @param fieldsToUpdate Mapa pól do zaktualizowania w formacie <NazwaPola, NowaWartość>.
+     * @author Karol Przygoda
+     */
+    public void updateUser(int id,  Map<String, String> fieldsToUpdate) {
+
+        StringBuilder query = new StringBuilder("UPDATE users SET ");
+
+        for (Map.Entry<String, String> entry : fieldsToUpdate.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            if (value != null && !value.isEmpty()) {
+                query.append(key).append(" = ?, ");
+            }
+        }
+
+        if (!fieldsToUpdate.isEmpty()) {
+            query.setLength(query.length() - 2); // Usunięcie ostatniej przecinki i spacji
+            query.append(" WHERE id = ?;");
+        }
+
+        String sql = query.toString();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            int i = 1;
+
+            for (Map.Entry<String, String> entry : fieldsToUpdate.entrySet()) {
+                String value = entry.getValue();
+                preparedStatement.setString(i,value);
+                i++;
+            }
+            preparedStatement.setInt(i, id);
+            System.out.println("User w serverconnection " + user);
+            System.out.println(preparedStatement);
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Błąd: " + e.getMessage());
+        }
+    }
 }

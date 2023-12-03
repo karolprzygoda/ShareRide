@@ -10,11 +10,9 @@ public class User {
     private Date dateOfBirth;
     private String password;
     private String gender;
+    private Date joinDate;
 
-
-
-
-    public User(String firstName, String lastName, String email, String phoneNumber, String gender, Date dateOfBirth, String password) {
+    public User(String firstName, String lastName, String email, String phoneNumber, String gender, Date dateOfBirth, String password, Date joinDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -22,6 +20,7 @@ public class User {
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
+        this.joinDate = joinDate;
     }
     @Override
     public String toString() {
@@ -61,6 +60,10 @@ public class User {
 
     public String getGender() {
         return gender;
+    }
+
+    public Date getDateOfJoin() {
+        return joinDate;
     }
 }
 

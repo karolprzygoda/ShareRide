@@ -34,3 +34,501 @@
 [Server][2023-11-26 17:42:28] 127.0.0.1 tries to login
 [Server][2023-11-26 17:42:28] 127.0.0.1 logged in
 [Server][2023-11-26 17:42:41] New connection: 127.0.0.1
+[Database][2023-11-26 21:06:04] Connected
+[Database][2023-11-26 21:06:04] Users table created (if didn't exist)
+[Server][2023-11-26 21:06:04] Server started on port: 5000
+[Server][2023-11-26 21:06:09] New connection: 127.0.0.1
+[Server][2023-11-26 21:06:20] 127.0.0.1 tries to login
+[Server][2023-11-26 21:06:20] 127.0.0.1 logged in
+[Server][2023-11-26 21:07:39] New connection: 127.0.0.1
+[Server][2023-11-26 21:07:48] 127.0.0.1 tries to login
+[Server][2023-11-26 21:07:48] 127.0.0.1 logged in
+[Server][2023-11-26 21:08:48] New connection: 127.0.0.1
+[Database][2023-11-27 16:08:38] Connected
+[Database][2023-11-27 16:08:38] Users table created (if didn't exist)
+[Server][2023-11-27 16:08:38] Server started on port: 5000
+[Server][2023-11-27 16:08:42] New connection: 127.0.0.1
+[Server][2023-11-27 16:12:21] New connection: 127.0.0.1
+[Server][2023-11-27 16:14:42] New connection: 127.0.0.1
+[Server][2023-11-27 16:14:54] 127.0.0.1 tries to login
+[Server][2023-11-27 16:14:54] 127.0.0.1 denied to login, not in database
+[Server][2023-11-27 16:15:02] 127.0.0.1 tries to login
+[Server][2023-11-27 16:15:02] 127.0.0.1 logged in
+[Server][2023-11-27 16:20:56] New connection: 127.0.0.1
+[Server][2023-11-27 16:28:01] New connection: 127.0.0.1
+[Server][2023-11-27 16:39:55] New connection: 127.0.0.1
+[Server][2023-11-27 16:40:54] New connection: 127.0.0.1
+[Server][2023-11-27 16:43:24] New connection: 127.0.0.1
+[Server][2023-11-27 16:43:58] New connection: 127.0.0.1
+[Server][2023-11-27 16:44:28] New connection: 127.0.0.1
+[Server][2023-11-27 16:45:20] New connection: 127.0.0.1
+[Server][2023-11-27 16:49:16] New connection: 127.0.0.1
+[Server][2023-11-27 16:54:12] New connection: 127.0.0.1
+[Server][2023-11-27 16:58:16] New connection: 127.0.0.1
+[Server][2023-11-27 17:01:56] New connection: 127.0.0.1
+[Server][2023-11-27 17:02:48] New connection: 127.0.0.1
+[Server][2023-11-27 17:03:21] New connection: 127.0.0.1
+[Server][2023-11-27 17:04:19] New connection: 127.0.0.1
+[Server][2023-11-27 17:06:38] New connection: 127.0.0.1
+[Server][2023-11-27 17:09:07] New connection: 127.0.0.1
+[Server][2023-11-27 17:10:18] New connection: 127.0.0.1
+[Server][2023-11-27 17:11:15] New connection: 127.0.0.1
+[Server][2023-11-27 17:11:58] New connection: 127.0.0.1
+[Server][2023-11-27 17:12:51] New connection: 127.0.0.1
+[Server][2023-11-27 17:12:59] New connection: 127.0.0.1
+[Server][2023-11-27 17:20:56] New connection: 127.0.0.1
+[Server][2023-11-27 17:21:08] New connection: 127.0.0.1
+[Server][2023-11-27 17:30:57] New connection: 127.0.0.1
+[Server][2023-11-27 17:33:26] New connection: 127.0.0.1
+[Server][2023-11-27 17:34:27] New connection: 127.0.0.1
+[Server][2023-11-27 17:44:59] New connection: 127.0.0.1
+[Server][2023-11-27 17:45:36] New connection: 127.0.0.1
+[Server][2023-11-27 17:47:03] New connection: 127.0.0.1
+[Server][2023-11-27 17:47:08] New connection: 127.0.0.1
+[Server][2023-11-27 17:49:30] New connection: 127.0.0.1
+[Server][2023-11-27 18:03:20] New connection: 127.0.0.1
+[Server][2023-11-27 18:10:52] New connection: 127.0.0.1
+[Server][2023-11-27 18:12:54] New connection: 127.0.0.1
+[Server][2023-11-27 18:14:00] New connection: 127.0.0.1
+[Server][2023-11-27 18:14:42] New connection: 127.0.0.1
+[Server][2023-11-27 18:19:04] New connection: 127.0.0.1
+[Server][2023-11-27 18:28:20] New connection: 127.0.0.1
+[Server][2023-11-27 18:29:05] New connection: 127.0.0.1
+[Server][2023-11-27 18:33:27] New connection: 127.0.0.1
+[Database][2023-11-27 19:07:59] Connected
+[Database][2023-11-27 19:07:59] Users table created (if didn't exist)
+[Server][2023-11-27 19:07:59] Server started on port: 5000
+[Server][2023-11-27 19:09:30] New connection: 127.0.0.1
+[Server][2023-11-27 19:10:07] 127.0.0.1 tries to login
+[Server][2023-11-27 19:10:07] 127.0.0.1 logged in
+[Server][2023-11-27 19:10:25] New connection: 127.0.0.1
+[Server][2023-11-27 19:11:34] New connection: 127.0.0.1
+[ServerVerification][2023-11-27 19:12:08] User accepted
+[Server][2023-11-27 19:12:08] 127.0.0.1 tries to register
+[Database][2023-11-27 19:12:08] Registering mail not found in database
+[Database][2023-11-27 19:12:08] New user added
+[Server][2023-11-27 19:12:08] 127.0.0.1 registered
+[Server][2023-11-27 19:16:18] New connection: 127.0.0.1
+[Server][2023-11-27 19:16:27] 127.0.0.1 tries to login
+[Server][2023-11-27 19:16:27] 127.0.0.1 logged in
+[Database][2023-11-27 19:17:25] Connected
+[Database][2023-11-27 19:17:25] Users table created (if didn't exist)
+[Server][2023-11-27 19:17:25] Server started on port: 5000
+[Server][2023-11-27 19:17:28] New connection: 127.0.0.1
+[Database][2023-11-29 22:10:23] Connected
+[Database][2023-11-29 22:10:23] Users table created (if didn't exist)
+[Server][2023-11-29 22:10:23] Server started on port: 5000
+[Server][2023-11-29 22:10:28] New connection: 127.0.0.1
+[Server][2023-11-29 22:12:28] New connection: 127.0.0.1
+[Server][2023-11-29 22:12:37] New connection: 127.0.0.1
+[Database][2023-11-29 23:59:22] Connected
+[Database][2023-11-29 23:59:22] Users table created (if didn't exist)
+[Server][2023-11-29 23:59:22] Server started on port: 5000
+[Server][2023-11-29 23:59:25] New connection: 127.0.0.1
+[Server][2023-11-29 23:59:35] 127.0.0.1 tries to login
+[Server][2023-11-29 23:59:35] 127.0.0.1 logged in
+[Database][2023-11-30 00:46:06] Connected
+[Database][2023-11-30 00:46:06] Users table created (if didn't exist)
+[Server][2023-11-30 00:46:06] Server started on port: 5000
+[Server][2023-11-30 00:46:08] New connection: 127.0.0.1
+[Server][2023-11-30 00:46:17] 127.0.0.1 tries to login
+[Server][2023-11-30 00:46:17] 127.0.0.1 logged in
+[Server][2023-11-30 00:56:54] New connection: 127.0.0.1
+[Server][2023-11-30 00:57:04] 127.0.0.1 tries to login
+[Server][2023-11-30 00:57:04] 127.0.0.1 logged in
+[Server][2023-11-30 00:59:59] New connection: 127.0.0.1
+[Server][2023-11-30 01:00:09] 127.0.0.1 tries to login
+[Server][2023-11-30 01:00:09] 127.0.0.1 logged in
+[Server][2023-11-30 01:01:01] New connection: 127.0.0.1
+[Server][2023-11-30 01:01:10] 127.0.0.1 tries to login
+[Server][2023-11-30 01:01:10] 127.0.0.1 logged in
+[Server][2023-11-30 01:11:13] New connection: 127.0.0.1
+[Server][2023-11-30 01:11:22] 127.0.0.1 tries to login
+[Server][2023-11-30 01:11:22] 127.0.0.1 logged in
+[Server][2023-11-30 01:13:13] New connection: 127.0.0.1
+[Server][2023-11-30 01:13:22] 127.0.0.1 tries to login
+[Server][2023-11-30 01:13:22] 127.0.0.1 logged in
+[Server][2023-11-30 01:13:36] New connection: 127.0.0.1
+[Server][2023-11-30 01:13:51] New connection: 127.0.0.1
+[Server][2023-11-30 01:14:03] 127.0.0.1 tries to login
+[Server][2023-11-30 01:14:03] 127.0.0.1 logged in
+[Server][2023-11-30 01:22:00] New connection: 127.0.0.1
+[Server][2023-11-30 01:22:12] 127.0.0.1 tries to login
+[Server][2023-11-30 01:22:12] 127.0.0.1 denied to login, not in database
+[Server][2023-11-30 01:22:16] 127.0.0.1 tries to login
+[Server][2023-11-30 01:22:16] 127.0.0.1 logged in
+[Server][2023-11-30 01:22:48] New connection: 127.0.0.1
+[Server][2023-11-30 01:27:02] New connection: 127.0.0.1
+[Server][2023-11-30 01:27:12] 127.0.0.1 tries to login
+[Server][2023-11-30 01:27:12] 127.0.0.1 logged in
+[Server][2023-11-30 01:28:10] New connection: 127.0.0.1
+[Server][2023-11-30 01:28:19] 127.0.0.1 tries to login
+[Server][2023-11-30 01:28:19] 127.0.0.1 logged in
+[Server][2023-11-30 01:29:47] New connection: 127.0.0.1
+[Server][2023-11-30 01:29:57] 127.0.0.1 tries to login
+[Server][2023-11-30 01:29:57] 127.0.0.1 logged in
+[Server][2023-11-30 01:31:29] New connection: 127.0.0.1
+[Server][2023-11-30 01:31:41] 127.0.0.1 tries to login
+[Server][2023-11-30 01:31:41] 127.0.0.1 logged in
+[Server][2023-11-30 01:31:46] New connection: 127.0.0.1
+[Server][2023-11-30 01:35:14] New connection: 127.0.0.1
+[Server][2023-11-30 01:35:25] 127.0.0.1 tries to login
+[Server][2023-11-30 01:35:25] 127.0.0.1 logged in
+[Server][2023-11-30 01:36:40] New connection: 127.0.0.1
+[Server][2023-11-30 01:38:46] New connection: 127.0.0.1
+[Server][2023-11-30 01:39:10] 127.0.0.1 tries to login
+[Server][2023-11-30 01:39:10] 127.0.0.1 logged in
+[Server][2023-11-30 01:40:28] New connection: 127.0.0.1
+[Server][2023-11-30 01:40:39] 127.0.0.1 tries to login
+[Server][2023-11-30 01:40:39] 127.0.0.1 logged in
+[Server][2023-11-30 01:41:30] New connection: 127.0.0.1
+[Server][2023-11-30 01:41:40] 127.0.0.1 tries to login
+[Server][2023-11-30 01:41:40] 127.0.0.1 logged in
+[Server][2023-11-30 01:43:51] New connection: 127.0.0.1
+[Server][2023-11-30 01:44:04] 127.0.0.1 tries to login
+[Server][2023-11-30 01:44:04] 127.0.0.1 logged in
+[Server][2023-11-30 01:46:42] New connection: 127.0.0.1
+[Server][2023-11-30 01:46:53] 127.0.0.1 tries to login
+[Server][2023-11-30 01:46:53] 127.0.0.1 logged in
+[Server][2023-11-30 01:48:46] New connection: 127.0.0.1
+[Server][2023-11-30 01:48:56] 127.0.0.1 tries to login
+[Server][2023-11-30 01:48:56] 127.0.0.1 logged in
+[Server][2023-11-30 01:49:47] New connection: 127.0.0.1
+[Server][2023-11-30 01:49:57] 127.0.0.1 tries to login
+[Server][2023-11-30 01:49:57] 127.0.0.1 logged in
+[Server][2023-11-30 01:51:26] New connection: 127.0.0.1
+[Server][2023-11-30 01:51:35] 127.0.0.1 tries to login
+[Server][2023-11-30 01:51:35] 127.0.0.1 logged in
+[Server][2023-11-30 01:51:52] New connection: 127.0.0.1
+[Server][2023-11-30 01:52:03] 127.0.0.1 tries to login
+[Server][2023-11-30 01:52:03] 127.0.0.1 logged in
+[Server][2023-11-30 01:52:17] New connection: 127.0.0.1
+[Server][2023-11-30 01:58:51] New connection: 127.0.0.1
+[Server][2023-11-30 01:59:01] 127.0.0.1 tries to login
+[Server][2023-11-30 01:59:01] 127.0.0.1 logged in
+[Server][2023-11-30 01:59:26] New connection: 127.0.0.1
+[Server][2023-11-30 01:59:38] 127.0.0.1 tries to login
+[Server][2023-11-30 01:59:38] 127.0.0.1 logged in
+[Server][2023-11-30 02:00:37] New connection: 127.0.0.1
+[Server][2023-11-30 02:00:46] 127.0.0.1 tries to login
+[Server][2023-11-30 02:00:46] 127.0.0.1 logged in
+[Server][2023-11-30 02:00:54] New connection: 127.0.0.1
+[Server][2023-11-30 02:01:45] New connection: 127.0.0.1
+[Server][2023-11-30 02:01:57] 127.0.0.1 tries to login
+[Server][2023-11-30 02:01:57] 127.0.0.1 logged in
+[Server][2023-11-30 02:02:10] New connection: 127.0.0.1
+[Database][2023-12-02 17:20:06] Connected
+[Database][2023-12-02 17:20:06] Users table created (if didn't exist)
+[Server][2023-12-02 17:20:06] Server started on port: 5000
+[Server][2023-12-02 17:20:14] New connection: 127.0.0.1
+[Server][2023-12-02 17:20:25] 127.0.0.1 tries to login
+[Server][2023-12-02 17:20:26] 127.0.0.1 logged in
+[Server][2023-12-02 17:22:04] New connection: 127.0.0.1
+[Server][2023-12-02 17:22:14] 127.0.0.1 tries to login
+[Server][2023-12-02 17:22:14] 127.0.0.1 logged in
+[Server][2023-12-02 17:27:10] New connection: 127.0.0.1
+[Server][2023-12-02 17:27:21] 127.0.0.1 tries to login
+[Server][2023-12-02 17:27:21] 127.0.0.1 logged in
+[Server][2023-12-02 17:28:26] New connection: 127.0.0.1
+[Server][2023-12-02 17:28:35] 127.0.0.1 tries to login
+[Server][2023-12-02 17:28:35] 127.0.0.1 logged in
+[ServerVerification][2023-12-02 17:28:39] Verification did not pass
+[Database][2023-12-02 18:26:04] Connected
+[Database][2023-12-02 18:26:04] Users table created (if didn't exist)
+[Server][2023-12-02 18:26:04] Server started on port: 5000
+[Server][2023-12-02 18:26:08] New connection: 127.0.0.1
+[Server][2023-12-02 18:26:18] 127.0.0.1 tries to login
+[Server][2023-12-02 18:26:18] 127.0.0.1 logged in
+[Server][2023-12-02 18:26:30] New connection: 127.0.0.1
+[Server][2023-12-02 18:26:42] 127.0.0.1 tries to login
+[Server][2023-12-02 18:26:42] 127.0.0.1 logged in
+[Database][2023-12-02 19:18:41] Connected
+[Database][2023-12-02 19:18:41] Users table created (if didn't exist)
+[Server][2023-12-02 19:18:41] Server started on port: 5000
+[Server][2023-12-02 19:18:45] New connection: 127.0.0.1
+[Server][2023-12-02 19:18:54] 127.0.0.1 tries to login
+[Server][2023-12-02 19:18:54] 127.0.0.1 logged in
+[Database][2023-12-02 19:19:43] Connected
+[Database][2023-12-02 19:19:43] Users table created (if didn't exist)
+[Server][2023-12-02 19:19:43] Server started on port: 5000
+[Server][2023-12-02 19:19:45] New connection: 127.0.0.1
+[Server][2023-12-02 19:19:55] 127.0.0.1 tries to login
+[Server][2023-12-02 19:19:55] 127.0.0.1 logged in
+[Database][2023-12-02 19:55:01] Connected
+[Database][2023-12-02 19:55:01] Users table created (if didn't exist)
+[Server][2023-12-02 19:55:01] Server started on port: 5000
+[Server][2023-12-02 19:55:07] New connection: 127.0.0.1
+[Server][2023-12-02 19:55:16] 127.0.0.1 tries to login
+[Server][2023-12-02 19:55:17] 127.0.0.1 logged in
+[Database][2023-12-02 20:12:22] Connected
+[Database][2023-12-02 20:12:22] Users table created (if didn't exist)
+[Server][2023-12-02 20:12:23] Server started on port: 5000
+[Server][2023-12-02 20:12:39] New connection: 127.0.0.1
+[Server][2023-12-02 20:12:49] 127.0.0.1 tries to login
+[Server][2023-12-02 20:12:50] 127.0.0.1 denied to login, not in database
+[Server][2023-12-02 20:12:56] 127.0.0.1 tries to login
+[Server][2023-12-02 20:12:56] 127.0.0.1 logged in
+[Database][2023-12-02 20:13:50] Connected
+[Database][2023-12-02 20:13:50] Users table created (if didn't exist)
+[Server][2023-12-02 20:13:50] Server started on port: 5000
+[Server][2023-12-02 20:13:52] New connection: 127.0.0.1
+[Server][2023-12-02 20:14:03] 127.0.0.1 tries to login
+[Server][2023-12-02 20:14:03] 127.0.0.1 logged in
+[Database][2023-12-02 20:23:34] Connected
+[Database][2023-12-02 20:23:34] Users table created (if didn't exist)
+[Server][2023-12-02 20:23:34] Server started on port: 5000
+[Server][2023-12-02 20:23:41] New connection: 127.0.0.1
+[Server][2023-12-02 20:24:00] 127.0.0.1 tries to login
+[Server][2023-12-02 20:24:01] 127.0.0.1 logged in
+[Database][2023-12-02 20:30:50] Connected
+[Database][2023-12-02 20:30:50] Users table created (if didn't exist)
+[Server][2023-12-02 20:30:50] Server started on port: 5000
+[Server][2023-12-02 20:30:56] New connection: 127.0.0.1
+[Server][2023-12-02 20:31:10] 127.0.0.1 tries to login
+[Server][2023-12-02 20:31:10] 127.0.0.1 logged in
+[Database][2023-12-02 20:35:58] Connected
+[Database][2023-12-02 20:35:58] Users table created (if didn't exist)
+[Server][2023-12-02 20:35:58] Server started on port: 5000
+[Server][2023-12-02 20:36:01] New connection: 127.0.0.1
+[Server][2023-12-02 20:36:11] 127.0.0.1 tries to login
+[Server][2023-12-02 20:36:11] 127.0.0.1 logged in
+[Database][2023-12-02 20:37:25] Connected
+[Database][2023-12-02 20:37:25] Users table created (if didn't exist)
+[Server][2023-12-02 20:37:25] Server started on port: 5000
+[Server][2023-12-02 20:37:27] New connection: 127.0.0.1
+[Server][2023-12-02 20:37:37] 127.0.0.1 tries to login
+[Server][2023-12-02 20:37:37] 127.0.0.1 logged in
+[Database][2023-12-02 20:40:11] Connected
+[Database][2023-12-02 20:40:11] Users table created (if didn't exist)
+[Server][2023-12-02 20:40:11] Server started on port: 5000
+[Server][2023-12-02 20:40:15] New connection: 127.0.0.1
+[Server][2023-12-02 20:40:24] 127.0.0.1 tries to login
+[Server][2023-12-02 20:40:25] 127.0.0.1 logged in
+[Server][2023-12-02 20:40:46] New connection: 127.0.0.1
+[Server][2023-12-02 20:40:54] 127.0.0.1 tries to login
+[Server][2023-12-02 20:40:54] 127.0.0.1 logged in
+[Server][2023-12-02 20:41:21] New connection: 127.0.0.1
+[Server][2023-12-02 20:41:31] 127.0.0.1 tries to login
+[Server][2023-12-02 20:41:31] 127.0.0.1 logged in
+[Database][2023-12-02 20:46:11] Connected
+[Database][2023-12-02 20:46:11] Users table created (if didn't exist)
+[Server][2023-12-02 20:46:11] Server started on port: 5000
+[Server][2023-12-02 20:46:13] New connection: 127.0.0.1
+[Server][2023-12-02 20:46:28] 127.0.0.1 tries to login
+[Server][2023-12-02 20:46:28] 127.0.0.1 logged in
+[Database][2023-12-02 20:50:00] Connected
+[Database][2023-12-02 20:50:00] Users table created (if didn't exist)
+[Server][2023-12-02 20:50:00] Server started on port: 5000
+[Server][2023-12-02 20:50:03] New connection: 127.0.0.1
+[Server][2023-12-02 20:50:12] 127.0.0.1 tries to login
+[Server][2023-12-02 20:50:12] 127.0.0.1 logged in
+[Server][2023-12-02 20:52:28] New connection: 127.0.0.1
+[Server][2023-12-02 20:52:38] 127.0.0.1 tries to login
+[Server][2023-12-02 20:52:38] 127.0.0.1 logged in
+[Database][2023-12-02 20:54:28] Connected
+[Database][2023-12-02 20:54:28] Users table created (if didn't exist)
+[Server][2023-12-02 20:54:28] Server started on port: 5000
+[Server][2023-12-02 20:54:30] New connection: 127.0.0.1
+[Server][2023-12-02 20:54:40] 127.0.0.1 tries to login
+[Server][2023-12-02 20:54:41] 127.0.0.1 logged in
+[Database][2023-12-02 20:58:16] Connected
+[Database][2023-12-02 20:58:16] Users table created (if didn't exist)
+[Server][2023-12-02 20:58:16] Server started on port: 5000
+[Server][2023-12-02 20:58:19] New connection: 127.0.0.1
+[Server][2023-12-02 20:58:27] 127.0.0.1 tries to login
+[Server][2023-12-02 20:58:27] 127.0.0.1 logged in
+[Server][2023-12-02 21:01:27] New connection: 127.0.0.1
+[Database][2023-12-02 21:01:35] Connected
+[Database][2023-12-02 21:01:35] Users table created (if didn't exist)
+[Server][2023-12-02 21:01:35] Server started on port: 5000
+[Server][2023-12-02 21:01:37] New connection: 127.0.0.1
+[Server][2023-12-02 21:01:49] 127.0.0.1 tries to login
+[Server][2023-12-02 21:01:49] 127.0.0.1 logged in
+[Database][2023-12-02 21:06:34] Connected
+[Database][2023-12-02 21:06:34] Users table created (if didn't exist)
+[Server][2023-12-02 21:06:34] Server started on port: 5000
+[Server][2023-12-02 21:06:37] New connection: 127.0.0.1
+[Server][2023-12-02 21:06:45] 127.0.0.1 tries to login
+[Server][2023-12-02 21:06:45] 127.0.0.1 logged in
+[Database][2023-12-02 21:07:39] Connected
+[Database][2023-12-02 21:07:39] Users table created (if didn't exist)
+[Server][2023-12-02 21:07:39] Server started on port: 5000
+[Server][2023-12-02 21:07:43] New connection: 127.0.0.1
+[Server][2023-12-02 21:07:57] 127.0.0.1 tries to login
+[Server][2023-12-02 21:07:57] 127.0.0.1 logged in
+[Server][2023-12-02 21:08:09] New connection: 127.0.0.1
+[Database][2023-12-02 21:11:17] Connected
+[Database][2023-12-02 21:11:17] Users table created (if didn't exist)
+[Server][2023-12-02 21:11:17] Server started on port: 5000
+[Server][2023-12-02 21:11:19] New connection: 127.0.0.1
+[Server][2023-12-02 21:11:29] 127.0.0.1 tries to login
+[Server][2023-12-02 21:11:29] 127.0.0.1 logged in
+[Database][2023-12-02 21:19:50] Connected
+[Database][2023-12-02 21:19:50] Users table created (if didn't exist)
+[Server][2023-12-02 21:19:50] Server started on port: 5000
+[Server][2023-12-02 21:19:53] New connection: 127.0.0.1
+[Server][2023-12-02 21:20:03] 127.0.0.1 tries to login
+[Server][2023-12-02 21:20:03] 127.0.0.1 logged in
+[Server][2023-12-02 21:30:27] New connection: 127.0.0.1
+[Server][2023-12-02 21:30:35] 127.0.0.1 tries to login
+[Server][2023-12-02 21:30:35] 127.0.0.1 logged in
+[Database][2023-12-02 22:43:11] Connected
+[Database][2023-12-02 22:43:11] Users table created (if didn't exist)
+[Server][2023-12-02 22:43:11] Server started on port: 5000
+[Server][2023-12-02 22:43:16] New connection: 127.0.0.1
+[Server][2023-12-02 22:43:26] 127.0.0.1 tries to login
+[Server][2023-12-02 22:43:26] 127.0.0.1 logged in
+[Server][2023-12-02 22:44:51] New connection: 127.0.0.1
+[Server][2023-12-02 22:45:03] 127.0.0.1 tries to login
+[Server][2023-12-02 22:45:03] 127.0.0.1 logged in
+[Server][2023-12-02 22:46:02] New connection: 127.0.0.1
+[Server][2023-12-02 22:46:13] 127.0.0.1 tries to login
+[Server][2023-12-02 22:46:13] 127.0.0.1 logged in
+[Server][2023-12-02 22:49:01] New connection: 127.0.0.1
+[Server][2023-12-02 22:49:11] 127.0.0.1 tries to login
+[Server][2023-12-02 22:49:11] 127.0.0.1 logged in
+[Server][2023-12-02 22:51:53] New connection: 127.0.0.1
+[Server][2023-12-02 22:52:04] 127.0.0.1 tries to login
+[Server][2023-12-02 22:52:04] 127.0.0.1 denied to login, not in database
+[Server][2023-12-02 22:52:12] 127.0.0.1 tries to login
+[Server][2023-12-02 22:52:12] 127.0.0.1 logged in
+[Server][2023-12-02 22:53:08] New connection: 127.0.0.1
+[Server][2023-12-02 22:53:18] 127.0.0.1 tries to login
+[Server][2023-12-02 22:53:18] 127.0.0.1 logged in
+[Server][2023-12-02 22:55:09] New connection: 127.0.0.1
+[Server][2023-12-02 22:55:19] 127.0.0.1 tries to login
+[Server][2023-12-02 22:55:19] 127.0.0.1 logged in
+[Server][2023-12-02 22:57:44] New connection: 127.0.0.1
+[Server][2023-12-02 22:57:54] 127.0.0.1 tries to login
+[Server][2023-12-02 22:57:54] 127.0.0.1 logged in
+[Server][2023-12-02 22:58:49] New connection: 127.0.0.1
+[Server][2023-12-02 22:58:59] 127.0.0.1 tries to login
+[Server][2023-12-02 22:58:59] 127.0.0.1 logged in
+[Server][2023-12-02 23:01:12] New connection: 127.0.0.1
+[Server][2023-12-02 23:01:22] 127.0.0.1 tries to login
+[Server][2023-12-02 23:01:22] 127.0.0.1 logged in
+[Server][2023-12-02 23:02:25] New connection: 127.0.0.1
+[Server][2023-12-02 23:02:33] 127.0.0.1 tries to login
+[Server][2023-12-02 23:02:33] 127.0.0.1 logged in
+[Server][2023-12-02 23:04:08] New connection: 127.0.0.1
+[Server][2023-12-02 23:04:17] 127.0.0.1 tries to login
+[Server][2023-12-02 23:04:17] 127.0.0.1 logged in
+[Server][2023-12-02 23:05:46] New connection: 127.0.0.1
+[Server][2023-12-02 23:05:58] 127.0.0.1 tries to login
+[Server][2023-12-02 23:05:58] 127.0.0.1 denied to login, not in database
+[Server][2023-12-02 23:06:04] 127.0.0.1 tries to login
+[Server][2023-12-02 23:06:04] 127.0.0.1 logged in
+[Server][2023-12-02 23:07:57] New connection: 127.0.0.1
+[Server][2023-12-02 23:08:07] 127.0.0.1 tries to login
+[Server][2023-12-02 23:08:07] 127.0.0.1 logged in
+[Server][2023-12-02 23:09:02] New connection: 127.0.0.1
+[Server][2023-12-02 23:09:11] 127.0.0.1 tries to login
+[Server][2023-12-02 23:09:11] 127.0.0.1 logged in
+[Server][2023-12-02 23:09:43] New connection: 127.0.0.1
+[Server][2023-12-02 23:09:55] 127.0.0.1 tries to login
+[Server][2023-12-02 23:09:55] 127.0.0.1 logged in
+[Database][2023-12-02 23:19:34] Connected
+[Database][2023-12-02 23:19:34] Users table created (if didn't exist)
+[Server][2023-12-02 23:19:34] Server started on port: 5000
+[Server][2023-12-02 23:19:52] New connection: 127.0.0.1
+[ServerVerification][2023-12-02 23:20:31] User accepted
+[Server][2023-12-02 23:20:31] 127.0.0.1 tries to register
+[Database][2023-12-02 23:20:31] Registering mail not found in database
+[Server][2023-12-02 23:20:31] 127.0.0.1 registered
+[ServerVerification][2023-12-02 23:21:35] User accepted
+[Server][2023-12-02 23:21:35] 127.0.0.1 tries to register
+[Database][2023-12-02 23:21:35] Registering mail not found in database
+[Server][2023-12-02 23:21:35] 127.0.0.1 registered
+[Database][2023-12-02 23:21:50] Connected
+[Database][2023-12-02 23:21:50] Users table created (if didn't exist)
+[Server][2023-12-02 23:21:50] Server started on port: 5000
+[Server][2023-12-02 23:21:58] New connection: 127.0.0.1
+[ServerVerification][2023-12-02 23:22:24] User accepted
+[Server][2023-12-02 23:22:24] 127.0.0.1 tries to register
+[Database][2023-12-02 23:22:24] Registering mail not found in database
+[Server][2023-12-02 23:22:24] 127.0.0.1 registered
+[Database][2023-12-02 23:22:47] Connected
+[Database][2023-12-02 23:22:47] Users table created (if didn't exist)
+[Server][2023-12-02 23:22:47] Server started on port: 5000
+[Server][2023-12-02 23:22:49] New connection: 127.0.0.1
+[ServerVerification][2023-12-02 23:23:19] User accepted
+[Server][2023-12-02 23:23:19] 127.0.0.1 tries to register
+[Database][2023-12-02 23:23:19] Registering mail not found in database
+[Database][2023-12-02 23:23:19] New user added
+[Server][2023-12-02 23:23:19] 127.0.0.1 registered
+[Server][2023-12-02 23:23:35] 127.0.0.1 tries to login
+[Server][2023-12-02 23:23:35] 127.0.0.1 logged in
+[Server][2023-12-02 23:24:26] New connection: 127.0.0.1
+[Server][2023-12-02 23:24:34] 127.0.0.1 tries to login
+[Server][2023-12-02 23:24:34] 127.0.0.1 logged in
+[Database][2023-12-02 23:42:16] Connected
+[Server][2023-12-02 23:42:16] Server started on port: 5000
+[Database][2023-12-02 23:42:44] Connected
+[Database][2023-12-02 23:42:44] Users table created (if didn't exist)
+[Server][2023-12-02 23:42:44] Server started on port: 5000
+[Server][2023-12-02 23:42:49] New connection: 127.0.0.1
+[Database][2023-12-02 23:44:02] Connected
+[Database][2023-12-02 23:44:02] Users table created (if didn't exist)
+[Server][2023-12-02 23:44:02] Server started on port: 5000
+[Server][2023-12-02 23:44:05] New connection: 127.0.0.1
+[ServerVerification][2023-12-02 23:44:30] User accepted
+[Server][2023-12-02 23:44:30] 127.0.0.1 tries to register
+[Database][2023-12-02 23:44:30] Registering mail not found in database
+[Server][2023-12-02 23:44:30] 127.0.0.1 registered
+[Server][2023-12-02 23:46:23] New connection: 127.0.0.1
+[ServerVerification][2023-12-02 23:46:48] User accepted
+[Server][2023-12-02 23:46:48] 127.0.0.1 tries to register
+[Database][2023-12-02 23:46:48] Registering mail not found in database
+[Server][2023-12-02 23:46:48] 127.0.0.1 registered
+[Database][2023-12-02 23:50:10] Connected
+[Database][2023-12-02 23:50:10] Users table created (if didn't exist)
+[Server][2023-12-02 23:50:10] Server started on port: 5000
+[Database][2023-12-02 23:50:27] Connected
+[Database][2023-12-02 23:50:27] Users table created (if didn't exist)
+[Server][2023-12-02 23:50:27] Server started on port: 5000
+[Server][2023-12-02 23:50:30] New connection: 127.0.0.1
+[ServerVerification][2023-12-02 23:50:56] User accepted
+[Server][2023-12-02 23:50:56] 127.0.0.1 tries to register
+[Database][2023-12-02 23:50:56] Registering mail not found in database
+[Database][2023-12-02 23:50:56] New user added
+[Server][2023-12-02 23:50:56] 127.0.0.1 registered
+[Server][2023-12-02 23:51:10] 127.0.0.1 tries to login
+[Server][2023-12-02 23:51:10] 127.0.0.1 denied to login, not in database
+[Server][2023-12-02 23:51:16] 127.0.0.1 tries to login
+[Server][2023-12-02 23:51:16] 127.0.0.1 logged in
+[Database][2023-12-02 23:55:51] Connected
+[Database][2023-12-02 23:55:51] Users table created (if didn't exist)
+[Server][2023-12-02 23:55:51] Server started on port: 5000
+[Server][2023-12-02 23:55:53] New connection: 127.0.0.1
+[Server][2023-12-02 23:56:03] 127.0.0.1 tries to login
+[Server][2023-12-02 23:56:03] 127.0.0.1 logged in
+[Server][2023-12-02 23:56:18] New connection: 127.0.0.1
+[Server][2023-12-02 23:56:28] 127.0.0.1 tries to login
+[Server][2023-12-02 23:56:28] 127.0.0.1 logged in
+[Database][2023-12-02 23:57:49] Connected
+[Database][2023-12-02 23:57:49] Users table created (if didn't exist)
+[Server][2023-12-02 23:57:49] Server started on port: 5000
+[Server][2023-12-02 23:57:54] New connection: 127.0.0.1
+[Server][2023-12-02 23:58:06] 127.0.0.1 tries to login
+[Server][2023-12-02 23:58:06] 127.0.0.1 logged in
+[Server][2023-12-03 00:06:22] New connection: 127.0.0.1
+[Server][2023-12-03 00:06:31] 127.0.0.1 tries to login
+[Server][2023-12-03 00:06:31] 127.0.0.1 logged in
+[Database][2023-12-03 00:06:35] User removed
+[Server][2023-12-03 00:06:35] New connection: 127.0.0.1
+[Database][2023-12-03 01:06:14] Connected
+[Database][2023-12-03 01:06:14] Users table created (if didn't exist)
+[Server][2023-12-03 01:06:14] Server started on port: 5000
+[Server][2023-12-03 01:06:18] New connection: 127.0.0.1
+[ServerVerification][2023-12-03 01:06:43] User accepted
+[Server][2023-12-03 01:06:43] 127.0.0.1 tries to register
+[Database][2023-12-03 01:06:43] Registering mail not found in database
+[Database][2023-12-03 01:06:43] New user added
+[Server][2023-12-03 01:06:43] 127.0.0.1 registered
+[Server][2023-12-03 01:06:55] 127.0.0.1 tries to login
+[Server][2023-12-03 01:06:55] 127.0.0.1 denied to login, not in database
+[Server][2023-12-03 01:07:06] 127.0.0.1 tries to login
+[Server][2023-12-03 01:07:06] 127.0.0.1 denied to login, not in database
+[Server][2023-12-03 01:07:33] 127.0.0.1 tries to login
+[Server][2023-12-03 01:07:33] 127.0.0.1 logged in
+[Server][2023-12-03 01:07:47] New connection: 127.0.0.1

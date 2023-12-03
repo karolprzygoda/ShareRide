@@ -2,7 +2,7 @@ package Server;
 
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 
-public interface Password {
+public class Password {
 
     static final Argon2PasswordEncoder encoder = new Argon2PasswordEncoder(16, 32, 1, 4096, 3);
 

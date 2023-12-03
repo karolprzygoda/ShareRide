@@ -1,7 +1,7 @@
 package Server;
 import java.sql.Date;
 public class Register {
-    public static User CreateUser(String firstName, String lastName, String email,  String phoneNumber, String gender, Date dateOfBirth, String password) {
+    public static User CreateUser(String firstName, String lastName, String email,  String phoneNumber, String gender, Date dateOfBirth, String password, Date joinDate) {
         if (!CheckName(firstName) | !CheckLenght(firstName, 1, 20)) {
             System.out.println("Wrong firstName");
             return null;
@@ -23,7 +23,7 @@ public class Register {
             return null;
         }
         System.out.println("User accepted");
-        return new User(firstName, lastName, email,  phoneNumber, gender,dateOfBirth, password);
+        return new User(firstName, lastName, email,  phoneNumber, gender,dateOfBirth, password, joinDate);
     }
     public static boolean CheckName(String input) {
         return input.matches("[a-zA-Z]+");
