@@ -142,10 +142,10 @@ public class FormsContainerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterForm.fxml"));
-            FXMLLoader fxmlLoader2 = new FXMLLoader(getClass().getResource("LoginForm.fxml"));
-            registerForm.getChildren().add(fxmlLoader.load());
-            loginForm.getChildren().add(fxmlLoader2.load());
+            LoginFormView loginFormView = new LoginFormView();
+            RegisterFormView registerFormView = new RegisterFormView();
+            registerForm.getChildren().add(registerFormView.initialize());
+            loginForm.getChildren().add(loginFormView.initialize());
         } catch (IOException e) {
             e.printStackTrace();
         }

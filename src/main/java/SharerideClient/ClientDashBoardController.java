@@ -428,24 +428,24 @@ public class ClientDashBoardController implements Initializable {
         announcementsBtn.setStyle("-fx-background-color: rgba(255, 255, 255, 0.3)");
 
         try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserProfileTab.fxml"));
-        profilePane.getChildren().add(fxmlLoader.load());
-        fxmlLoader =  new FXMLLoader(getClass().getResource("AnnouncementsTab.fxml"));
-        announcementsTabContainer.getChildren().add(fxmlLoader.load());
-        fxmlLoader =  new FXMLLoader(getClass().getResource("DriverTab.fxml"));
-        driverTabContainer.getChildren().add(fxmlLoader.load());
-        fxmlLoader =  new FXMLLoader(getClass().getResource("RidesTab.fxml"));
-        ridesTabContainer.getChildren().add(fxmlLoader.load());
-        fxmlLoader =  new FXMLLoader(getClass().getResource("ChatTab.fxml"));
-        chatTabContainer.getChildren().add(fxmlLoader.load());
-        fxmlLoader =  new FXMLLoader(getClass().getResource("NotificationTab.fxml"));
-        notificationTabContainer.getChildren().add(fxmlLoader.load());
-        fxmlLoader =  new FXMLLoader(getClass().getResource("ContactTab.fxml"));
-        contactTabContainer.getChildren().add(fxmlLoader.load());
+            UserProfileTabView userProfileTabView = new UserProfileTabView();
+            AnnouncementsTabView announcementsTabView = new AnnouncementsTabView();
+            DriverTabView driverTabView = new DriverTabView();
+            RidesTabView ridesTabView = new RidesTabView();
+            ChatTabView chatTabView = new ChatTabView();
+            NotificationTabView notificationTabView = new NotificationTabView();
+            ContactTabView contactTabView = new ContactTabView();
+            profilePane.getChildren().add(userProfileTabView.initialize());
+            announcementsTabContainer.getChildren().add(announcementsTabView.initialize());
+            driverTabContainer.getChildren().add(driverTabView.initialize());
+            ridesTabContainer.getChildren().add(ridesTabView.initialize());
+            chatTabContainer.getChildren().add(chatTabView.initialize());
+            notificationTabContainer.getChildren().add(notificationTabView.initialize());
+            contactTabContainer.getChildren().add(contactTabView.initialize());
 
-        ServerController.sendClientNameRequest(ServerController.id);
-        String name = ServerController.getClientName();
-        helloClientNameLabel.setText(name);
+            ServerController.sendClientNameRequest(ServerController.id);
+            String name = ServerController.getClientName();
+            helloClientNameLabel.setText(name);
 
         } catch (Exception e) {
             e.printStackTrace();
