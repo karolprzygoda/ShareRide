@@ -22,7 +22,7 @@ public class UserProfileController implements Initializable {
      * Pole wyświetlające średnią ocenę użytkownika
      */
     @FXML
-    private Label avgRaingLabel;
+    private Label avgRatingLabel;
 
     /**
      * Pole wyświetlające date urodzenia użytkownika
@@ -126,7 +126,7 @@ public class UserProfileController implements Initializable {
      * @see UserProfileController#update()
      */
     @FXML
-    private PasswordField profile_updateComfirmPasswordField;
+    private PasswordField profile_updateConfirmPasswordField;
 
     /**
      * ComboBox zawierający wybór płci do aktualizacji
@@ -381,7 +381,7 @@ public class UserProfileController implements Initializable {
      * @see UserProfileController#initialize(URL, ResourceBundle)
      * @author Karol Przygoda, Radosław Jasiński, Jakub Kotwica
      */
-    public void updateInfo()
+    private void updateInfo()
     {
         gender();
         try {
@@ -439,7 +439,7 @@ public class UserProfileController implements Initializable {
             alert.setContentText("Proszę poprawić pola zaznaczone na czerwono");
             alert.showAndWait();
         }
-        else if(!(profile_updatePasswordField.getText().equals(profile_updateComfirmPasswordField.getText())))
+        else if(!(profile_updatePasswordField.getText().equals(profile_updateConfirmPasswordField.getText())))
         {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Błąd");
@@ -508,7 +508,7 @@ public class UserProfileController implements Initializable {
         profile_updatePhoneNumberField.setText("");
         profile_updateMailField.setText("");
         profile_updatePasswordField.setText("");
-        profile_updateComfirmPasswordField.setText("");
+        profile_updateConfirmPasswordField.setText("");
         profile_updateGenderComboBox.setPromptText("Wybierz Płeć");
     }
 

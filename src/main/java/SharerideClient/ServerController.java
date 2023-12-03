@@ -315,8 +315,6 @@ public class ServerController {
             {
                 out.println(entry.getKey());
                 out.println(entry.getValue());
-                System.out.println(entry.getKey());
-                System.out.println(entry.getValue());
             }
         }catch (IOException e)
         {

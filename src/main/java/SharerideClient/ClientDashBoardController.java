@@ -129,7 +129,7 @@ public class ClientDashBoardController implements Initializable {
      * @see ServerController#getClientName()
      */
     @FXML
-    protected Label helloClientNameLabel;
+    private Label helloClientNameLabel;
 
     /**
      * Przycisk odpowiedzialny za wylogowanie użytkownika

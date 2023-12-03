@@ -39,14 +39,14 @@ public class FormsContainerController implements Initializable {
      * @see FormsContainerController#switchForm(ActionEvent)
      */
     @FXML
-    protected AnchorPane sidePane;
+    private AnchorPane sidePane;
 
     /**
      * Przycisk odpowiadający za zmienienie formularza na formularz rejestracji
      * @see FormsContainerController#switchForm(ActionEvent)
      */
     @FXML
-    protected Button registerBtn;
+    private Button registerBtn;
 
     /**
      * Przycisk odpowiadający za zmienienie formularza na formularz logowania

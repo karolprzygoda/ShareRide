@@ -45,7 +45,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </PasswordField>
-            <PasswordField fx:id="profile_updateComfirmPasswordField" accessibleRole="TEXT_FIELD" layoutX="24.0" layoutY="380.0" prefHeight="40.0" prefWidth="332.0" promptText="Potwierdź Hasło" styleClass="textfield" stylesheets="@../formsDesign.css">
+            <PasswordField fx:id="profile_updateConfirmPasswordField" accessibleRole="TEXT_FIELD" layoutX="24.0" layoutY="380.0" prefHeight="40.0" prefWidth="332.0" promptText="Potwierdź Hasło" styleClass="textfield" stylesheets="@../formsDesign.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -226,7 +226,7 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label fx:id="avgRaingLabel" layoutX="195.0" layoutY="531.0" text="Label">
+            <Label fx:id="avgRatingLabel" layoutX="195.0" layoutY="531.0" text="Label">
                <font>
                   <Font size="21.0" />
                </font>
