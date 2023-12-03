@@ -7,28 +7,53 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
- * Kontroler okna akceptacji warunkow uzytkowania
+ * Kontroler okna akceptacji warunków użytkowania
+ * @see RegisterFormController
  * @author Karol Przygoda
  */
 public class RegulationsController {
 
+    /**
+     * Przycisk odpowiedzialny za akceptacje warunków użytkowania
+     * @see RegulationsController#accept()
+     */
     @FXML
     private Button acceptBtn;
 
+    /**
+     * Przycisk odpowiedzialny za anulowanie akceptacji warunków użytkowania
+     * @see RegulationsController#cancel()
+     */
     @FXML
     private Button cancelBtn;
 
+    /**
+     * CheckBox odpowiedzialny potwierdzenie akceptacji warunków użytkowania
+     * @see RegulationsController#accept()
+     * @see RegulationsController#cancel()
+     */
     @FXML
     private CheckBox checkBox;
+
+    /**
+     * Napis wyświetlany, jeżeli użytkownik nie zaznaczy {@linkplain RegulationsController#checkBox}
+     * @see RegulationsController#accept()
+     * @see RegulationsController#cancel()
+     */
     @FXML
     private Label infoLabel;
 
-    protected static boolean accepted = false;//flga oznaczajaca czy uzytkownik zaakceptowal warunki korzystania z systemu
+    /**
+     * Flaga sprawdzająca, czy użytkownik zaakceptował warunki korzystania z systemu
+     * @see RegulationsController#accept()
+     */
+    protected static boolean accepted = false;//flaga sprawdzająca, czy użytkownik zaakceptował warunki korzystania z systemu
 
     /**
      * Rezygnacja z akceptacji warunków użytkowania.
      * <p>
-     * Metoda jest wywoływana po kliknięciu przycisku "cancelBtn". Zamyka okno akceptacji warunków użytkowania bez rejestrowania użytkownika
+     * Metoda jest wywoływana po kliknięciu przycisku {@linkplain RegulationsController#cancelBtn}.
+     * Zamyka okno akceptacji warunków użytkowania bez rejestrowania użytkownika
      * @author Karol Przygoda
      */
     @FXML
@@ -38,11 +63,11 @@ public class RegulationsController {
     }
 
     /**
-     * Zaakceptowanie warunkow uzytkowania.
+     * Zaakceptowanie warunków użytkowania.
      * <p>
-     * Metoda jest wywoływana po kliknięciu przycisku "acceptBtn" oraz zaznaczeniu checkBoxa "checkBox".
-     * Ustawia flage akceptacji warunków na prawde a następnie zamyka okno akceptacji warunków użytkowania
-     * Jeżeli użytkownik nie zaznaczy check boxa wyświetla tekst informujący o tym ze konieczne jest jego zaznaczenie
+     * Metoda jest wywoływana po kliknięciu przycisku {@linkplain RegulationsController#acceptBtn} oraz zaznaczeniu {@linkplain RegulationsController#checkBox}.
+     * Ustawia flagę akceptacji warunków na, true, a następnie zamyka okno akceptacji warunków użytkowania,
+     * Jeżeli użytkownik nie zaznaczy {@linkplain RegulationsController#checkBox} wyświetla tekst informujący o tym, że konieczne jest jego zaznaczenie
      * @author Karol Przygoda
      */
     @FXML
@@ -57,6 +82,4 @@ public class RegulationsController {
 
         }
     }
-
-
 }

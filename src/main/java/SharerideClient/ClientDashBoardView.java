@@ -1,7 +1,6 @@
 package SharerideClient;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 /**
  * Klasa odpowiedzialna za uruchomienie panelu zarządzania klienta w aplikacji Desktop Shop.
- * Zarządza inicjalizacją sceny, obsługą zdarzeń myszy oraz konfiguracją okna Stage.
+ * Zarządza inicjalizacją sceny, obsługą zdarzeń myszy oraz konfiguracją okna, wczytywania odpowiednich zakładek.
  * @author Karol Przygoda
  */
 public class ClientDashBoardView {
@@ -22,16 +21,15 @@ public class ClientDashBoardView {
     private double y = 0;
 
     /**
-     * Metoda uruchamiająca panel zarządzania klienta.
-     *
+     * Metoda uruchamiająca główny panel zarządzania klienta.
      * @param stage Obiekt Stage, na którym ma być wyświetlony panel.
      * @throws IOException W przypadku problemów z załadowaniem pliku FXML.
      * @author Karol Przygoda
      */
     public void start(Stage stage) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("ClientDashBoard.fxml"));
-        Scene scene = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader(FormsContainer.class.getResource("ClientDashBoard.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         scene.setFill(Color.TRANSPARENT);
 
         Image icon = new Image("icon.png");
@@ -48,7 +46,7 @@ public class ClientDashBoardView {
 
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.getIcons().add(icon);
-        stage.setTitle("CYBERZONE");
+        stage.setTitle("ShareRide");
         stage.setScene(scene);
         stage.show();
     }

@@ -4,14 +4,11 @@
 <?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -26,12 +23,12 @@
                         <AnchorPane prefHeight="20.0" prefWidth="1200.0" styleClass="top-form" stylesheets="@../dashBoardDesign.css">
                            <children>
                               <Label layoutX="42.0" layoutY="9.0" text="ShareRide" />
-                              <Button fx:id="closeBtn" layoutX="1168.0" layoutY="4.0" mnemonicParsing="false" onAction="#close" prefHeight="31.0" prefWidth="31.0" styleClass="close" stylesheets="@../dashBoardDesign.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Button fx:id="closeBtn" layoutX="1168.0" layoutY="4.0" mnemonicParsing="false" onAction="#close" prefHeight="31.0" prefWidth="31.0" styleClass="close" stylesheets="@../dashBoardDesign.css" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="CLOSE" size="18.0" text="" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="minBtn" layoutX="1129.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="31.0" prefWidth="32.0" styleClass="minimize" stylesheets="@../dashBoardDesign.css" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="0.0">
+                              <Button fx:id="minBtn" layoutX="1129.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="31.0" prefWidth="32.0" styleClass="minimize" stylesheets="@../dashBoardDesign.css" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="0.0">
                                  <graphic>
                                     <FontAwesomeIconView glyphName="WINDOW_MINIMIZE" size="16.0" wrappingWidth="16.0" />
                                  </graphic>
@@ -43,45 +40,45 @@
                   </AnchorPane>
                </top>
                <left>
-                  <AnchorPane prefHeight="610.0" prefWidth="200.0" stylesheets="@../dashBoardDesign.css" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="600.0" prefWidth="200.0" stylesheets="@../dashBoardDesign.css" BorderPane.alignment="CENTER">
                      <children>
                         <Label layoutX="52.0" layoutY="133.0" styleClass="hello" stylesheets="@../dashBoardDesign.css" text="Witaj," textFill="#fffefe">
                            <font>
                               <Font name="Lato Semibold" size="25.0" />
                            </font>
                         </Label>
-                        <Label fx:id="nameLabel" alignment="CENTER" layoutY="173.0" prefHeight="58.0" prefWidth="190.0" styleClass="hello-name" stylesheets="@../dashBoardDesign.css" text="label" textFill="WHITE">
+                        <Label fx:id="helloClientNameLabel" alignment="CENTER" layoutY="173.0" prefHeight="58.0" prefWidth="190.0" styleClass="hello-name" stylesheets="@../dashBoardDesign.css" text="label" textFill="WHITE">
                            <font>
                               <Font name="Lato Semibold" size="12.0" />
                            </font>
                         </Label>
-                        <Button fx:id="announcementsBtn" layoutX="15.0" layoutY="241.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text="Ogłoszenia" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="announcementsBtn" layoutX="15.0" layoutY="245.0" mnemonicParsing="false" onAction="#switchToAnnouncements" prefHeight="25.0" prefWidth="169.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text="Ogłoszenia" textAlignment="CENTER" textFill="WHITE">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="NEWSPAPER_ALT" size="30" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="NEWSPAPER_ALT" size="20" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
                         <Line endX="100.0" layoutX="82.0" layoutY="230.0" startX="-64.5" stroke="WHITE" strokeWidth="2.0" />
-                        <Button fx:id="profileBtn" layoutX="15.0" layoutY="291.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text="   Profil" textAlignment="CENTER">
+                        <Button fx:id="profileBtn" layoutX="15.0" layoutY="285.0" mnemonicParsing="false" onAction="#switchToProfile" prefHeight="25.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text="  Profil" textAlignment="CENTER">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="USER" size="30.0" text="" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="USER" size="20" text="" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="ridesBtn" layoutX="15.0" layoutY="341.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text=" Przejazdy" textAlignment="CENTER">
+                        <Button fx:id="ridesBtn" layoutX="15.0" layoutY="365.0" mnemonicParsing="false" onAction="#switchToRides" prefHeight="25.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text=" Przejazdy" textAlignment="CENTER">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="MAP_SIGNS" size="30" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="MAP_SIGNS" size="20" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="chatBtn" layoutX="15.0" layoutY="391.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text=" Komunikator" textAlignment="CENTER">
+                        <Button fx:id="chatBtn" layoutX="15.0" layoutY="405.0" mnemonicParsing="false" onAction="#switchToChat" prefHeight="25.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text=" Komunikator" textAlignment="CENTER">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="PAPER_PLANE" size="30" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="PAPER_PLANE" size="20" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -102,17 +99,17 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="contactBtn" layoutX="15.0" layoutY="491.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text="  Kontakt " textAlignment="CENTER">
+                        <Button fx:id="contactBtn" layoutX="15.0" layoutY="485.0" mnemonicParsing="false" onAction="#switchToContact" prefHeight="25.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text="  Kontakt " textAlignment="CENTER">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="PHONE" size="30" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="PHONE" size="20" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="notificationBtn" layoutX="15.0" layoutY="441.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text=" Powiadomienia" textAlignment="CENTER">
+                        <Button fx:id="notificationBtn" layoutX="15.0" layoutY="445.0" mnemonicParsing="false" onAction="#switchToNotifications" prefHeight="25.0" prefWidth="180.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text=" Powiadomienia" textAlignment="CENTER">
                            <graphic>
-                              <FontAwesomeIconView fill="WHITE" glyphName="BELL" size="30" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="BELL" size="20" />
                            </graphic>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -122,6 +119,14 @@
                            </font>
                         </Button>
                         <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="45.0" layoutY="120.0" size="140" />
+                        <Button fx:id="driverBtn" layoutX="15.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchToDriver" prefHeight="25.0" prefWidth="170.0" styleClass="side-buttons" stylesheets="@../dashBoardDesign.css" text="  Kierowca" textAlignment="CENTER">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="ID_CARD" size="20" />
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                      <styleClass>
                         <String fx:value="left-form" />
@@ -131,218 +136,33 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="announcmentsPane" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="announcementsPane" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane prefHeight="580.0" prefWidth="765.0" stylesheets="@../dashBoardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                 <styleClass>
-                                    <String fx:value="shadow" />
-                                    <String fx:value="white-bg" />
-                                 </styleClass>
-                              </AnchorPane>
+                              <VBox fx:id="announcementsTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="profilePane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="profilePane" prefHeight="600.0" prefWidth="1000.0" visible="false" />
+                        <AnchorPane fx:id="driverPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="95.0" layoutY="10.0" prefHeight="580.0" prefWidth="765.0" stylesheets="@../dashBoardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="610.0" AnchorPane.topAnchor="10.0">
-                                 <styleClass>
-                                    <String fx:value="shadow" />
-                                    <String fx:value="white-bg" />
-                                 </styleClass>
-                                 <children>
-                                    <TextField fx:id="profile_updateNameField" layoutX="24.0" layoutY="80.0" onKeyPressed="#checkName" onKeyReleased="#checkName" onKeyTyped="#checkName" prefHeight="40.0" prefWidth="332.0" promptText="Imię" styleClass="textfield" stylesheets="@../loginDesign.css">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField fx:id="profile_updateLastNameField" layoutX="24.0" layoutY="140.0" onKeyPressed="#checkLastName" onKeyReleased="#checkLastName" onKeyTyped="#checkLastName" prefHeight="40.0" prefWidth="332.0" promptText="Nazwisko" styleClass="textfield" stylesheets="@../loginDesign.css">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField fx:id="profile_updateMailField" layoutX="24.0" layoutY="200.0" onKeyPressed="#checkMail" onKeyReleased="#checkMail" onKeyTyped="#checkMail" prefHeight="40.0" prefWidth="332.0" promptText="Adres Mailowy" styleClass="textfield" stylesheets="@../loginDesign.css">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </TextField>
-                                    <TextField fx:id="profile_updatePhoneNumberField" layoutX="24.0" layoutY="260.0" onKeyPressed="#checkPhoneNumber" onKeyReleased="#checkPhoneNumber" onKeyTyped="#checkPhoneNumber" prefHeight="40.0" prefWidth="332.0" promptText="Numer Telefonu" styleClass="textfield" stylesheets="@../loginDesign.css">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </TextField>
-                                    <PasswordField fx:id="profile_updatePasswordField" accessibleRole="TEXT_FIELD" layoutX="24.0" layoutY="320.0" onKeyPressed="#checkPassword" onKeyReleased="#checkPassword" onKeyTyped="#checkPassword" prefHeight="40.0" prefWidth="332.0" promptText="Hasło" styleClass="textfield" stylesheets="@../loginDesign.css">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </PasswordField>
-                                    <PasswordField fx:id="profile_updateComfirmPasswordField" accessibleRole="TEXT_FIELD" layoutX="24.0" layoutY="380.0" prefHeight="40.0" prefWidth="332.0" promptText="Potwierdź Hasło" styleClass="textfield" stylesheets="@../loginDesign.css">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </PasswordField>
-                                    <Label layoutX="13.0" layoutY="14.0" styleClass="register-form-head-label" stylesheets="@../loginDesign.css" text="Edytuj Dane Osobiste">
-                                       <font>
-                                          <Font name="Tahoma Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <ComboBox fx:id="profile_updateGenderComboBox" layoutX="24.0" layoutY="440.0" minHeight="30.0" prefHeight="40.0" prefWidth="332.0" promptText="Wybierz Płeć" styleClass="combo-box" stylesheets="@../profileDesign.css" />
-                                    <Button fx:id="profile_updateProfileBtn" layoutX="24.0" layoutY="500.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="140.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Zaktualizuj Dane" textFill="#4dc3b7">
-                                       <font>
-                                          <Font name="Arial" size="12.0" />
-                                       </font>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                    <Button fx:id="profile_deleteAccBtn" layoutX="210.0" layoutY="500.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="140.0" styleClass="deleteAcc-btn" stylesheets="@../profileDesign.css" text="Usuń konto" textFill="#4dc3b7">
-                                       <font>
-                                          <Font name="Arial" size="12.0" />
-                                       </font>
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
-                                    </Button>
-                                    <Label fx:id="profile_nameFieldValidationInfo" layoutX="25.0" layoutY="122.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono niedozwolone znaki w polu Imię !" textFill="RED" visible="false">
-                                       <font>
-                                          <Font name="Arial" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="profile_lastNameFieldValidationInfo" layoutX="25.0" layoutY="182.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono niedozwolone znaki w polu Nazwisko !" textFill="RED" visible="false">
-                                       <font>
-                                          <Font name="Arial" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="profile_mailFieldValidationInfo" layoutX="25.0" layoutY="242.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono nieprawidłowy format adresu mailowego !" textFill="RED" visible="false">
-                                       <font>
-                                          <Font name="Arial" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="profile_phoneNumberFieldValidationInfo" layoutX="25.0" layoutY="302.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono nieprawidłowy format numeru telefonu !" textFill="RED" visible="false">
-                                       <font>
-                                          <Font name="Arial" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="profile_passwordFieldValidationInfo" layoutX="22.0" layoutY="362.0" prefHeight="17.0" prefWidth="360.0" text="Hasło musi zawierać 1 małą oraz dużą literę, cyfrę oraz znak specjalny !" textFill="RED" visible="false">
-                                       <font>
-                                          <Font name="Arial" size="11.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane layoutX="410.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="582.0" stylesheets="@../dashBoardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                 <styleClass>
-                                    <String fx:value="shadow" />
-                                    <String fx:value="white-bg" />
-                                 </styleClass>
-                                 <children>
-                                    <Label layoutX="40.0" layoutY="100.0" text="Imię: ">
-                                       <font>
-                                          <Font name="System Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="40.0" layoutY="155.0" text="Nazwisko: ">
-                                       <font>
-                                          <Font name="System Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="40.0" layoutY="210.0" text="Płeć: ">
-                                       <font>
-                                          <Font name="System Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="40.0" layoutY="265.0" text="Adres Mailowy: ">
-                                       <font>
-                                          <Font name="System Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="40.0" layoutY="320.0" text="Numer Telefonu: ">
-                                       <font>
-                                          <Font name="System Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="40.0" layoutY="375.0" text="Data dołączenia: ">
-                                       <font>
-                                          <Font name="System Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="40.0" layoutY="430.0" text="Średnia Ocena:">
-                                       <font>
-                                          <Font name="System Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="40.0" layoutY="485.0" text="Liczba przejazdów: ">
-                                       <font>
-                                          <Font name="System Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="16.0" layoutY="14.0" text="Aktualne Dane Osobiste">
-                                       <font>
-                                          <Font name="System Bold" size="40.0" />
-                                       </font>
-                                    </Label>
-                                    <Line endX="349.0" fill="#3b7dd4" layoutX="119.0" layoutY="72.0" startX="-103.0" stroke="#3b7bd5" strokeLineCap="ROUND" strokeWidth="3.0" />
-                                    <Line endX="410.0" layoutX="141.0" layoutY="150.0" opacity="0.2" startX="-103.0" />
-                                    <Line endX="410.0" layoutX="144.0" layoutY="205.0" opacity="0.2" startX="-103.0" />
-                                    <Line endX="410.0" layoutX="144.0" layoutY="260.0" opacity="0.2" startX="-103.0" />
-                                    <Line endX="410.0" layoutX="144.0" layoutY="315.0" opacity="0.2" startX="-103.0" />
-                                    <Line endX="410.0" layoutX="144.0" layoutY="370.0" opacity="0.2" startX="-103.0" />
-                                    <Line endX="410.0" layoutX="144.0" layoutY="425.0" opacity="0.2" startX="-103.0" />
-                                    <Line endX="410.0" layoutX="144.0" layoutY="480.0" opacity="0.2" startX="-103.0" />
-                                    <Line endX="410.0" layoutX="144.0" layoutY="535.0" opacity="0.2" startX="-103.0" />
-                                    <Circle fill="#3a7bd5" layoutX="23.0" layoutY="123.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
-                                    <Circle fill="#3a7bd5" layoutX="23.0" layoutY="178.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
-                                    <Circle fill="#3a7bd5" layoutX="23.0" layoutY="233.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
-                                    <Circle fill="#3a7bd5" layoutX="23.0" layoutY="287.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
-                                    <Circle fill="#3a7bd5" layoutX="23.0" layoutY="343.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
-                                    <Circle fill="#3a7bd5" layoutX="23.0" layoutY="396.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
-                                    <Circle fill="#3a7bd5" layoutX="23.0" layoutY="451.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
-                                    <Circle fill="#3a7bd5" layoutX="23.0" layoutY="508.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
-                                    <Label fx:id="nameLabel" layoutX="120.0" layoutY="101.0" text="Label">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lastNameLabel" layoutX="190.0" layoutY="156.0" text="Label">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="genderLabel" layoutX="115.0" layoutY="211.0" text="Label">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="mailLabel" layoutX="265.0" layoutY="266.0" text="Label">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="phoneLabel" layoutX="285.0" layoutY="321.0" text="Label">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="joinDateLabel" layoutX="280.0" layoutY="376.0" text="Label">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="gradeLabel" layoutX="260.0" layoutY="431.0" text="Label">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="ridesCountLabel" layoutX="315.0" layoutY="486.0" text="Label">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
+                              <VBox fx:id="driverTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="ridesPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox fx:id="ridesTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
                            </children></AnchorPane>
-                        <AnchorPane fx:id="ridesPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <AnchorPane fx:id="chatPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <AnchorPane fx:id="notificationsPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <AnchorPane fx:id="contactPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <AnchorPane fx:id="chatPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox fx:id="chatTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="notificationsPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox fx:id="notificationTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="contactPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox fx:id="contactTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
+                           </children></AnchorPane>
                      </children>
                   </AnchorPane>
                </center>
