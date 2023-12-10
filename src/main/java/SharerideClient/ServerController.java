@@ -263,6 +263,7 @@ public class ServerController {
                 profileInfo.add(scanner.nextLine());
                 profileInfo.add(scanner.nextLine());
                 profileInfo.add(scanner.nextLine());
+                profileInfo.add(scanner.nextLine());
                 return profileInfo;
             }
             else {
@@ -320,5 +321,190 @@ public class ServerController {
         {
             e.printStackTrace();
         }
+    }
+
+    static protected boolean checkifUserIsDriver() throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
+        boolean answer;
+        out.println("CHECKIFDRIVER");
+        out.println(id);
+        answer = scanner.nextBoolean();
+        return answer;
+    }
+
+    static protected void addUserLicense(ArrayList<Object> list) throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        out.println("ADDLICENSE");
+        for (Object o:list)
+        {
+            out.println(o);
+            System.out.println(o);
+        }
+
+        out.println(id);
+        System.out.println(id);
+    }
+
+    static protected void addCar(ArrayList<Object> list) throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        out.println("ADDCAR");
+        for (Object o:list)
+        {
+            out.println(o);
+            System.out.println(o);
+        }
+
+        out.println(id);
+        System.out.println(id);
+    }
+
+    static protected void sendUpdateLicenseInfoToServer(Map<Object, Object> fieldsToUpdate) {
+        try{
+            PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+            out.println("LICENSE_UPDATE");
+            out.println(id);
+            out.println(fieldsToUpdate.size());
+            for(Map.Entry<Object, Object> entry : fieldsToUpdate.entrySet())
+            {
+                out.println(entry.getKey());
+                out.println(entry.getValue());
+            }
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    static protected void sendUpdateCarInfoToServer(Map<Object, Object> fieldsToUpdate) {
+        try{
+            PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+            out.println("CAR_UPDATE");
+            out.println(id);
+            out.println(fieldsToUpdate.size());
+            for(Map.Entry<Object, Object> entry : fieldsToUpdate.entrySet())
+            {
+                out.println(entry.getKey());
+                out.println(entry.getValue());
+            }
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    static protected boolean checkifUserHaveLicense() throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
+        boolean answer;
+        out.println("CHECKIFHAVELICESNE");
+        out.println(id);
+        answer = scanner.nextBoolean();
+        return answer;
+    }
+
+    static protected boolean checkifUserHaveCar() throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
+        boolean answer;
+        out.println("CHECKIFHAVECAR");
+        out.println(id);
+        answer = scanner.nextBoolean();
+        return answer;
+    }
+
+    static protected void sendLicenseDataRequest() throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        out.println("LICENSEREQUEST");
+        out.println(id);
+    }
+
+    static protected void sendCarDataRequest() throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        out.println("CARREQUEST");
+        out.println(id);
+    }
+    static protected List<String> getLicenseInfo()
+    {
+        List<String> licenseInfo = new ArrayList<>();
+        try{
+            Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
+            if(scanner.hasNextLine())
+            {
+                licenseInfo.add(scanner.nextLine());
+                licenseInfo.add(scanner.nextLine());
+                licenseInfo.add(scanner.nextLine());
+                licenseInfo.add(scanner.nextLine());
+                return licenseInfo;
+            }
+            else {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd serwera");
+                alert.setHeaderText(null);
+                alert.setContentText("Serwer napotkał problem");
+                alert.showAndWait();
+                errorFlag = true;
+                return null;
+            }
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    static protected List<String> getCarInfo()
+    {
+        List<String> carInfo = new ArrayList<>();
+        try{
+            Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
+            if(scanner.hasNextLine())
+            {
+                carInfo.add(scanner.nextLine());
+                carInfo.add(scanner.nextLine());
+                carInfo.add(scanner.nextLine());
+                carInfo.add(scanner.nextLine());
+                carInfo.add(scanner.nextLine());
+                carInfo.add(scanner.nextLine());
+                carInfo.add(scanner.nextLine());
+                return carInfo;
+            }
+            else {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd serwera");
+                alert.setHeaderText(null);
+                alert.setContentText("Serwer napotkał problem");
+                alert.showAndWait();
+                errorFlag = true;
+                return null;
+            }
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    static protected void sendDeleteLicenseRequest() throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        out.println("DELETELICENSE");
+        out.println(id);
+    }
+
+    static protected void sendDeleteCarRequest() throws IOException
+    {
+        PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+        out.println("DELETECAR");
+        out.println(id);
     }
 }

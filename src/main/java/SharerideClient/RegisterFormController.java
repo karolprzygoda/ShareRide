@@ -227,8 +227,6 @@ public class RegisterFormController {
 
             java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
 
-            System.out.println(sqlDate);
-
             ServerController.sendRegisterInfoToServer(register_nameTextField.getText(),register_lastNameTextField.getText(),
                     register_mailTextField.getText(), register_phoneNumberTextField.getText(),
                     register_datePickerTextField.getValue(), register_passwordTextField.getText(), sqlDate);

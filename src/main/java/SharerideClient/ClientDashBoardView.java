@@ -20,6 +20,8 @@ public class ClientDashBoardView {
     private double x = 0;
     private double y = 0;
 
+    public static ClientDashBoardController clientDashBoardController;
+
     /**
      * Metoda uruchamiająca główny panel zarządzania klienta.
      * @param stage Obiekt Stage, na którym ma być wyświetlony panel.
@@ -30,6 +32,7 @@ public class ClientDashBoardView {
 
         FXMLLoader fxmlLoader = new FXMLLoader(FormsContainer.class.getResource("ClientDashBoard.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        clientDashBoardController = fxmlLoader.getController();
         scene.setFill(Color.TRANSPARENT);
 
         Image icon = new Image("icon.png");
@@ -50,4 +53,5 @@ public class ClientDashBoardView {
         stage.setScene(scene);
         stage.show();
     }
+
 }

@@ -455,7 +455,6 @@ public class UserProfileController implements Initializable {
      */
     private void updateInfo()
     {
-        gender();
         try {
 
             ServerController.sendClientRequest(ServerController.id, "PROFILE-INFO");
@@ -469,6 +468,7 @@ public class UserProfileController implements Initializable {
             phoneNumberLabel.setText(profileInfo.get(4));
             birthDateLabel.setText(profileInfo.get(5));
             joinDateLabel.setText(profileInfo.get(6));
+            driverStatusLabel.setText(profileInfo.get(7));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -537,8 +537,13 @@ public class UserProfileController implements Initializable {
                 fieldsToUpdate.put("plec", profile_updateGenderComboBox.getValue());
 
             ServerController.sendUpdateInfoToServer(ServerController.id, fieldsToUpdate);
+            ServerController.sendClientNameRequest(ServerController.id);
+            String name = ServerController.getClientName();
 
             updateInfo();
+
+            ClientDashBoardView.clientDashBoardController.helloClientNameLabel.setText(name);
+
             clearUpdateFields();
         }
     }
@@ -581,7 +586,7 @@ public class UserProfileController implements Initializable {
         profile_updateMailField.setText("");
         profile_updatePasswordField.setText("");
         profile_updateConfirmPasswordField.setText("");
-        profile_updateGenderComboBox.setPromptText("Wybierz Płeć");
+        profile_updateGenderComboBox.setValue("");
     }
 
 

@@ -142,11 +142,7 @@
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="profilePane" prefHeight="600.0" prefWidth="1000.0" visible="false" />
-                        <AnchorPane fx:id="driverPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <VBox fx:id="driverTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
-                           </children>
-                        </AnchorPane>
+                        <AnchorPane fx:id="driverPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         <AnchorPane fx:id="ridesPane" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <VBox fx:id="ridesTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
@@ -163,6 +159,7 @@
                            <children>
                               <VBox fx:id="contactTabContainer" layoutX="10.0" layoutY="10.0" prefHeight="580.0" prefWidth="980.0" />
                            </children></AnchorPane>
+                        <AnchorPane fx:id="driverActualDataPane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1000.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </center>

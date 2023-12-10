@@ -114,13 +114,6 @@ public class ClientDashBoardController implements Initializable {
     @FXML
     private AnchorPane driverPane;
 
-    /**
-     * Pole przechowujące zawartość wczytywaną do zakładki kierowcy
-     * @see ClientDashBoardController#switchToDriver()
-     * @see ClientDashBoardController#initialize(URL, ResourceBundle)
-     */
-    @FXML
-    private VBox driverTabContainer;
 
     /**
      * Imię użytkownika zalogowanego w bieżącej sesji
@@ -295,9 +288,6 @@ public class ClientDashBoardController implements Initializable {
     private void switchToProfile() {
         setVisibility(profilePane);
         setButtonStyle(profileBtn);
-        ServerController.sendClientNameRequest(ServerController.id);
-        String name = ServerController.getClientName();
-        helloClientNameLabel.setText(name);
     }
 
     /**
