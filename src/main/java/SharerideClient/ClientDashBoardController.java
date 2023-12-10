@@ -1,7 +1,6 @@
 package SharerideClient;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -129,7 +128,7 @@ public class ClientDashBoardController implements Initializable {
      * @see ServerController#getClientName()
      */
     @FXML
-    private Label helloClientNameLabel;
+    public Label helloClientNameLabel;
 
     /**
      * Przycisk odpowiedzialny za wylogowanie użytkownika
@@ -412,6 +411,7 @@ public class ClientDashBoardController implements Initializable {
         selectedButton.setStyle("-fx-background-color: rgba(255, 255, 255, 0.3)");
     }
 
+
     /**
      * Inicjalizuje kontroler widoku po załadowaniu sceny.
      * Metoda jest wywoływana automatycznie po załadowaniu sceny i inicjalizuje stan początkowy kontrolera widoku.
@@ -428,6 +428,11 @@ public class ClientDashBoardController implements Initializable {
         announcementsBtn.setStyle("-fx-background-color: rgba(255, 255, 255, 0.3)");
 
         try {
+
+            ServerController.sendClientNameRequest(ServerController.id);
+            String name = ServerController.getClientName();
+            helloClientNameLabel.setText(name);
+
             UserProfileTabView userProfileTabView = new UserProfileTabView();
             AnnouncementsTabView announcementsTabView = new AnnouncementsTabView();
             DriverTabView driverTabView = new DriverTabView();
@@ -437,15 +442,12 @@ public class ClientDashBoardController implements Initializable {
             ContactTabView contactTabView = new ContactTabView();
             profilePane.getChildren().add(userProfileTabView.initialize());
             announcementsTabContainer.getChildren().add(announcementsTabView.initialize());
-            driverTabContainer.getChildren().add(driverTabView.initialize());
+            driverPane.getChildren().add(driverTabView.initialize());
             ridesTabContainer.getChildren().add(ridesTabView.initialize());
             chatTabContainer.getChildren().add(chatTabView.initialize());
             notificationTabContainer.getChildren().add(notificationTabView.initialize());
             contactTabContainer.getChildren().add(contactTabView.initialize());
 
-            ServerController.sendClientNameRequest(ServerController.id);
-            String name = ServerController.getClientName();
-            helloClientNameLabel.setText(name);
 
         } catch (Exception e) {
             e.printStackTrace();

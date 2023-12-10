@@ -221,6 +221,7 @@ public class UserProfileController implements Initializable {
     @FXML
     private Label passwordFieldStringLengthValidationInfo;
 
+
     /**
      * Tablica przechowująca możliwe wybory płci
      * @see UserProfileController#gender()
