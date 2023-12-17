@@ -115,7 +115,7 @@ public class DriverTabController implements Initializable {
     private Button driver_seeActualData;
 
     @FXML
-    private Button driver_updateLicencseBtn;
+    private Button driver_updateLicenseBtn;
 
     @FXML
     private AnchorPane editDriverDataPane;

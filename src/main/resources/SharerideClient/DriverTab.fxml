@@ -127,7 +127,7 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="driver_licenseCategory" layoutX="35.0" layoutY="260.0" minHeight="30.0" prefHeight="40.0" prefWidth="412.0" promptText="Kategoria Prawa Jazdy" styleClass="combo-box" stylesheets="@../profileDesign.css" />
-                  <Button fx:id="driver_updateLicencseBtn" layoutX="62.0" layoutY="385.0" mnemonicParsing="false" onAction="#editDriverLicenceData" prefHeight="56.0" prefWidth="140.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Zaktualizuj Dane" textFill="#4dc3b7">
+                  <Button fx:id="driver_updateLicenseBtn" layoutX="62.0" layoutY="385.0" mnemonicParsing="false" onAction="#editDriverLicenceData" prefHeight="56.0" prefWidth="140.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Zaktualizuj Dane" textFill="#4dc3b7">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
