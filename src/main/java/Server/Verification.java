@@ -3,12 +3,13 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 public class Verification {
-    static User CreateUser(String firstName, String lastName, String email, String phoneNumber, String gender, Date dateOfBirth, String password, Date joinDate) {
+    public static User CreateUser(String firstName, String lastName, String email, String phoneNumber, String gender, Date dateOfBirth, String password, Date joinDate) {
         if(IsFirstNameValid(firstName) & IsLastNameValid(lastName) & IsPasswordValid(password) & IsMailValid(email)
                 & IsPhoneNumberValid(phoneNumber) & IsAgeValid(dateOfBirth))
         {
             System.out.println("User accepted");
-            String encodePassword = Password.encodePassword(password);
+            PasswordEncoder passwordEncoder = PasswordEncoderFactory.createPasswordEncoder();
+            String encodePassword = passwordEncoder.encodePassword(password);
             Logs.writeLog("ServerVerification", "User accepted");
             return new User(firstName, lastName, email,  phoneNumber, gender,dateOfBirth, encodePassword, joinDate);
         }
@@ -46,7 +47,7 @@ public class Verification {
             return true;
     }
     static boolean HaveIllegalChar(String input) {
-        return input.matches("\".*[*!;@#$%^&()-=+{}|:',.<>/?].*\"");
+        return input.matches(".*[\\*!;@#$%^&()-=+{}|:',.<>/?].*");
     }
     static boolean IsLongerThan(String login, int min, int max) {
         int length = login.length();

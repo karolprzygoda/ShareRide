@@ -1,46 +1,23 @@
 package Server;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PostgreSQL {
-	
-    protected Integer id;//pole przechowujace id uzytkownika ktory sie zalogowal
-
-    private final String url = "jdbc:postgresql://localhost:5432/wspolnedojazdy";
-    private final String user = "postgres";
-    private final String password = "Password123!";
-    private final Logs log = new Logs("Database");
-
-    private Connection connection;
-    public void startConnection() {
-        try {
-            connection = DriverManager.getConnection(url, user, password);
-            System.out.println("Połączono z bazą danych." + connection);
-            log.writeLog("Connected");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
+public class PostgreSQLUser implements DatabaseUser {
+    protected int id;//pole przechowujace id uzytkownika ktory sie zalogowal
+    private final Connection connection;
+    private final Logs log = new Logs("DatabaseUser");
+    public PostgreSQLUser()
+    {
+        this.connection = PostgreSQLInitialization.getInstance().connection;
     }
-    public void closeConnection() {
-        if (connection != null) {
-            try {
-                connection.close();
-                System.out.println("Rozłączono z bazą danych.");
-            } catch (SQLException e) {
-                System.out.println("Błąd zamykania bazy danych: " + e.getMessage());
-            }
-        }
-    }
-
     public void addUser(String imie, String nazwisko, String email,  String numerTelefonu
-                                 , java.sql.Date dataUrodzenia, String haslo, java.sql.Date dataDolaczenia) {
+            , java.sql.Date dataUrodzenia, String haslo, java.sql.Date dataDolaczenia) {
         String sql = "INSERT INTO users(imie, nazwisko, email, numer_telefonu, data_urodzenia, haslo, plec, data_dolaczenia) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -93,44 +70,6 @@ public class PostgreSQL {
             System.out.println("Błąd SQL: " + e.getMessage());
         }
     }
-    public void removeEveryUsers() {
-        String sql = "DELETE FROM users";
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
-            preparedStatement.executeUpdate();
-
-            System.out.println("Usunięto wszystkich użytkowników.");
-            log.writeLog("All users removed");
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Błąd SQL: " + e.getMessage());
-        }
-    }
-
-    public void createTable(){
-        String createTableSQL = "CREATE TABLE IF NOT EXISTS users ("
-                + "id SERIAL PRIMARY KEY,"
-                + "imie VARCHAR(50) NOT NULL,"
-                + "nazwisko VARCHAR(50) NOT NULL,"
-                + "email VARCHAR(100) UNIQUE NOT NULL,"
-                + "numer_telefonu VARCHAR(15)  NOT NULL,"
-                + "plec VARCHAR(16),"
-                + "data_urodzenia DATE  NOT NULL,"
-                + "haslo VARCHAR(255) NOT NULL,"
-                + "data_dolaczenia DATE NOT NULL"
-                + ")";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(createTableSQL)) {
-            preparedStatement.execute();
-            System.out.println("Tabela uzytkownicy została utworzona (jeśli nie istniała).");
-            log.writeLog("Users table created (if didn't exist)");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Błąd SQL: " + e.getMessage());
-        }
-    }
-
     public boolean loginUser(String email, String password) {
         String sql = "SELECT * FROM users WHERE email = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -144,7 +83,7 @@ public class PostgreSQL {
 
                     if (passwordMatch) {
                         System.out.println("Użytkownik zalogowany pomyślnie.");
-						 id = resultSet.getInt("id");//przeslanie do klienta id zalogowanego uzytkownika
+                        id = resultSet.getInt("id");//przeslanie do klienta id zalogowanego uzytkownika
                         return true;
                     } else {
                         System.out.println("Błąd logowania. Nieprawidłowe dane.");
@@ -159,6 +98,27 @@ public class PostgreSQL {
             e.printStackTrace();
             System.out.println("Błędne dane logowania: " + e.getMessage());
             return false;
+        }
+    }
+    public String selectName(int id) {
+        String sql = "SELECT imie FROM users WHERE id = ?";
+        String name;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                name = resultSet.getString("imie");
+                System.out.println("Wysłano imie");
+                return name;
+            } else {
+                System.out.println("Coś poszło nie tak!");
+                return null;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Błędny email: " + e.getMessage());
+            return null;
         }
     }
     public boolean registerCheckMail(String email) {
@@ -184,33 +144,12 @@ public class PostgreSQL {
         }
         return false;
     }
-
     /**
      * Pobiera imie aktualnie użytkownika zalogowanego w aktualnej sesji
      * @param id użytkownika zalogowanego w aktualnej sesji
      * @return Imię użytkownika, jeżeli wszystko poszło pomyślnie. Null, jeżeli coś poszło nie tak
      */
-	 public String selectName(int id) {
-        String sql = "SELECT imie FROM users WHERE id = ?";
-        String name;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                name = resultSet.getString("imie");
-                System.out.println("Wysłano imie");
-                return name;
-            } else {
-                System.out.println("Coś poszło nie tak!");
-                return null;
-            }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Błędny email: " + e.getMessage());
-            return null;
-        }
-    }
     public List<String> selectProfileInfo(int id) {
         String sql = "SELECT imie,nazwisko,email,numer_telefonu,plec,data_urodzenia,data_dolaczenia FROM users WHERE id = ?";
         List<String> profileInfo = new ArrayList<>();
@@ -275,7 +214,6 @@ public class PostgreSQL {
                 i++;
             }
             preparedStatement.setInt(i, id);
-            System.out.println("User w serverconnection " + user);
             System.out.println(preparedStatement);
             preparedStatement.execute();
 
@@ -284,4 +222,20 @@ public class PostgreSQL {
             System.out.println("Błąd: " + e.getMessage());
         }
     }
+    public void removeEveryUser() {
+        String sql = "DELETE FROM users";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.executeUpdate();
+
+            System.out.println("Usunięto wszystkich użytkowników.");
+            log.writeLog("All users removed");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Błąd SQL: " + e.getMessage());
+        }
+    }
+
 }
