@@ -457,18 +457,36 @@ public class UserProfileController implements Initializable {
     {
         try {
 
-            ServerController.sendClientRequest(ServerController.id, "PROFILE-INFO");
-            List<String> profileInfo;
-            profileInfo = ServerController.getProfileInfo();
-            assert profileInfo != null;
-            nameLabel.setText(profileInfo.get(0));
-            lastNameLabel.setText(profileInfo.get(1));
-            genderLabel.setText(profileInfo.get(2));
-            mailLabel.setText(profileInfo.get(3));
-            phoneNumberLabel.setText(profileInfo.get(4));
-            birthDateLabel.setText(profileInfo.get(5));
-            joinDateLabel.setText(profileInfo.get(6));
-            driverStatusLabel.setText(profileInfo.get(7));
+            //ServerController.sendSelectRequest("user");
+            //ServerController.sendClientRequest(ServerController.id, "PROFILE-INFO");
+            List<String> info;
+            List<String> keys = new ArrayList<>();
+            keys.add("imie");
+            keys.add("nazwisko");
+            keys.add("email");
+            keys.add("numer_telefonu");
+            keys.add("plec");
+            keys.add("data_urodzenia");
+            keys.add("data_dolaczenia");
+            info = ServerController.sendSelectRequest("users",keys);
+            assert info != null;
+            nameLabel.setText(info.get(0));
+            lastNameLabel.setText(info.get(1));
+            genderLabel.setText(info.get(4));
+            mailLabel.setText(info.get(2));
+            phoneNumberLabel.setText(info.get(3));
+            birthDateLabel.setText(info.get(5));
+            joinDateLabel.setText(info.get(6));
+            boolean driverInfo = ServerController.checkifUserIsDriver();
+            if(driverInfo)
+            {
+                driverStatusLabel.setText("Aktywny");
+            }
+            else
+            {
+                driverStatusLabel.setText("Nie Aktywny");
+            }
+            //driverStatusLabel.setText(info.get(9));
 
         } catch (Exception e) {
             e.printStackTrace();

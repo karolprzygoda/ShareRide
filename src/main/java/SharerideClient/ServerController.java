@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Kontroler zarządzający połączeniem z serwerem
@@ -331,6 +328,7 @@ public class ServerController {
         out.println("CHECKIFDRIVER");
         out.println(id);
         answer = scanner.nextBoolean();
+        System.out.println(answer);
         return answer;
     }
 
@@ -506,5 +504,48 @@ public class ServerController {
         PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
         out.println("DELETECAR");
         out.println(id);
+    }
+
+    static protected List<String> sendSelectRequest(String table,List<String> keys)
+    {
+
+        List<String> info = new ArrayList<>();
+        try{
+
+            PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
+            out.println("SELECT");
+            out.println(id);
+            out.println(table);
+            System.out.println(table);
+            out.println(keys.size());
+            for (String elements:keys) {
+                out.println(elements);
+            }
+            Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
+            if(scanner.hasNextLine())
+            {
+                int size = Integer.parseInt(scanner.nextLine());
+                for(int i=0;i<size;i++)
+                {
+                    info.add((scanner.nextLine()));
+                }
+
+                return info;
+            }
+            else {
+                Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd serwera");
+                alert.setHeaderText(null);
+                alert.setContentText("Serwer napotkał problem");
+                alert.showAndWait();
+                errorFlag = true;
+                return null;
+            }
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
