@@ -1251,3 +1251,117 @@
 [Server][2023-12-18 00:54:23] 127.0.0.1 tries to login
 [Server][2023-12-18 00:54:23] 127.0.0.1 logged in
 [DatabaseDriver][2023-12-18 00:54:29] Car removed
+[DatabaseInitialization][2023-12-18 13:49:53] Connected
+[DatabaseInitialization][2023-12-18 13:49:53] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:49:53] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:49:53] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:49:53] Kierowca table created (if didn't exist)
+[Server][2023-12-18 13:49:53] Server started on port: 5000
+[Server][2023-12-18 13:49:59] New connection: 127.0.0.1
+[Server][2023-12-18 13:50:09] 127.0.0.1 tries to login
+[Server][2023-12-18 13:50:09] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 13:50:57] Connected
+[DatabaseInitialization][2023-12-18 13:50:57] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:50:57] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:50:57] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:50:57] Kierowca table created (if didn't exist)
+[Server][2023-12-18 13:50:57] Server started on port: 5000
+[Server][2023-12-18 13:51:01] New connection: 127.0.0.1
+[Server][2023-12-18 13:51:11] 127.0.0.1 tries to login
+[Server][2023-12-18 13:51:11] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 13:53:20] Connected
+[DatabaseInitialization][2023-12-18 13:53:20] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:53:20] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:53:20] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:53:20] Kierowca table created (if didn't exist)
+[Server][2023-12-18 13:53:20] Server started on port: 5000
+[Server][2023-12-18 13:53:21] New connection: 127.0.0.1
+[Server][2023-12-18 13:53:31] 127.0.0.1 tries to login
+[Server][2023-12-18 13:53:32] 127.0.0.1 logged in
+[Server][2023-12-18 13:54:13] New connection: 127.0.0.1
+[Server][2023-12-18 13:54:22] 127.0.0.1 tries to login
+[Server][2023-12-18 13:54:22] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 13:56:03] Connected
+[DatabaseInitialization][2023-12-18 13:56:03] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:56:03] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:56:03] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:56:03] Kierowca table created (if didn't exist)
+[Server][2023-12-18 13:56:03] Server started on port: 5000
+[Server][2023-12-18 13:56:04] New connection: 127.0.0.1
+[Server][2023-12-18 13:56:14] 127.0.0.1 tries to login
+[Server][2023-12-18 13:56:14] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 13:57:52] Connected
+[DatabaseInitialization][2023-12-18 13:57:52] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:57:52] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:57:52] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 13:57:52] Kierowca table created (if didn't exist)
+[Server][2023-12-18 13:57:52] Server started on port: 5000
+[Server][2023-12-18 13:57:54] New connection: 127.0.0.1
+[Server][2023-12-18 13:58:03] 127.0.0.1 tries to login
+[Server][2023-12-18 13:58:03] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 14:02:06] Connected
+[DatabaseInitialization][2023-12-18 14:02:06] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:02:06] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:02:06] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:02:06] Kierowca table created (if didn't exist)
+[Server][2023-12-18 14:02:06] Server started on port: 5000
+[Server][2023-12-18 14:02:08] New connection: 127.0.0.1
+[Server][2023-12-18 14:02:18] 127.0.0.1 tries to login
+[Server][2023-12-18 14:02:18] 127.0.0.1 denied to login, not in database
+[Server][2023-12-18 14:02:27] 127.0.0.1 tries to login
+[Server][2023-12-18 14:02:27] 127.0.0.1 denied to login, not in database
+[Server][2023-12-18 14:02:35] 127.0.0.1 tries to login
+[Server][2023-12-18 14:02:35] 127.0.0.1 denied to login, not in database
+[Server][2023-12-18 14:02:42] 127.0.0.1 tries to login
+[Server][2023-12-18 14:02:42] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 14:03:56] Connected
+[DatabaseInitialization][2023-12-18 14:03:56] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:03:56] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:03:56] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:03:56] Kierowca table created (if didn't exist)
+[Server][2023-12-18 14:03:56] Server started on port: 5000
+[Server][2023-12-18 14:03:57] New connection: 127.0.0.1
+[Server][2023-12-18 14:04:07] 127.0.0.1 tries to login
+[Server][2023-12-18 14:04:07] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 14:04:29] Connected
+[DatabaseInitialization][2023-12-18 14:04:29] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:04:29] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:04:29] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:04:29] Kierowca table created (if didn't exist)
+[Server][2023-12-18 14:04:29] Server started on port: 5000
+[Server][2023-12-18 14:04:31] New connection: 127.0.0.1
+[Server][2023-12-18 14:04:41] 127.0.0.1 tries to login
+[Server][2023-12-18 14:04:41] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 14:09:35] Connected
+[DatabaseInitialization][2023-12-18 14:09:35] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:09:35] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:09:35] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:09:35] Kierowca table created (if didn't exist)
+[Server][2023-12-18 14:09:35] Server started on port: 5000
+[Server][2023-12-18 14:09:37] New connection: 127.0.0.1
+[Server][2023-12-18 14:09:47] 127.0.0.1 tries to login
+[Server][2023-12-18 14:09:48] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 14:31:30] Connected
+[DatabaseInitialization][2023-12-18 14:31:30] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:31:30] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:31:30] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:31:30] Kierowca table created (if didn't exist)
+[Server][2023-12-18 14:31:30] Server started on port: 5000
+[Server][2023-12-18 14:31:33] New connection: 127.0.0.1
+[Server][2023-12-18 14:31:42] 127.0.0.1 tries to login
+[Server][2023-12-18 14:31:42] 127.0.0.1 logged in
+[Server][2023-12-18 14:32:52] New connection: 127.0.0.1
+[Server][2023-12-18 14:33:01] 127.0.0.1 tries to login
+[Server][2023-12-18 14:33:01] 127.0.0.1 logged in
+[DatabaseInitialization][2023-12-18 14:37:34] Connected
+[DatabaseInitialization][2023-12-18 14:37:34] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:37:34] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:37:34] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2023-12-18 14:37:34] Kierowca table created (if didn't exist)
+[Server][2023-12-18 14:37:34] Server started on port: 5000
+[Server][2023-12-18 14:37:37] New connection: 127.0.0.1
+[Server][2023-12-18 14:37:45] 127.0.0.1 tries to login
+[Server][2023-12-18 14:37:46] 127.0.0.1 logged in
+[Server][2023-12-18 14:40:30] New connection: 127.0.0.1
+[Server][2023-12-18 14:40:37] 127.0.0.1 tries to login
+[Server][2023-12-18 14:40:37] 127.0.0.1 logged in

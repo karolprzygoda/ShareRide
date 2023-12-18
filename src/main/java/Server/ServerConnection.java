@@ -16,6 +16,7 @@ public class ServerConnection {
         postgreSQLInitialization.createTables();
         PostgreSQLUser postgreSQLUser = new PostgreSQLUser();
         PostgreSQLDriver postgreSQLDriver = new PostgreSQLDriver();
+        PostgreSQL postgreSQL = new PostgreSQL();
         //postgreSQLInitialization.removeEveryUsers();
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Server on port: " + port);
@@ -26,7 +27,7 @@ public class ServerConnection {
                 System.out.println("New connection: " + clientSocket.getInetAddress().getHostAddress());
                 log.writeLog("New connection: " + clientSocket.getInetAddress().getHostAddress());
 
-                new Thread(()-> handleClient(clientSocket, postgreSQLInitialization,postgreSQLUser, postgreSQLDriver, log)).start();//obsługa nowego klienta w osobnym wątku
+                new Thread(()-> handleClient(clientSocket, postgreSQLInitialization,postgreSQLUser, postgreSQLDriver, log, postgreSQL)).start();//obsługa nowego klienta w osobnym wątku
 
             }
         } catch (IOException e) {
@@ -59,7 +60,7 @@ public class ServerConnection {
      * @param postgreSQLInitialization obiekt klasy {@linkplain PostgreSQLInitialization} używany do wywołania odpowiedniej metody rejestracji lub logowania
      * @author Karol Przygoda
      */
-    private static void handleClient(Socket clientSocket, PostgreSQLInitialization postgreSQLInitialization, PostgreSQLUser postgreSQLUser, PostgreSQLDriver postgreSQLDriver, Logs log) {
+    private static void handleClient(Socket clientSocket, PostgreSQLInitialization postgreSQLInitialization, PostgreSQLUser postgreSQLUser, PostgreSQLDriver postgreSQLDriver, Logs log, PostgreSQL postgreSQL) {
         try {
 
                 Scanner scanner = new Scanner(clientSocket.getInputStream());
@@ -317,6 +318,29 @@ public class ServerConnection {
                             System.out.println(id);
 
                             postgreSQLDriver.addCar(carBrand, carModel, carPlates, carVIN,carSeatAvailable,carInsuranceNumber,insurancePolicyExpirationDate, id);
+                        }
+
+                        case "SELECT" -> {
+                            int id = Integer.parseInt(scanner.nextLine());
+                            String tableName = scanner.nextLine();
+                            int size = Integer.parseInt(scanner.nextLine());
+                            List<String> keys = new ArrayList<>();
+                            for(int i=0;i<size;i++)
+                            {
+                                keys.add((scanner.nextLine()));
+                            }
+                            List<String> list = new ArrayList<String>();
+                            list = postgreSQL.select(id,tableName,keys);
+                            System.out.println(list.size());
+                            for (String result : list) {
+
+                                System.out.println(result);
+                            }
+                            out.println(list.size());
+                            for (String result : list) {
+
+                                out.println(result);
+                            }
                         }
                     }
                 }
