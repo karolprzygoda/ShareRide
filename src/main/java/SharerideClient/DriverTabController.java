@@ -395,15 +395,32 @@ public class DriverTabController implements Initializable {
     @FXML
     private void seeActualDriverData() throws IOException
     {
-        ServerController.sendClientRequest(ServerController.id, "PROFILE-INFO");
-        List<String> profileInfo;
-        profileInfo = ServerController.getProfileInfo();
-        ServerController.sendLicenseDataRequest();
-        List<String> licenseInfo;
-        licenseInfo = ServerController.getLicenseInfo();
-        ServerController.sendCarDataRequest();
-        List<String> carInfo;
-        carInfo = ServerController.getCarInfo();
+        List<String> userKeys = new ArrayList<>();
+        userKeys.add("imie");
+        userKeys.add("nazwisko");
+        List<String> licenseKeys = new ArrayList<>();
+        licenseKeys.add("numer");
+        licenseKeys.add("data_wydania");
+        licenseKeys.add("data_waznosci");
+        licenseKeys.add("kategoria");
+        List<String> carKeys = new ArrayList<>();
+        carKeys.add("marka");
+        carKeys.add("model");
+        carKeys.add("rejestracja");
+        carKeys.add("vin");
+        carKeys.add("liczba_miejsc");
+        carKeys.add("polisa");
+        carKeys.add("data_wygasniecia_polisy");
+        //ServerController.sendSelectRequest("users",userKeys);
+        //ServerController.sendClientRequest(ServerController.id, "PROFILE-INFO");
+        List<String> profileInfo = ServerController.sendSelectRequest("users",userKeys);;
+       // profileInfo = ServerController.sendSelectRequest("license",licenseKeys);
+        //ServerController.sendLicenseDataRequest();
+        List<String> licenseInfo = ServerController.sendSelectRequest("license",licenseKeys);
+        //licenseInfo = ServerController.getLicenseInfo();
+        //ServerController.sendCarDataRequest();
+        List<String> carInfo = ServerController.sendSelectRequest("vehicle",carKeys);
+        //carInfo = ServerController.sendSelectRequest("vehicle",carKeys);
         assert profileInfo != null;
         assert licenseInfo != null;
         assert carInfo != null;
