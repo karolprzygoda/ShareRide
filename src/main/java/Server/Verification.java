@@ -1,22 +1,25 @@
 package Server;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
+
 public class Verification {
-    public static User CreateUser(String firstName, String lastName, String email, String phoneNumber, String gender, Date dateOfBirth, String password, Date joinDate) {
-        if(IsFirstNameValid(firstName) & IsLastNameValid(lastName) & IsPasswordValid(password) & IsMailValid(email)
-                & IsPhoneNumberValid(phoneNumber) & IsAgeValid(dateOfBirth))
+    public static boolean verify(List<Object> fields) {
+        if(IsFirstNameValid(fields.get(0).toString()) & IsLastNameValid(fields.get(1).toString()) & IsPasswordValid(fields.get(6).toString()) & IsMailValid(fields.get(2).toString())
+                & IsPhoneNumberValid(fields.get(3).toString()) & IsAgeValid(Date.valueOf(fields.get(5).toString())))
         {
             System.out.println("User accepted");
-            PasswordEncoder passwordEncoder = PasswordEncoderFactory.createPasswordEncoder();
-            String encodePassword = passwordEncoder.encodePassword(password);
             Logs.writeLog("ServerVerification", "User accepted");
-            return new User(firstName, lastName, email,  phoneNumber, gender,dateOfBirth, encodePassword, joinDate);
+            return true;
         }
         else {
             System.out.println("Verification did not pass");
             Logs.writeLog("ServerVerification", "Verification did not pass");
-            return null;
+            return false;
         }
     }
     static boolean IsFirstNameValid(String input) {
@@ -30,7 +33,29 @@ public class Verification {
     }
     static boolean IsMailValid(String input) {
         boolean validMail = input.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}");
-        return validMail & !IsLongerThan(input,1,50);
+        boolean isMailRegistered;
+
+        String sql = "SELECT id_uzytkownika FROM users WHERE email = ?";
+        try (PreparedStatement preparedStatement = PostgreSQLInitialization.getInstance().connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, input);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                isMailRegistered = resultSet.next();
+                if (isMailRegistered) {
+                    System.out.println("Email w użyciu!.");
+                    //log.writeLog("Error, registering mail found in database");
+
+                } else {
+                    System.out.println("Email wolny!");
+                    //log.writeLog("Registering mail not found in database");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Błędny email: " + e.getMessage());
+            isMailRegistered = true;
+        }
+
+        return validMail & !IsLongerThan(input,1,50) & !isMailRegistered;
     }
     static boolean IsPhoneNumberValid(String input) {
         return input.matches("\\d{9}");
@@ -53,4 +78,5 @@ public class Verification {
         int length = login.length();
         return length < min && length > max;
     }
+
 }

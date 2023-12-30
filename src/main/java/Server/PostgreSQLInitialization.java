@@ -15,6 +15,11 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
     protected String user;
     protected String password;
     protected final Logs log = new Logs("DatabaseInitialization");
+    protected static final String[] userColumns = {"imie", "nazwisko", "email", "numer_telefonu", "plec", "data_urodzenia", "data_dolaczenia"};
+    protected static final String[] userColumnsToInsert = {"imie", "nazwisko", "email", "numer_telefonu", "plec", "data_urodzenia","haslo", "data_dolaczenia"};
+    protected static final String[] licenseColumns = {"id_uzytkownika","numer", "data_wydania", "data_waznosci", "kategoria"};
+    protected static final String[] vehicleColumns = {"id_uzytkownika","marka", "model", "rejestracja", "vin", "liczba_miejsc", "polisa", "data_wygasniecia_polisy"};
+    protected static final String[] driverColumns = {"id_uzytkownika","id_prawa_jazdy", "id_danych_pojazdu"};
     protected Connection connection;
     private PostgreSQLInitialization()
     {
@@ -105,7 +110,7 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
 
     private void createTableUser(){
         String createTableSQL = "CREATE TABLE IF NOT EXISTS users ("
-                + "id SERIAL PRIMARY KEY,"
+                + "id_uzytkownika SERIAL PRIMARY KEY,"
                 + "imie VARCHAR(50) NOT NULL,"
                 + "nazwisko VARCHAR(50) NOT NULL,"
                 + "email VARCHAR(100) UNIQUE NOT NULL,"
