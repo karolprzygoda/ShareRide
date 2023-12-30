@@ -7,8 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -147,7 +145,7 @@ public class DriverTabController implements Initializable {
     }
 
     @FXML
-    private void seeDriverActualData() throws IOException
+    private void seeDriverActualData()
     {
         editDriverDataPane.setVisible(false);
         seeActualDataPane.setVisible(true);
@@ -164,6 +162,7 @@ public class DriverTabController implements Initializable {
     private ArrayList<Object> getLicenseData()
     {
         ArrayList<Object> list = new ArrayList<>();
+        list.add(ServerController.id);
         list.add(driver_LicenceNumber.getText());
         list.add(driver_dateOfIssueOfTheLicense.getValue());
         list.add(driver_expirationDateOfTheLicense.getValue());
@@ -174,19 +173,20 @@ public class DriverTabController implements Initializable {
     private ArrayList<Object> getCarData()
     {
         ArrayList<Object> list = new ArrayList<>();
+        list.add(ServerController.id);
         list.add(driver_carBrand.getText());
         list.add(driver_carModel.getText());
         list.add(driver_carPlatesNumber.getText());
         list.add(driver_VIN.getText());
+        list.add(driver_seatsAvailable.getText());
         list.add(driver_insuranceNumber.getText());
         list.add(driver_insurancePolicyExpirationDate.getValue());
-        list.add(driver_seatsAvailable.getText());
         return list;
     }
 
-    private Map<Object, Object> getLicenseDataToUpdate()
+    private Map<String, Object> getLicenseDataToUpdate()
     {
-        Map<Object, Object> fieldsToUpdate = new HashMap<>();
+        Map<String, Object> fieldsToUpdate = new HashMap<>();
 
         if(!driver_LicenceNumber.getText().isEmpty())
             fieldsToUpdate.put("numer", driver_LicenceNumber.getText());
@@ -200,9 +200,9 @@ public class DriverTabController implements Initializable {
         return fieldsToUpdate;
     }
 
-    private Map<Object, Object> getCarDataToUpdate()
+    private Map<String, Object> getCarDataToUpdate()
     {
-        Map<Object, Object> fieldsToUpdate = new HashMap<>();
+        Map<String, Object> fieldsToUpdate = new HashMap<>();
 
         if(!driver_carBrand.getText().isEmpty())
             fieldsToUpdate.put("marka", driver_carBrand.getText());
@@ -223,18 +223,26 @@ public class DriverTabController implements Initializable {
     }
 
     @FXML
-    private void editDriverCarData() throws IOException
+    private void editDriverCarData()
     {
         if(carInsuranceNumberCheckFlag || carVinCheckFlag || carPlatesCheckFlag || modelCheckFlag || carSeatsAvailableCheckFlag || brandCheckFlag) {
 
-            if (ServerController.checkifUserHaveCar()) {
+            if (ServerController.sendSelectRequest("CAR") != null) {
                 if(!checkIfEmptyCarUpdate()) {
-                    ServerController.sendUpdateCarInfoToServer(getCarDataToUpdate());
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Udało się");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Pomyślnie zaktualizowano samochód");
-                    alert.showAndWait();
+                    int response = ServerController.sendUpdateRequest("CAR",getCarDataToUpdate());
+                    if(response == 1) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Udało się");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Pomyślnie zaktualizowano samochód");
+                        alert.showAndWait();
+                    } else if (response == 0) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Błąd");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Operacja aktualizacji danych samochodu zakończona niepowodzeniem");
+                        alert.showAndWait();
+                    }
                 }
                 else
                 {
@@ -246,12 +254,20 @@ public class DriverTabController implements Initializable {
                 }
             } else {
                 if(!checkIfEmptyCarAdd()) {
-                    ServerController.addCar(getCarData());
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Udało się");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Pomyślnie dodano samochód");
-                    alert.showAndWait();
+                    int response = ServerController.sendInsertRequest("CAR",getCarData());
+                    if(response == 1) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Udało się");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Pomyślnie dodano samochód");
+                        alert.showAndWait();
+                    } else if (response == 0) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Błąd");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Operacja dodania informacji o pojeździe zakończona niepowodzeniem");
+                        alert.showAndWait();
+                    }
                 }
                 else
                 {
@@ -277,43 +293,37 @@ public class DriverTabController implements Initializable {
 
 
     @FXML
-    private void editDriverLicenceData() throws IOException
+    private void editDriverLicenceData()
     {
+
         if(licenseCheckFlag) {
 
-            if (ServerController.checkifUserHaveLicense()) {
+            if (ServerController.sendSelectRequest("LICENSE") != null) {
                 if(!checkIfEmptyLicenseUpdate()) {
-                    ServerController.sendUpdateLicenseInfoToServer(getLicenseDataToUpdate());
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Udało się");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Pomyślnie zaktualizowano prawo jazdy");
-                    alert.showAndWait();
+                    int response = ServerController.sendUpdateRequest("LICENSE",getLicenseDataToUpdate() );
+
+                    if(response == 1)
+                        Alerts.successAlert("Pomyślnie zaktualizowano prawo jazdy");
+                    else if (response == 0)
+                        Alerts.failureAlert("Operacja aktualizacji danych prawa jazdy zakończona niepowodzeniem");
                 }
                 else
                 {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Błąd");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Wszystkie pola są puste");
-                    alert.showAndWait();
+                    Alerts.failureAlert("Wszystkie pola są puste");
+
                 }
             } else {
                 if(!checkIfEmptyLicenseAdd()) {
-                    ServerController.addUserLicense(getLicenseData());
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Udało się");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Pomyślnie dodano prawo jazdy");
-                    alert.showAndWait();
+                    int response = ServerController.sendInsertRequest("LICENSE",getLicenseData());
+
+                    if(response == 1)
+                        Alerts.successAlert("Pomyślnie dodano prawo jazdy");
+                    else if (response == 0)
+                        Alerts.failureAlert("Operacja dodania informacji o prawie jazdy zakończona niepowodzeniem");
                 }
                 else
                 {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Błąd");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Proszę uzupełnić wszystkie pola");
-                    alert.showAndWait();
+                    Alerts.failureAlert("Proszę uzupełnić wszystkie pola");
                 }
             }
 
@@ -321,16 +331,12 @@ public class DriverTabController implements Initializable {
         }
         else
         {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd");
-            alert.setHeaderText(null);
-            alert.setContentText("Proszę poprawić pola zaznaczone na czerwono");
-            alert.showAndWait();
+            Alerts.failureAlert("Proszę poprawić pola zaznaczone na czerwono");
         }
     }
 
     @FXML
-    private void deleteLicense() throws IOException
+    private void deleteLicense()
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Potwierdź Operacje");
@@ -340,17 +346,18 @@ public class DriverTabController implements Initializable {
         Optional<ButtonType> option = alert.showAndWait();
 
         if (option.get().equals(ButtonType.OK)) {
-            ServerController.sendDeleteLicenseRequest();
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Udało się");
-            alert.setHeaderText(null);
-            alert.setContentText("Pomyślnie usunięto prawo jazdy");
-            alert.showAndWait();
+            int response = ServerController.sendDeleteRequest("LICENSE");
+
+            if(response == 1)
+                Alerts.successAlert("Pomyślnie usunięto prawo jazdy");
+            else if(response == 0)
+                Alerts.failureAlert("Operacja usunięcia prawa jazdy zakończona niepowodzeniem");
+
         }
     }
 
     @FXML
-    private void deleteCar() throws IOException
+    private void deleteCar()
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Potwierdź Operacje");
@@ -360,12 +367,13 @@ public class DriverTabController implements Initializable {
         Optional<ButtonType> option = alert.showAndWait();
 
         if (option.get().equals(ButtonType.OK)) {
-            ServerController.sendDeleteCarRequest();
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Udało się");
-            alert.setHeaderText(null);
-            alert.setContentText("Pomyślnie usunięto prawo jazdy");
-            alert.showAndWait();
+            int response = ServerController.sendDeleteRequest("CAR");
+
+            if(response == 1)
+                Alerts.successAlert("Pomyślnie usunięto pojazd");
+            else if(response == 0)
+                Alerts.failureAlert("Operacja usunięcia pojazdu zakończona niepowodzeniem ");
+
         }
     }
 
@@ -393,51 +401,37 @@ public class DriverTabController implements Initializable {
 
 
     @FXML
-    private void seeActualDriverData() throws IOException
-    {
-        List<String> userKeys = new ArrayList<>();
-        userKeys.add("imie");
-        userKeys.add("nazwisko");
-        List<String> licenseKeys = new ArrayList<>();
-        licenseKeys.add("numer");
-        licenseKeys.add("data_wydania");
-        licenseKeys.add("data_waznosci");
-        licenseKeys.add("kategoria");
-        List<String> carKeys = new ArrayList<>();
-        carKeys.add("marka");
-        carKeys.add("model");
-        carKeys.add("rejestracja");
-        carKeys.add("vin");
-        carKeys.add("liczba_miejsc");
-        carKeys.add("polisa");
-        carKeys.add("data_wygasniecia_polisy");
-        //ServerController.sendSelectRequest("users",userKeys);
-        //ServerController.sendClientRequest(ServerController.id, "PROFILE-INFO");
-        List<String> profileInfo = ServerController.sendSelectRequest("users",userKeys);;
-       // profileInfo = ServerController.sendSelectRequest("license",licenseKeys);
-        //ServerController.sendLicenseDataRequest();
-        List<String> licenseInfo = ServerController.sendSelectRequest("license",licenseKeys);
-        //licenseInfo = ServerController.getLicenseInfo();
-        //ServerController.sendCarDataRequest();
-        List<String> carInfo = ServerController.sendSelectRequest("vehicle",carKeys);
-        //carInfo = ServerController.sendSelectRequest("vehicle",carKeys);
+    private void seeActualDriverData(){
+
+        List<String> profileInfo = ServerController.sendSelectRequest("USER");
+        List<String> licenseInfo = ServerController.sendSelectRequest("LICENSE");
+        List<String> carInfo = ServerController.sendSelectRequest("CAR");
+        Label[] licenseData = {driver_licenseIDLabel, driver_dateOfIssueLabel, driver_expirationDateOfTheLicenseLabel, driver_licenseCategoryLabel};
+        Label[] carData = {carBrandLabel, carModelLabel, carPlatesLabel, carVinLabel, carSeatsAvailableLabel, carInsuranceLabel, carInsurancePolicyExpirationDate};
         assert profileInfo != null;
         assert licenseInfo != null;
         assert carInfo != null;
         driver_nameLabel.setText(profileInfo.get(0));
         driver_lastNameLabel.setText(profileInfo.get(1));
-        driver_licenseIDLabel.setText(licenseInfo.get(0));
-        driver_dateOfIssueLabel.setText(licenseInfo.get(1));
-        driver_expirationDateOfTheLicenseLabel.setText(licenseInfo.get(2));
-        driver_licenseCategoryLabel.setText(licenseInfo.get(3));
-        carBrandLabel.setText(carInfo.get(0));
-        carModelLabel.setText(carInfo.get(1));
-        carPlatesLabel.setText(carInfo.get(2));
-        carVinLabel.setText(carInfo.get(3));
-        carSeatsAvailableLabel.setText(carInfo.get(4));
-        carInsuranceLabel.setText(carInfo.get(5));
-        carInsurancePolicyExpirationDate.setText(carInfo.get(6));
 
+        for(int i = 0; i<licenseData.length; i++)
+        {
+            try {
+                licenseData[i].setText(licenseInfo.get(i + 1));
+            }catch (RuntimeException e)
+            {
+                licenseData[i].setText("Brak");
+            }
+        }
+        for(int i = 0; i<carData.length; i++)
+        {
+            try {
+                carData[i].setText(carInfo.get(i + 1));
+            }catch (RuntimeException e)
+            {
+                carData[i].setText("Brak");
+            }
+        }
     }
 
     @FXML

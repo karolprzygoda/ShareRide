@@ -1,7 +1,6 @@
 package SharerideClient;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -52,24 +51,18 @@ public class LoginFormController {
     @FXML
     private void login() throws IOException {
 
-        Alert alert;
         if (mailTextField.getText().isEmpty() || passwordTextField.getText().isEmpty())
         {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd Logowania");
-            alert.setHeaderText(null);
-            alert.setContentText("Proszę uzupełnić wszystkie puste pola");
-            alert.showAndWait();
+            Alerts.failureAlert("Proszę uzupełnić wszystkie puste pola");
         }
         else
         {
 
             String mail = mailTextField.getText();
             String password = passwordTextField.getText();
+            int response = ServerController.sendLoginRequest(mail, password);
 
-            ServerController.sendLoginInfoToServer(mail,password);
-
-            if(ServerController.getLoginFeedBackFromServer())
+            if(response == 1)
             {
                 loginBtn.getScene().getWindow().hide();
                 Stage stage = new Stage();
@@ -77,16 +70,8 @@ public class LoginFormController {
                 clientDashBoardView.start(stage);
 
             }
-            else
-            {
-                if(!ServerController.errorFlag) {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Błąd Logowania");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Podany adres mailowy oraz hasło nie zgadzają się");
-                    alert.showAndWait();
-                }
-            }
+            else if(response == 0)
+                Alerts.failureAlert("Podany adres mailowy oraz hasło nie zgadzają się");
         }
     }
 }

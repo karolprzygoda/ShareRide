@@ -457,18 +457,8 @@ public class UserProfileController implements Initializable {
     {
         try {
 
-            //ServerController.sendSelectRequest("user");
-            //ServerController.sendClientRequest(ServerController.id, "PROFILE-INFO");
             List<String> info;
-            List<String> keys = new ArrayList<>();
-            keys.add("imie");
-            keys.add("nazwisko");
-            keys.add("email");
-            keys.add("numer_telefonu");
-            keys.add("plec");
-            keys.add("data_urodzenia");
-            keys.add("data_dolaczenia");
-            info = ServerController.sendSelectRequest("users",keys);
+            info = ServerController.sendSelectRequest("USER");
             assert info != null;
             nameLabel.setText(info.get(0));
             lastNameLabel.setText(info.get(1));
@@ -477,8 +467,7 @@ public class UserProfileController implements Initializable {
             phoneNumberLabel.setText(info.get(3));
             birthDateLabel.setText(info.get(5));
             joinDateLabel.setText(info.get(6));
-            boolean driverInfo = ServerController.checkifUserIsDriver();
-            if(driverInfo)
+            if(ServerController.sendSelectRequest("DRIVER") != null)
             {
                 driverStatusLabel.setText("Aktywny");
             }
@@ -486,7 +475,6 @@ public class UserProfileController implements Initializable {
             {
                 driverStatusLabel.setText("Nie Aktywny");
             }
-            //driverStatusLabel.setText(info.get(9));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -512,34 +500,15 @@ public class UserProfileController implements Initializable {
     @FXML
     private void update(){
 
-        Alert alert;
-
         if (checkIfEmpty())
-        {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd");
-            alert.setHeaderText(null);
-            alert.setContentText("Prosze uzupełnić pole które chcesz zaktualizować"); // jeżeli przynajmniej 1 pole pozostało puste użytkownik zostaje o tym poinformowany
-            alert.showAndWait();
-        }
-        else if(!nameCheckFlag || !lastNameCheckFlag || !mailCheckFlag || !phoneNumberCheckFlag || !passwordCheckFlag) {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd");
-            alert.setHeaderText(null);
-            alert.setContentText("Proszę poprawić pola zaznaczone na czerwono");
-            alert.showAndWait();
-        }
+            Alerts.failureAlert("Prosze uzupełnić pole które chcesz zaktualizować"); // jeżeli przynajmniej 1 pole pozostało puste użytkownik zostaje o tym poinformowany
+        else if(!nameCheckFlag || !lastNameCheckFlag || !mailCheckFlag || !phoneNumberCheckFlag || !passwordCheckFlag)
+            Alerts.failureAlert("Proszę poprawić pola zaznaczone na czerwono");
         else if(!(profile_updatePasswordField.getText().equals(profile_updateConfirmPasswordField.getText())))
-        {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd");
-            alert.setHeaderText(null);
-            alert.setContentText("Hasła się różnią !");
-            alert.showAndWait();
-        }
+            Alerts.failureAlert("Hasła się różnią !");
         else
         {
-            Map<String, String> fieldsToUpdate = new HashMap<>();
+            Map<String, Object> fieldsToUpdate = new HashMap<>();
 
             if(!profile_updateNameField.getText().isEmpty())
                 fieldsToUpdate.put("imie", profile_updateNameField.getText());
@@ -554,13 +523,16 @@ public class UserProfileController implements Initializable {
             if(profile_updateGenderComboBox.getSelectionModel().getSelectedItem() != null)
                 fieldsToUpdate.put("plec", profile_updateGenderComboBox.getValue());
 
-            ServerController.sendUpdateInfoToServer(ServerController.id, fieldsToUpdate);
-            ServerController.sendClientNameRequest(ServerController.id);
-            String name = ServerController.getClientName();
+            int response = ServerController.sendUpdateRequest("USER", fieldsToUpdate);
+            if (response == 1) {
+                String name = Objects.requireNonNull(ServerController.sendSelectRequest("USER")).get(0);
 
-            updateInfo();
+                updateInfo();
 
-            ClientDashBoardView.clientDashBoardController.helloClientNameLabel.setText(name);
+                ClientDashBoardView.clientDashBoardController.helloClientNameLabel.setText(name);
+                Alerts.successAlert("Pomyślnie zaktualizowano dane użytkownika");
+            } else if (response == 0)
+                Alerts.failureAlert("Operacja aktualizacji danych użytkownika zakończona niepowodzeniem");
 
             clearUpdateFields();
         }
@@ -582,11 +554,15 @@ public class UserProfileController implements Initializable {
             Optional<ButtonType> option = alert.showAndWait();
 
             if (option.get().equals(ButtonType.OK)) {
-                ServerController.sendClientRequest(ServerController.id, "DELETE");
-                profile_deleteAccBtn.getScene().getWindow().hide();
-                FormsContainer formsContainer = new FormsContainer();
-                Stage stage = new Stage();
-                formsContainer.start(stage);
+                int response = ServerController.sendDeleteRequest("USER");
+                if(response == 1) {
+                    profile_deleteAccBtn.getScene().getWindow().hide();
+                    FormsContainer formsContainer = new FormsContainer();
+                    Stage stage = new Stage();
+                    formsContainer.start(stage);
+                }
+                else if(response == 0)
+                    Alerts.failureAlert("Operacja usunięcia konta zakończona niepowodzeniem");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

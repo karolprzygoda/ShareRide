@@ -11,6 +11,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -186,54 +187,42 @@ public class RegisterFormController {
     @FXML
     private void register() throws IOException {
 
-        Alert alert;
-
         LocalDate today = LocalDate.now();
 
         if (checkIfEmpty())
-        {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd Rejestracji");
-            alert.setHeaderText(null);
-            alert.setContentText("Prosze uzupełnić wszystkie puste pola");
-            alert.showAndWait();
-        }
-        else if(!nameCheckFlag || !lastNameCheckFlag || !mailCheckFlag || !phoneNumberCheckFlag || !passwordCheckFlag) {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd Rejestracji");
-            alert.setHeaderText(null);
-            alert.setContentText("Proszę poprawić pola zaznaczone na czerwono");
-            alert.showAndWait();
-        }
+            Alerts.failureAlert("Prosze uzupełnić wszystkie puste pola");
+        else if(!nameCheckFlag || !lastNameCheckFlag || !mailCheckFlag || !phoneNumberCheckFlag || !passwordCheckFlag)
+            Alerts.failureAlert("Proszę poprawić pola zaznaczone na czerwono");
         else if(Period.between(register_datePickerTextField.getValue(), today).getYears() < 18)
-        {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd Rejestracji");
-            alert.setHeaderText(null);
-            alert.setContentText("Aby mieć możliwość rejestracji trzeba być pełnoletnim !");
-            alert.showAndWait();
-        }
+            Alerts.failureAlert("Aby mieć możliwość rejestracji trzeba być pełnoletnim !");
         else if(!(register_passwordTextField.getText().equals(register_passwordConfirmTextField.getText())))
-        {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd Rejestracji");
-            alert.setHeaderText(null);
-            alert.setContentText("Hasła się różnią !");
-            alert.showAndWait();
-        }
+            Alerts.failureAlert("Hasła się różnią !");
         else if(checkIfRegulationsAccepted())
         {
-            Date currentDate = new Date();
+            int response = ServerController.sendInsertRequest("USER",getRegisterData());
 
-            java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
-
-            ServerController.sendRegisterInfoToServer(register_nameTextField.getText(),register_lastNameTextField.getText(),
-                    register_mailTextField.getText(), register_phoneNumberTextField.getText(),
-                    register_datePickerTextField.getValue(), register_passwordTextField.getText(), sqlDate);
-
-            ServerController.displayRegistrationServerFeedback(ServerController.getRegisterFeedBackFromServer());
+            if(response == 1)
+                Alerts.successAlert("Zarejestrowano pomyślnie");
+            else if (response == 0)
+                Alerts.failureAlert("Przekazany adres mailowy jest już zarejestrowany w systemie");
             clearRegisterFields();
         }
+    }
+
+    private ArrayList<Object> getRegisterData()
+    {
+        Date currentDate = new Date();
+        java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
+        ArrayList<Object> list = new ArrayList<>();
+        list.add(register_nameTextField.getText());
+        list.add(register_lastNameTextField.getText());
+        list.add(register_mailTextField.getText());
+        list.add(register_phoneNumberTextField.getText());
+        list.add("Wole nie podawać");
+        list.add(register_datePickerTextField.getValue());
+        list.add(register_passwordTextField.getText());
+        list.add(sqlDate);
+        return list;
     }
 
     /**

@@ -58,6 +58,7 @@ public class RegulationsController {
      */
     @FXML
     private void cancel() {
+        accepted = false;
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
     }

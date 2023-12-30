@@ -3,7 +3,6 @@ package SharerideClient;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -68,15 +67,9 @@ public class FormsContainer extends Application {
             socket = new Socket();
             socket.connect(new InetSocketAddress("localhost", 5000));//tworzenie połączenia z serwerem
         } catch (Exception e) {//jeżeli serwer nie jest uruchomiony lub nie udało się utworzyć połączenia
-            Alert alert;
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd serwera");
-            alert.setHeaderText(null);
-            alert.setContentText("Serwer napotkał problem");
-            alert.showAndWait();
+            Alerts.failureAlert("Serwer napotkał problem");
             stage.close();
         }
-
     }
 
     /**
