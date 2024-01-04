@@ -580,7 +580,6 @@ public class UserProfileController implements Initializable {
         profile_updateMailField.setText("");
         profile_updatePasswordField.setText("");
         profile_updateConfirmPasswordField.setText("");
-        profile_updateGenderComboBox.setValue("");
     }
 
 

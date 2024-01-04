@@ -107,7 +107,7 @@ public class DriverTabController implements Initializable {
     private Label driver_nameLabel;
 
     @FXML
-    private TextField driver_seatsAvailable;
+    private Spinner<Integer> driver_seatsAvailable;
 
     @FXML
     private Button driver_seeActualData;
@@ -127,12 +127,19 @@ public class DriverTabController implements Initializable {
     @FXML
     private Label seatsAvailableFieldStringLengthValidationInfo;
 
+    private SpinnerValueFactory<Integer> spinner;
+
     @FXML
     private AnchorPane seeActualDataPane;
 
-    private boolean licenseCheckFlag = true, brandCheckFlag=true,modelCheckFlag=true,carPlatesCheckFlag=true,carVinCheckFlag=true,carSeatsAvailableCheckFlag=true,carInsuranceNumberCheckFlag=true;
+    private boolean licenseCheckFlag = true, brandCheckFlag=true,modelCheckFlag=true,carPlatesCheckFlag=true,carVinCheckFlag=true,carInsuranceNumberCheckFlag=true;
 
     private final String[] licenseType = {"AM", "A1", "A2", "A", "B1", "B", "C1", "C", "D1", "D", "BE", "C1E", "CE", "D1E", "DE", "T"};
+
+    public void seatsAvailableSpinner() {
+        spinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 55, 1);
+        driver_seatsAvailable.setValueFactory(spinner);
+    }
 
 
     private void licenceCategory() {
@@ -178,7 +185,7 @@ public class DriverTabController implements Initializable {
         list.add(driver_carModel.getText());
         list.add(driver_carPlatesNumber.getText());
         list.add(driver_VIN.getText());
-        list.add(driver_seatsAvailable.getText());
+        list.add(driver_seatsAvailable.getValue());
         list.add(driver_insuranceNumber.getText());
         list.add(driver_insurancePolicyExpirationDate.getValue());
         return list;
@@ -212,8 +219,8 @@ public class DriverTabController implements Initializable {
             fieldsToUpdate.put("rejestracja", driver_carPlatesNumber.getText());
         if(!driver_VIN.getText().isEmpty())
             fieldsToUpdate.put("vin", driver_VIN.getText());
-        if(!driver_seatsAvailable.getText().isEmpty())
-            fieldsToUpdate.put("liczba_miejsc", driver_seatsAvailable.getText());
+        if(driver_seatsAvailable.getValue() != null)
+            fieldsToUpdate.put("liczba_miejsc", driver_seatsAvailable.getValue());
         if(!driver_insuranceNumber.getText().isEmpty())
             fieldsToUpdate.put("polisa", driver_insuranceNumber.getText());
         if(driver_insurancePolicyExpirationDate.getValue() != null)
@@ -225,70 +232,36 @@ public class DriverTabController implements Initializable {
     @FXML
     private void editDriverCarData()
     {
-        if(carInsuranceNumberCheckFlag || carVinCheckFlag || carPlatesCheckFlag || modelCheckFlag || carSeatsAvailableCheckFlag || brandCheckFlag) {
+        if(carInsuranceNumberCheckFlag || carVinCheckFlag || carPlatesCheckFlag || modelCheckFlag || brandCheckFlag) {
 
             if (ServerController.sendSelectRequest("CAR") != null) {
                 if(!checkIfEmptyCarUpdate()) {
                     int response = ServerController.sendUpdateRequest("CAR",getCarDataToUpdate());
-                    if(response == 1) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Udało się");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Pomyślnie zaktualizowano samochód");
-                        alert.showAndWait();
-                    } else if (response == 0) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Błąd");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Operacja aktualizacji danych samochodu zakończona niepowodzeniem");
-                        alert.showAndWait();
-                    }
+
+                    if(response == 1)
+                        Alerts.successAlert("Pomyślnie zaktualizowano samochód");
+                    else if (response == 0)
+                        Alerts.failureAlert("Operacja aktualizacji danych samochodu zakończona niepowodzeniem");
                 }
                 else
-                {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Błąd");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Wszystkie pola są puste");
-                    alert.showAndWait();
-                }
+                    Alerts.failureAlert("Wszystkie pola są puste");
             } else {
                 if(!checkIfEmptyCarAdd()) {
                     int response = ServerController.sendInsertRequest("CAR",getCarData());
-                    if(response == 1) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Udało się");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Pomyślnie dodano samochód");
-                        alert.showAndWait();
-                    } else if (response == 0) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Błąd");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Operacja dodania informacji o pojeździe zakończona niepowodzeniem");
-                        alert.showAndWait();
-                    }
+
+                    if(response == 1)
+                        Alerts.successAlert("Pomyślnie dodano samochód");
+                    else if (response == 0)
+                        Alerts.failureAlert("Operacja dodania informacji o pojeździe zakończona niepowodzeniem");
                 }
                 else
-                {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Błąd");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Proszę uzupełnić wszystkie pola");
-                    alert.showAndWait();
-                }
+                    Alerts.failureAlert("Proszę uzupełnić wszystkie pola");
             }
 
             clearCarFields();
         }
         else
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd");
-            alert.setHeaderText(null);
-            alert.setContentText("Proszę poprawić pola zaznaczone na czerwono");
-            alert.showAndWait();
-        }
+            Alerts.failureAlert("Proszę poprawić pola zaznaczone na czerwono");
     }
 
 
@@ -348,8 +321,10 @@ public class DriverTabController implements Initializable {
         if (option.get().equals(ButtonType.OK)) {
             int response = ServerController.sendDeleteRequest("LICENSE");
 
-            if(response == 1)
+            if(response == 1) {
                 Alerts.successAlert("Pomyślnie usunięto prawo jazdy");
+                seeActualDriverData();
+            }
             else if(response == 0)
                 Alerts.failureAlert("Operacja usunięcia prawa jazdy zakończona niepowodzeniem");
 
@@ -369,8 +344,10 @@ public class DriverTabController implements Initializable {
         if (option.get().equals(ButtonType.OK)) {
             int response = ServerController.sendDeleteRequest("CAR");
 
-            if(response == 1)
+            if(response == 1) {
                 Alerts.successAlert("Pomyślnie usunięto pojazd");
+                seeActualDriverData();
+            }
             else if(response == 0)
                 Alerts.failureAlert("Operacja usunięcia pojazdu zakończona niepowodzeniem ");
 
@@ -382,7 +359,6 @@ public class DriverTabController implements Initializable {
         driver_LicenceNumber.setText("");
         driver_dateOfIssueOfTheLicense.setValue(null);
         driver_expirationDateOfTheLicense.setValue(null);
-        driver_licenseCategory.getSelectionModel().clearSelection();
         driver_dateOfIssueOfTheLicense.setPromptText("Wybierz date wydania prawa jazdy");
         driver_expirationDateOfTheLicense.setPromptText("Wybierz date ważności prawa jazdy");
     }
@@ -393,7 +369,7 @@ public class DriverTabController implements Initializable {
         driver_carPlatesNumber.setText("");
         driver_insuranceNumber.setText("");
         driver_VIN.setText("");
-        driver_seatsAvailable.setText("");
+        driver_seatsAvailable.getValueFactory().setValue(1);
         driver_carPlatesNumber.setText("");
         driver_insurancePolicyExpirationDate.setValue(null);
         driver_insurancePolicyExpirationDate.setPromptText("Wybierz date wygaśnięcia polisy ubezpieczeniowej");
@@ -431,6 +407,39 @@ public class DriverTabController implements Initializable {
             {
                 carData[i].setText("Brak");
             }
+        }
+    }
+
+    private List<Object> getDriverData()
+    {
+        ArrayList<Object> list = new ArrayList<>();
+        list.add(ServerController.id);
+        list.add(Objects.requireNonNull(ServerController.sendSelectRequest("LICENSE")).get(0));
+        list.add(Objects.requireNonNull(ServerController.sendSelectRequest("CAR")).get(0));
+        return list;
+    }
+
+    @FXML
+    private void becomeDriver()
+    {
+        if(ServerController.sendSelectRequest("DRIVER") == null)
+        {
+            if(ServerController.sendSelectRequest("LICENSE") == null)
+            {
+                Alerts.failureAlert("Proszę uzupełnić informacje o prawie jazdy !");
+            }
+            else if(ServerController.sendSelectRequest("CAR") == null)
+            {
+                Alerts.failureAlert("Proszę uzupełnić informacje o pojeździe !");
+            }
+            else
+            {
+                ServerController.sendInsertRequest("DRIVER",getDriverData());
+                Alerts.successAlert("Operacja zarejestrowania konta jako kierowca zakończona sukcesem !");
+            }
+        }else
+        {
+            Alerts.failureAlert("Jesteś już zarejestrowany jako kierowca !");
         }
     }
 
@@ -520,23 +529,6 @@ public class DriverTabController implements Initializable {
     }
 
     @FXML
-    private void checkSeats() {
-        driver_seatsAvailable.addEventFilter(KeyEvent.ANY, event -> {
-            String currentText = driver_seatsAvailable.getText() + event.getCharacter();
-            if (currentText.length() > 50) {
-                driver_seatsAvailable.setStyle("-fx-border-color: red");
-                seatsAvailableFieldStringLengthValidationInfo.setVisible(true);
-                carSeatsAvailableCheckFlag = false;
-            }
-            else {
-                driver_seatsAvailable.setStyle("");
-                seatsAvailableFieldStringLengthValidationInfo.setVisible(false);
-                carSeatsAvailableCheckFlag = true;
-            }
-        });
-    }
-
-    @FXML
     private void checkInsurance() {
         driver_insuranceNumber.addEventFilter(KeyEvent.ANY, event -> {
             String currentText = driver_insuranceNumber.getText() + event.getCharacter();
@@ -572,7 +564,7 @@ public class DriverTabController implements Initializable {
                 || driver_carModel.getText().isEmpty()
                 || driver_carPlatesNumber.getText().isEmpty()
                 || driver_VIN.getText().isEmpty()
-                || driver_seatsAvailable.getText().isEmpty()
+                || driver_seatsAvailable.getValue() == null
                 || driver_insuranceNumber.getText().isEmpty()
                 || driver_insurancePolicyExpirationDate.getValue() == null;
     }
@@ -582,7 +574,7 @@ public class DriverTabController implements Initializable {
                 && driver_carModel.getText().isEmpty()
                 && driver_carPlatesNumber.getText().isEmpty()
                 && driver_VIN.getText().isEmpty()
-                && driver_seatsAvailable.getText().isEmpty()
+                && driver_seatsAvailable.getValue() == null
                 && driver_insuranceNumber.getText().isEmpty()
                 && driver_insurancePolicyExpirationDate.getValue() == null;
     }
@@ -591,5 +583,6 @@ public class DriverTabController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         licenceCategory();
+        seatsAvailableSpinner();
     }
 }

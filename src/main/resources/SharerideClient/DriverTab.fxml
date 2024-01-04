@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
@@ -52,20 +53,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </TextField>
-                  <TextField fx:id="driver_seatsAvailable" layoutX="40.0" layoutY="320.0" onKeyPressed="#checkSeats" onKeyReleased="#checkSeats" onKeyTyped="#checkSeats" prefHeight="40.0" prefWidth="412.0" promptText="Liczba dostępnych miejsc w pojeździe dla pasażerów" styleClass="textfield" stylesheets="@../formsDesign.css">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </TextField>
-                  <Button fx:id="diver_updateCarData" layoutX="73.0" layoutY="501.0" mnemonicParsing="false" onAction="#editDriverCarData" prefHeight="56.0" prefWidth="140.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Zaktualizuj Dane" textFill="#4dc3b7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="driver_deleteCarData" layoutX="273.0" layoutY="501.0" mnemonicParsing="false" onAction="#deleteCar" prefHeight="56.0" prefWidth="140.0" styleClass="deleteAcc-btn" stylesheets="@../profileDesign.css" text="Usuń Dane" textFill="#4dc3b7">
+                  <Button fx:id="diver_updateCarData" layoutX="111.0" layoutY="510.0" mnemonicParsing="false" onAction="#editDriverCarData" prefHeight="56.0" prefWidth="270.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Zaktualizuj Dane" textFill="#4dc3b7">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -108,6 +96,8 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
+                  <Spinner fx:id="driver_seatsAvailable" layoutX="40.0" layoutY="319.0" prefHeight="40.0" prefWidth="412.0" />
+                  <Label layoutX="49.0" layoutY="331.0" styleClass="label-spinner" text="Liczba dostępnych miejsc: " />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="470.0" prefWidth="470.0" stylesheets="@../dashBoardDesign.css" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="520.0" AnchorPane.topAnchor="10.0">
@@ -127,15 +117,7 @@
                      </font>
                   </Label>
                   <ComboBox fx:id="driver_licenseCategory" layoutX="35.0" layoutY="260.0" minHeight="30.0" prefHeight="40.0" prefWidth="412.0" promptText="Kategoria Prawa Jazdy" styleClass="combo-box" stylesheets="@../profileDesign.css" />
-                  <Button fx:id="driver_updateLicenseBtn" layoutX="62.0" layoutY="385.0" mnemonicParsing="false" onAction="#editDriverLicenceData" prefHeight="56.0" prefWidth="140.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Zaktualizuj Dane" textFill="#4dc3b7">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="driver_deleteLicenseBtn" layoutX="265.0" layoutY="385.0" mnemonicParsing="false" onAction="#deleteLicense" prefHeight="56.0" prefWidth="140.0" styleClass="deleteAcc-btn" stylesheets="@../profileDesign.css" text="Usuń Dane" textFill="#4dc3b7">
+                  <Button fx:id="driver_updateLicenseBtn" layoutX="106.0" layoutY="380.0" mnemonicParsing="false" onAction="#editDriverLicenceData" prefHeight="56.0" prefWidth="270.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Zaktualizuj Dane" textFill="#4dc3b7">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -160,13 +142,29 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="10.0" layoutY="496.0" maxHeight="299.0" minHeight="71.0" prefHeight="90.0" prefWidth="470.0" stylesheets="@../dashBoardDesign.css" AnchorPane.bottomAnchor="10.0">
+            <AnchorPane layoutX="10.0" layoutY="496.0" maxHeight="299.0" minHeight="71.0" prefHeight="90.0" prefWidth="221.0" stylesheets="@../dashBoardDesign.css" AnchorPane.bottomAnchor="10.0">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="white-bg" />
                </styleClass>
                <children>
-                  <Button fx:id="driver_seeActualData" layoutX="62.0" layoutY="17.0" mnemonicParsing="false" onAction="#seeDriverActualData" prefHeight="56.0" prefWidth="346.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Zobacz aktualne dane" textFill="#4dc3b7">
+                  <Button fx:id="driver_seeActualData" layoutX="21.0" layoutY="17.0" mnemonicParsing="false" onAction="#seeDriverActualData" prefHeight="56.0" prefWidth="179.0" styleClass="seeActualData" stylesheets="@../profileDesign.css" text="Zobacz Aktualne Dane" textFill="#4dc3b7">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="259.0" layoutY="500.0" maxHeight="299.0" minHeight="71.0" prefHeight="90.0" prefWidth="221.0" stylesheets="@../dashBoardDesign.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="white-bg" />
+               </styleClass>
+               <children>
+                  <Button fx:id="driver_seeActualData1" layoutX="21.0" layoutY="17.0" mnemonicParsing="false" onAction="#becomeDriver" prefHeight="56.0" prefWidth="179.0" styleClass="becomeDriver" stylesheets="@../profileDesign.css" text="Zostań Kierowcą !" textFill="#4dc3b7">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -263,6 +261,14 @@
                   </Label>
                   <Line endX="310.0" layoutX="141.0" layoutY="380.0" opacity="0.2" startX="-103.0" startY="-3.0" />
                   <Circle fill="#3a7bd5" layoutX="20.0" layoutY="362.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+                  <Button fx:id="driver_deleteLicenseBtn" layoutX="175.0" layoutY="400.0" mnemonicParsing="false" onAction="#deleteLicense" prefHeight="56.0" prefWidth="140.0" styleClass="deleteAcc-btn" stylesheets="@../profileDesign.css" text="Usuń Dane" textFill="#4dc3b7">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="10.0" layoutY="496.0" maxHeight="299.0" minHeight="71.0" prefHeight="90.0" prefWidth="490.0" stylesheets="@../dashBoardDesign.css" AnchorPane.bottomAnchor="10.0">
@@ -271,7 +277,7 @@
                   <String fx:value="white-bg" />
                </styleClass>
                <children>
-                  <Button fx:id="driver_editDriverData" layoutX="62.0" layoutY="17.0" mnemonicParsing="false" onAction="#seeEditDriverData" prefHeight="56.0" prefWidth="346.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Edytuj Dane Kierowcy" textFill="#4dc3b7">
+                  <Button fx:id="driver_editDriverData" layoutX="62.0" layoutY="17.0" mnemonicParsing="false" onAction="#seeEditDriverData" prefHeight="56.0" prefWidth="361.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Edytuj Dane Kierowcy" textFill="#4dc3b7">
                      <font>
                         <Font name="Arial" size="12.0" />
                      </font>
@@ -376,6 +382,14 @@
                   </Label>
                   <Line endX="310.0" layoutX="140.0" layoutY="435.0" opacity="0.2" startX="-103.0" startY="-3.0" />
                   <Circle fill="#3a7bd5" layoutX="19.0" layoutY="417.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+                  <Button fx:id="driver_deleteCarData" layoutX="167.0" layoutY="510.0" mnemonicParsing="false" onAction="#deleteCar" prefHeight="56.0" prefWidth="140.0" styleClass="deleteAcc-btn" stylesheets="@../profileDesign.css" text="Usuń Dane" textFill="#4dc3b7">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

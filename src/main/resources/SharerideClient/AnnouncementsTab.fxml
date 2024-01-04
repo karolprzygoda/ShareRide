@@ -1,11 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="580.0" prefWidth="980.0" stylesheets="@../dashBoardDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="580.0" prefWidth="980.0" stylesheets="@../dashBoardDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SharerideClient.AnnouncementsTabController">
    <styleClass>
       <String fx:value="shadow" />
       <String fx:value="white-bg" />
    </styleClass>
+   <children>
+      <TableView fx:id="AnnoucementsTableView" layoutX="24.0" layoutY="54.0" prefHeight="285.0" prefWidth="960.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <columns>
+            <TableColumn fx:id="produkty_idProdutku2" prefWidth="140.0" text="ID" />
+            <TableColumn fx:id="produkty_idProdutku" prefWidth="140.0" text="Stacja Początkowa" />
+            <TableColumn fx:id="produkty_NazwaProduktu" prefWidth="161.0" text="Stacja Końcowa" />
+            <TableColumn fx:id="produkty_Producent" prefWidth="158.0" text="Data Wyjazdu" />
+            <TableColumn fx:id="produkty_Cena" prefWidth="173.0" text="Liczba Wolnych Miejsc" />
+            <TableColumn fx:id="produkty_DataProdukcji" prefWidth="166.0" text="Data Dodania Ogłoszenia" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TableView fx:id="PassengersTable" layoutX="10.0" layoutY="350.0" prefHeight="220.0" prefWidth="310.0">
+         <columns>
+            <TableColumn fx:id="NameColumn" prefWidth="100.0" text="Imie " />
+            <TableColumn fx:id="LastNameColumn" prefWidth="200.0" text="Nazwisko" />
+            <TableColumn fx:id="AgeColumn" prefWidth="141.0" text="Wiek" />
+            <TableColumn fx:id="MailColumn" prefWidth="200.0" text="Adres Mailowy" />
+            <TableColumn fx:id="PhoneNumberColumn" prefWidth="100.0" text="Numer Telefonu" />
+            <TableColumn fx:id="RidesCountColumn" prefWidth="116.0" text="Liczba Przejazdów" />
+            <TableColumn fx:id="AVGRatingColumn" prefWidth="101.0" text="Ocena" />
+         </columns>
+      </TableView>
+      <AnchorPane layoutX="335.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="310.0" stylesheets="@../dashBoardDesign.css">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" styleClass="info-label" text="Informacje o Kierowcy">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="56.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="32.0" layoutY="46.0" text="Imię: ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="118.0" layoutY="70.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="87.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="32.0" layoutY="77.0" text="Nazwisko:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="118.0" layoutY="101.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="116.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="32.0" layoutY="106.0" text="Adres Mailowy:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="118.0" layoutY="127.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="145.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="31.0" layoutY="135.0" text="Data Wydania Prawa Jazdy:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="118.0" layoutY="159.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="175.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="31.0" layoutY="164.0" text="Kategoria Prawa Jazdy">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="119.0" layoutY="188.0" opacity="0.2" startX="-103.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="656.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="310.0" stylesheets="@../dashBoardDesign.css" AnchorPane.rightAnchor="10.0">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" styleClass="info-label" text="Informacje o Pojeździe">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="56.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="32.0" layoutY="46.0" text="Marka:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="118.0" layoutY="70.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="87.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="32.0" layoutY="77.0" text="Model:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="118.0" layoutY="101.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="116.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="32.0" layoutY="106.0" text="Numer Rejestracyjny:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="118.0" layoutY="127.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="145.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="31.0" layoutY="135.0" text="VIN:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="118.0" layoutY="159.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="175.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="31.0" layoutY="164.0" text="Liczba Miejsc:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="119.0" layoutY="188.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="19.0" layoutY="203.0" radius="5.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label layoutX="31.0" layoutY="193.0" text="Data Wygaśnięcia Polisy:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Line endX="180.0" layoutX="119.0" layoutY="215.0" opacity="0.2" startX="-103.0" />
+         </children>
+      </AnchorPane>
+      <TextField layoutX="14.0" layoutY="10.0" prefHeight="30.0" promptText="Stacja Początkowa" styleClass="text-field" stylesheets="@../dashBoardDesign.css" />
+      <TextField layoutX="176.0" layoutY="10.0" prefHeight="30.0" promptText="Stacja Końcowa" />
+      <DatePicker layoutX="341.0" layoutY="10.0" prefHeight="30.0" prefWidth="149.0" promptText="Data Wyjazdu" styleClass="date-picker" stylesheets="@../formsDesign.css" />
+      <TextField layoutX="503.0" layoutY="10.0" prefHeight="30.0" promptText="Liczba Wolnych Miejsc" styleClass="text-field" />
+      <Button layoutX="666.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" styleClass="updateAcc-btn" stylesheets="@../profileDesign.css" text="Wyszukaj" textFill="#4dc3b7">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="829.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" styleClass="becomeDriver" stylesheets="@../dashBoardDesign.css" text="Dodaj ogłoszenie" textFill="#4dc3b7">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Line endX="180.0" layoutX="635.0" layoutY="5.0" opacity="0.2" startX="180.0" startY="40.0" />
+   </children>
 </AnchorPane>
