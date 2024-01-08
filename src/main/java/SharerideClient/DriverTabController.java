@@ -1,5 +1,9 @@
 package SharerideClient;
 
+import Data.DriverData;
+import Data.LicenseData;
+import Data.UserData;
+import Data.VehicleData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import java.net.URL;
+import java.sql.Date;
 import java.util.*;
 
 public class DriverTabController implements Initializable {
@@ -127,8 +132,6 @@ public class DriverTabController implements Initializable {
     @FXML
     private Label seatsAvailableFieldStringLengthValidationInfo;
 
-    private SpinnerValueFactory<Integer> spinner;
-
     @FXML
     private AnchorPane seeActualDataPane;
 
@@ -137,7 +140,7 @@ public class DriverTabController implements Initializable {
     private final String[] licenseType = {"AM", "A1", "A2", "A", "B1", "B", "C1", "C", "D1", "D", "BE", "C1E", "CE", "D1E", "DE", "T"};
 
     public void seatsAvailableSpinner() {
-        spinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 55, 1);
+        SpinnerValueFactory<Integer> spinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 55, 1);
         driver_seatsAvailable.setValueFactory(spinner);
     }
 
@@ -166,29 +169,28 @@ public class DriverTabController implements Initializable {
         editDriverDataPane.setVisible(true);
     }
 
-    private ArrayList<Object> getLicenseData()
+    private LicenseData getLicenseData()
     {
-        ArrayList<Object> list = new ArrayList<>();
-        list.add(ServerController.id);
-        list.add(driver_LicenceNumber.getText());
-        list.add(driver_dateOfIssueOfTheLicense.getValue());
-        list.add(driver_expirationDateOfTheLicense.getValue());
-        list.add(driver_licenseCategory.getValue());
-        return list;
+
+        return new LicenseData(ServerController.id,
+                             driver_LicenceNumber.getText(),
+                             Date.valueOf(driver_dateOfIssueOfTheLicense.getValue()),
+                             Date.valueOf(driver_expirationDateOfTheLicense.getValue()),
+                             driver_licenseCategory.getValue());
     }
 
-    private ArrayList<Object> getCarData()
+    private VehicleData getCarData()
     {
-        ArrayList<Object> list = new ArrayList<>();
-        list.add(ServerController.id);
-        list.add(driver_carBrand.getText());
-        list.add(driver_carModel.getText());
-        list.add(driver_carPlatesNumber.getText());
-        list.add(driver_VIN.getText());
-        list.add(driver_seatsAvailable.getValue());
-        list.add(driver_insuranceNumber.getText());
-        list.add(driver_insurancePolicyExpirationDate.getValue());
-        return list;
+
+
+        return new VehicleData(ServerController.id,
+                driver_carBrand.getText(),
+                driver_carModel.getText(),
+                driver_carPlatesNumber.getText(),
+                driver_VIN.getText(),
+                driver_seatsAvailable.getValue(),
+                driver_insuranceNumber.getText(),
+                Date.valueOf(driver_insurancePolicyExpirationDate.getValue()));
     }
 
     private Map<String, Object> getLicenseDataToUpdate()
@@ -207,26 +209,26 @@ public class DriverTabController implements Initializable {
         return fieldsToUpdate;
     }
 
-    private Map<String, Object> getCarDataToUpdate()
+    private VehicleData getCarDataToUpdate()
     {
-        Map<String, Object> fieldsToUpdate = new HashMap<>();
+        VehicleData vehicleData = new VehicleData();
 
         if(!driver_carBrand.getText().isEmpty())
-            fieldsToUpdate.put("marka", driver_carBrand.getText());
+            vehicleData.setVehicleBrand(driver_carBrand.getText());
         if(!driver_carModel.getText().isEmpty())
-            fieldsToUpdate.put("model", driver_carModel.getText());
+            vehicleData.setVehicleModel(driver_carModel.getText());
         if(!driver_carPlatesNumber.getText().isEmpty())
-            fieldsToUpdate.put("rejestracja", driver_carPlatesNumber.getText());
+            vehicleData.setVehiclePlates(driver_carPlatesNumber.getText());
         if(!driver_VIN.getText().isEmpty())
-            fieldsToUpdate.put("vin", driver_VIN.getText());
+             vehicleData.setVehicleVin(driver_VIN.getText());
         if(driver_seatsAvailable.getValue() != null)
-            fieldsToUpdate.put("liczba_miejsc", driver_seatsAvailable.getValue());
+            vehicleData.setAvailableSeats(driver_seatsAvailable.getValue());
         if(!driver_insuranceNumber.getText().isEmpty())
-            fieldsToUpdate.put("polisa", driver_insuranceNumber.getText());
+            vehicleData.setInsuranceNumber(driver_insuranceNumber.getText());
         if(driver_insurancePolicyExpirationDate.getValue() != null)
-            fieldsToUpdate.put("data_wygasniecia_polisy", driver_insurancePolicyExpirationDate.getValue());
+            vehicleData.setInsuranceExpirationDate(Date.valueOf(driver_insurancePolicyExpirationDate.getValue()));
 
-        return fieldsToUpdate;
+        return vehicleData;
     }
 
     @FXML
@@ -234,7 +236,9 @@ public class DriverTabController implements Initializable {
     {
         if(carInsuranceNumberCheckFlag || carVinCheckFlag || carPlatesCheckFlag || modelCheckFlag || brandCheckFlag) {
 
-            if (ServerController.sendSelectRequest("CAR") != null) {
+            VehicleData vehicleData = (VehicleData) ServerController.sendSelectRequest("CAR");
+
+            if (vehicleData != null) {
                 if(!checkIfEmptyCarUpdate()) {
                     int response = ServerController.sendUpdateRequest("CAR",getCarDataToUpdate());
 
@@ -271,7 +275,9 @@ public class DriverTabController implements Initializable {
 
         if(licenseCheckFlag) {
 
-            if (ServerController.sendSelectRequest("LICENSE") != null) {
+            LicenseData licenseData = (LicenseData) ServerController.sendSelectRequest("LICENSE");
+
+            if (licenseData != null) {
                 if(!checkIfEmptyLicenseUpdate()) {
                     int response = ServerController.sendUpdateRequest("LICENSE",getLicenseDataToUpdate() );
 
@@ -379,56 +385,76 @@ public class DriverTabController implements Initializable {
     @FXML
     private void seeActualDriverData(){
 
-        List<String> profileInfo = ServerController.sendSelectRequest("USER");
-        List<String> licenseInfo = ServerController.sendSelectRequest("LICENSE");
-        List<String> carInfo = ServerController.sendSelectRequest("CAR");
         Label[] licenseData = {driver_licenseIDLabel, driver_dateOfIssueLabel, driver_expirationDateOfTheLicenseLabel, driver_licenseCategoryLabel};
         Label[] carData = {carBrandLabel, carModelLabel, carPlatesLabel, carVinLabel, carSeatsAvailableLabel, carInsuranceLabel, carInsurancePolicyExpirationDate};
-        assert profileInfo != null;
-        assert licenseInfo != null;
-        assert carInfo != null;
-        driver_nameLabel.setText(profileInfo.get(0));
-        driver_lastNameLabel.setText(profileInfo.get(1));
 
-        for(int i = 0; i<licenseData.length; i++)
+        LicenseData license = (LicenseData) ServerController.sendSelectRequest("LICENSE");
+        VehicleData vehicle = (VehicleData) ServerController.sendSelectRequest("CAR");
+        UserData user = (UserData) ServerController.sendSelectRequest("USER");
+
+        assert user != null;
+        driver_nameLabel.setText(user.getName());
+        driver_lastNameLabel.setText(user.getLastName());
+
+        if(license == null)
         {
-            try {
-                licenseData[i].setText(licenseInfo.get(i + 1));
-            }catch (RuntimeException e)
-            {
-                licenseData[i].setText("Brak");
+            for (Label label: licenseData) {
+                label.setText("Brak");
             }
         }
-        for(int i = 0; i<carData.length; i++)
+        else {
+            driver_licenseIDLabel.setText(String.valueOf(license.getLicenseNumber()));
+            driver_dateOfIssueLabel.setText(String.valueOf(license.getDateOfIssueOfTheLicense()));
+            driver_expirationDateOfTheLicenseLabel.setText(String.valueOf(license.getExpirationDateOfTheLicense()));
+            driver_licenseCategoryLabel.setText(license.getLicenseCategory());
+        }
+
+        if(vehicle == null)
         {
-            try {
-                carData[i].setText(carInfo.get(i + 1));
-            }catch (RuntimeException e)
-            {
-                carData[i].setText("Brak");
+            for (Label label: carData) {
+                label.setText("Brak");
             }
         }
+        else
+        {
+            carBrandLabel.setText(vehicle.getVehicleBrand());
+            carModelLabel.setText(vehicle.getVehicleModel());
+            carPlatesLabel.setText(vehicle.getVehiclePlates());
+            carVinLabel.setText(vehicle.getVehicleVin());
+            carSeatsAvailableLabel.setText(String.valueOf(vehicle.getAvailableSeats()));
+            carInsuranceLabel.setText(vehicle.getInsuranceNumber());
+            carInsurancePolicyExpirationDate.setText(String.valueOf(vehicle.getInsuranceExpirationDate()));
+        }
+
     }
 
-    private List<Object> getDriverData()
+    private DriverData getDriverData()
     {
-        ArrayList<Object> list = new ArrayList<>();
-        list.add(ServerController.id);
-        list.add(Objects.requireNonNull(ServerController.sendSelectRequest("LICENSE")).get(0));
-        list.add(Objects.requireNonNull(ServerController.sendSelectRequest("CAR")).get(0));
-        return list;
+        VehicleData vehicleData = (VehicleData) ServerController.sendSelectRequest("CAR");
+        LicenseData licenseData = (LicenseData) ServerController.sendSelectRequest("LICENSE");
+
+        assert licenseData != null;
+        assert vehicleData != null;
+        return new DriverData(ServerController.id,
+                                               licenseData.getId(),
+                                                vehicleData.getId());
+
     }
 
     @FXML
     private void becomeDriver()
     {
-        if(ServerController.sendSelectRequest("DRIVER") == null)
+        DriverData driverData = (DriverData) ServerController.sendSelectRequest("DRIVER");
+        LicenseData licenseData = (LicenseData) ServerController.sendSelectRequest("LICENSE");
+        VehicleData vehicleData = (VehicleData) ServerController.sendSelectRequest("CAR");
+
+        if(driverData == null)
         {
-            if(ServerController.sendSelectRequest("LICENSE") == null)
+            if(licenseData == null)
             {
                 Alerts.failureAlert("Proszę uzupełnić informacje o prawie jazdy !");
             }
-            else if(ServerController.sendSelectRequest("CAR") == null)
+            else if(vehicleData == null)
             {
                 Alerts.failureAlert("Proszę uzupełnić informacje o pojeździe !");
             }

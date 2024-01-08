@@ -1,5 +1,6 @@
 package SharerideClient;
 
+import Data.UserData;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +12,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -209,20 +209,20 @@ public class RegisterFormController {
         }
     }
 
-    private ArrayList<Object> getRegisterData()
+    private UserData getRegisterData()
     {
         Date currentDate = new Date();
         java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
-        ArrayList<Object> list = new ArrayList<>();
-        list.add(register_nameTextField.getText());
-        list.add(register_lastNameTextField.getText());
-        list.add(register_mailTextField.getText());
-        list.add(register_phoneNumberTextField.getText());
-        list.add("Wole nie podawać");
-        list.add(register_datePickerTextField.getValue());
-        list.add(register_passwordTextField.getText());
-        list.add(sqlDate);
-        return list;
+
+        return new UserData(register_nameTextField.getText(),
+                            register_lastNameTextField.getText(),
+                            register_mailTextField.getText(),
+                            java.sql.Date.valueOf( register_datePickerTextField.getValue()),
+                            sqlDate,
+                            register_passwordTextField.getText(),
+                            register_phoneNumberTextField.getText(),
+                            "Wole nie podawać");
+
     }
 
     /**

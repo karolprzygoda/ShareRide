@@ -1,12 +1,10 @@
 package SharerideClient;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import Data.UserData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,7 +18,7 @@ public class AnnouncementsTabController  implements Initializable {
     private TableColumn<Object, Object> AgeColumn;
 
     @FXML
-    private TableView<Person> PassengersTable;
+    private TableView<UserData> PassengersTable;
 
     @FXML
     private TableColumn<Object, Object> LastNameColumn;
@@ -41,7 +39,7 @@ public class AnnouncementsTabController  implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
 
-        NameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        /*NameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         LastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         MailColumn.setCellValueFactory(new PropertyValueFactory<>("mail"));
         AgeColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
@@ -49,14 +47,16 @@ public class AnnouncementsTabController  implements Initializable {
         RidesCountColumn.setCellValueFactory(new PropertyValueFactory<>("ridesCount"));
         AVGRatingColumn.setCellValueFactory(new PropertyValueFactory<>("avgRating"));
 
-        Person samplePerson = new Person("John", "Doe", "john@example.com", 30, "123456789", 10, 4.5);
+        //UserData samplePerson = new UserData(1,"John", "Doe", "john@example.com", 30, "123456789", "Male",10, 4.5);
 
         // Tworzymy listę zawierającą ten rekord
-        ObservableList<Person> data = FXCollections.observableArrayList();
-        data.add(samplePerson);
+        ObservableList<UserData> data = FXCollections.observableArrayList();
+        //data.add(samplePerson);
 
         // Ustawiamy dane w TableView
         PassengersTable.setItems(data);
+
+         */
     }
 
 }

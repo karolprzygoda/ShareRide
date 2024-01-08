@@ -109,7 +109,7 @@ public class FormsContainerController implements Initializable {
      */
     @FXML
     private void close() throws IOException {
-        FormsContainer.socket.close();
+        ServerController.sendDisconnectRequest();
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
     }

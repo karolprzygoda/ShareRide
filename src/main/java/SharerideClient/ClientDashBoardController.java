@@ -1,5 +1,6 @@
 package SharerideClient;
 
+import Data.UserData;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -214,7 +215,7 @@ public class ClientDashBoardController implements Initializable {
      */
     @FXML
     private void close() throws IOException {
-        FormsContainer.socket.close();
+        ServerController.sendDisconnectRequest();
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
     }
@@ -419,9 +420,9 @@ public class ClientDashBoardController implements Initializable {
 
         try {
 
-            String name = Objects.requireNonNull(ServerController.sendSelectRequest("USER")).get(0);
+            UserData userData = (UserData) ServerController.sendSelectRequest("USER");
 
-            helloClientNameLabel.setText(name);
+            helloClientNameLabel.setText(userData.getName());
 
             UserProfileTabView userProfileTabView = new UserProfileTabView();
             AnnouncementsTabView announcementsTabView = new AnnouncementsTabView();

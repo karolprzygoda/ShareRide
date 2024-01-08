@@ -6,4 +6,6 @@ module SharerideClient {
 
     opens SharerideClient to javafx.fxml;
     exports SharerideClient;
+    exports Data;
+    opens Data to javafx.fxml;
 }

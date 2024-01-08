@@ -1,9 +1,9 @@
 package SharerideClient;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
+
+import static SharerideClient.FormsContainer.*;
 
 /**
  * Kontroler zarządzający połączeniem z serwerem
@@ -30,15 +30,14 @@ public class ServerController {
     static protected int sendLoginRequest(String mail, String password)
     {
         try{
-            PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
-            Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
-            out.println("LOGIN");
-            out.println(mail);
-            out.println(password);
+            out.writeObject("LOGIN");
+            out.writeObject(mail);
+            out.writeObject(password);
+            out.flush();
 
-            boolean serverFeedBack = scanner.nextBoolean();
+            boolean serverFeedBack = input.readBoolean();
             if(serverFeedBack) {
-                id = scanner.nextInt();
+                id = input.readInt();
             }
 
             if(serverFeedBack)
@@ -53,63 +52,43 @@ public class ServerController {
 
         }catch (IOException  | RuntimeException e)
         {
+            e.printStackTrace();
             Alerts.failureAlert("Serwer napotkał problem");
             return -1;
         }
     }
-    static protected List<String> sendSelectRequest(String field)
+
+    static protected Object sendSelectRequest(String field)
     {
 
-        List<String> info = new ArrayList<>();
         try{
 
-            PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
-            out.println("SELECT");
-            out.println(field);
-            out.println(id);
-            Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
+            out.writeObject("SELECT");
+            out.writeObject(field);
+            out.writeInt(id);
+            out.flush();
 
-            if(scanner.hasNextLine())
-            {
-                int size = Integer.parseInt(scanner.nextLine());
+            return input.readObject();
 
-                if(size < 1)
-                {
-                    return null;
-                }
-                else {
 
-                    for (int i = 0; i < size; i++) {
-                        info.add((scanner.nextLine()));
-                    }
-
-                    return info;
-                }
-            }
-            else {
-                Alerts.failureAlert("Serwer napotkał problem");
-                return null;
-            }
-        }catch (IOException e )
+        }catch (IOException | ClassNotFoundException e )
         {
+            e.printStackTrace();
             Alerts.failureAlert("Serwer napotkał problem");
             return null;
         }
     }
-    static protected int sendInsertRequest(String field,List<Object> values)
+    static protected int sendInsertRequest(String field,Object object)
     {
 
         try{
 
-            PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
-            Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
-            out.println("INSERT");
-            out.println(field);
-            out.println(values.size());
-            for (Object elements:values) {
-                out.println(elements);
-            }
-            boolean response = scanner.nextBoolean();
+            out.writeObject("INSERT");
+            out.writeObject(field);
+            out.writeObject(object);
+            out.flush();
+
+            boolean response = input.readBoolean();
 
             if(response)
             {
@@ -126,21 +105,16 @@ public class ServerController {
             return -1;
         }
     }
-    static protected int  sendUpdateRequest(String field,Map<String, Object> fieldsToUpdate)
+    static protected int  sendUpdateRequest(String field,Object object)
     {
         try{
-            PrintWriter out = new PrintWriter(new OutputStreamWriter(FormsContainer.socket.getOutputStream()), true);
-            Scanner scanner = new Scanner(FormsContainer.socket.getInputStream());
-            out.println("UPDATE");
-            out.println(field);
-            out.println(id);
-            out.println(fieldsToUpdate.size());
-            for(Map.Entry<String, Object> entry : fieldsToUpdate.entrySet())
-            {
-                out.println(entry.getKey());
-                out.println(entry.getValue());
-            }
-            boolean response = scanner.nextBoolean();
+
+            out.writeObject("UPDATE");
+            out.writeObject(field);
+            out.writeInt(id);
+            out.writeObject(object);
+
+            boolean response = input.readBoolean();
             if(response)
             {
                 return 1;
@@ -180,4 +154,23 @@ public class ServerController {
             return -1;
         }
     }
+
+    static protected void sendDisconnectRequest() {
+        try {
+            if (out != null) {
+                out.writeObject("DISCONNECT");
+                out.flush();
+                out.close();
+            }
+            if (input != null) {
+                input.close();
+            }
+            if (socket != null && !socket.isClosed()) {
+                socket.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

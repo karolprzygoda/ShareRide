@@ -8,6 +8,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
@@ -25,6 +27,10 @@ public class FormsContainer extends Application {
     private double x = 0;
     private double y = 0;
     public static Socket socket;
+
+    public static ObjectOutputStream out;
+
+    public static ObjectInputStream input;
 
     /**
      * Metoda start.
@@ -66,6 +72,8 @@ public class FormsContainer extends Application {
         try {
             socket = new Socket();
             socket.connect(new InetSocketAddress("localhost", 5000));//tworzenie połączenia z serwerem
+            out = new ObjectOutputStream(socket.getOutputStream());
+            input= new ObjectInputStream(socket.getInputStream());
         } catch (Exception e) {//jeżeli serwer nie jest uruchomiony lub nie udało się utworzyć połączenia
             Alerts.failureAlert("Serwer napotkał problem");
             stage.close();

@@ -1,5 +1,7 @@
 package SharerideClient;
 
+import Data.DriverData;
+import Data.UserData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,7 +28,7 @@ public class UserProfileController implements Initializable {
 
     /**
      * Pole wyświetlające date urodzenia użytkownika
-     * @see UserProfileController#updateInfo()
+     * @see UserProfileController#selectUserData()
      */
     @FXML
     private Label birthDateLabel;
@@ -39,42 +41,42 @@ public class UserProfileController implements Initializable {
 
     /**
      * Pole wyświetlające płeć użytkownika
-     * @see UserProfileController#updateInfo()
+     * @see UserProfileController#selectUserData()
      */
     @FXML
     private Label genderLabel;
 
     /**
      * Pole wyświetlające date zarejestrowania konta przez użytkownika
-     * @see UserProfileController#updateInfo()
+     * @see UserProfileController#selectUserData()
      */
     @FXML
     private Label joinDateLabel;
 
     /**
      * Pole wyświetlające nazwisko użytkownika
-     * @see UserProfileController#updateInfo()
+     * @see UserProfileController#selectUserData()
      */
     @FXML
     private Label lastNameLabel;
 
     /**
      * Pole wyświetlające adres mailowy użytkownika
-     * @see UserProfileController#updateInfo()
+     * @see UserProfileController#selectUserData()
      */
     @FXML
     private Label mailLabel;
 
     /**
      * Pole wyświetlające imię użytkownika
-     * @see UserProfileController#updateInfo()
+     * @see UserProfileController#selectUserData()
      */
     @FXML
     private Label nameLabel;
 
     /**
      * Pole wyświetlające numer telefonu użytkownika
-     * @see UserProfileController#updateInfo()
+     * @see UserProfileController#selectUserData()
      */
     @FXML
     private Label phoneNumberLabel;
@@ -453,21 +455,23 @@ public class UserProfileController implements Initializable {
      * @see UserProfileController#initialize(URL, ResourceBundle)
      * @author Karol Przygoda, Radosław Jasiński, Jakub Kotwica
      */
-    private void updateInfo()
+    private void selectUserData()
     {
+
         try {
 
-            List<String> info;
-            info = ServerController.sendSelectRequest("USER");
-            assert info != null;
-            nameLabel.setText(info.get(0));
-            lastNameLabel.setText(info.get(1));
-            genderLabel.setText(info.get(4));
-            mailLabel.setText(info.get(2));
-            phoneNumberLabel.setText(info.get(3));
-            birthDateLabel.setText(info.get(5));
-            joinDateLabel.setText(info.get(6));
-            if(ServerController.sendSelectRequest("DRIVER") != null)
+            UserData user = (UserData) ServerController.sendSelectRequest("USER");
+            DriverData driverData = (DriverData) ServerController.sendSelectRequest("DRIVER");
+
+            assert user != null;
+            nameLabel.setText(user.getName());
+            lastNameLabel.setText(user.getLastName());
+            genderLabel.setText(user.getGender());
+            mailLabel.setText(user.getMail());
+            phoneNumberLabel.setText(user.getPhoneNumber());
+            birthDateLabel.setText(user.getBirthDate().toString());
+            joinDateLabel.setText(user.getRegisterDate().toString());
+            if(driverData != null)
             {
                 driverStatusLabel.setText("Aktywny");
             }
@@ -479,6 +483,7 @@ public class UserProfileController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     /**
@@ -492,7 +497,7 @@ public class UserProfileController implements Initializable {
      * {@linkplain UserProfileController#checkLastName()} {@linkplain UserProfileController#checkPhoneNumber()}, jeżeli
      * wszystkie warunki zostaną spełnione metoda tworzy mapę kolumn, które użytkownik chce zaktualizować oraz wartości, na jakie chce je zaktualizować
      * Ostatnim etapem rejestracji jest wysłanie danych do serwera oraz odebranie z niego informacji zwrotnej
-     * do wyświetlenia zaktualizowanych danych służy metoda {@linkplain UserProfileController#updateInfo()}.
+     * do wyświetlenia zaktualizowanych danych służy metoda {@linkplain UserProfileController#selectUserData()}.
      * @see ServerController
      * @see ServerController#sendUpdateInfoToServer(int, Map )
      * @author Karol Przygoda
@@ -525,11 +530,13 @@ public class UserProfileController implements Initializable {
 
             int response = ServerController.sendUpdateRequest("USER", fieldsToUpdate);
             if (response == 1) {
-                String name = Objects.requireNonNull(ServerController.sendSelectRequest("USER")).get(0);
 
-                updateInfo();
+                UserData userData = (UserData) ServerController.sendSelectRequest("USER");
 
-                ClientDashBoardView.clientDashBoardController.helloClientNameLabel.setText(name);
+                selectUserData();
+
+                assert userData != null;
+                ClientDashBoardView.clientDashBoardController.helloClientNameLabel.setText(userData.getName());
                 Alerts.successAlert("Pomyślnie zaktualizowano dane użytkownika");
             } else if (response == 0)
                 Alerts.failureAlert("Operacja aktualizacji danych użytkownika zakończona niepowodzeniem");
@@ -592,7 +599,7 @@ public class UserProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
         gender();
-        updateInfo();
+        selectUserData();
     }
 
 }
