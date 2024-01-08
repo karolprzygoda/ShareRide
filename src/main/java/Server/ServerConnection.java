@@ -1,10 +1,10 @@
 package Server;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.*;
 
 public class ServerConnection {
     private final Logs log = new Logs("Server");
@@ -19,9 +19,11 @@ public class ServerConnection {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
+                ObjectInputStream input = new ObjectInputStream(clientSocket.getInputStream());
+                ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
                 log.writeLog("New connection: " + clientSocket.getInetAddress().getHostAddress());
 
-                new Thread(()-> handleClient(clientSocket)).start();//obsługa nowego klienta w osobnym wątku
+                new Thread(()-> handleClient(clientSocket,input,out)).start();//obsługa nowego klienta w osobnym wątku
 
             }
         } catch (IOException e) {
@@ -39,31 +41,40 @@ public class ServerConnection {
      * @param postgreSQLInitialization obiekt klasy {@linkplain PostgreSQLInitialization} używany do wywołania odpowiedniej metody rejestracji lub logowania
      * @author Karol Przygoda
      */
-    private static void handleClient(Socket clientSocket) {
+    private static void handleClient(Socket clientSocket,ObjectInputStream input, ObjectOutputStream out) {
         try {
 
-                Scanner scanner = new Scanner(clientSocket.getInputStream());
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(),true);
-
-                while (scanner.hasNextLine()) {
-                    String type = scanner.nextLine();
+                while (!clientSocket.isClosed()) {
+                    String type = (String) input.readObject();
 
                     switch (type) {
-                        case "LOGIN" -> LoginCommand.execute(scanner,out);
-                        case "SELECT" -> SelectCommand.execute(scanner, out);
-                        case "UPDATE" -> UpdateCommand.execute(scanner, out);
-                        case "DELETE" -> DeleteCommand.execute(scanner, out);
-                        case "INSERT" -> InsertCommand.execute(scanner, out);
+                        case "LOGIN" -> LoginCommand.execute(input,out);
+                        case "SELECT" -> SelectCommand.execute(input, out);
+                        case "UPDATE" -> UpdateCommand.execute(input, out);
+                        case "DELETE" -> DeleteCommand.execute(input, out);
+                        case "INSERT" -> InsertCommand.execute(input, out);
+                        case "DISCONNECT" -> DisconnectCommand.execute(clientSocket,input,out);
                     }
                 }
 
-                scanner.close();
-                out.close();
-                clientSocket.close();
-
-        } catch (IOException e)
+        } catch (IOException | ClassNotFoundException e)
         {
             e.printStackTrace();
+        }
+        finally {
+            try {
+                if (input != null) {
+                    input.close();
+                }
+                if (out != null) {
+                    out.close();
+                }
+                if (clientSocket != null && !clientSocket.isClosed()) {
+                    clientSocket.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

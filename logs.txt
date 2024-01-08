@@ -2175,3 +2175,918 @@
 [Server][2023-12-30 20:06:34] Server started on port: 5000
 [Server][2023-12-30 20:06:38] New connection: 127.0.0.1
 [Server][2023-12-30 20:07:05] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-02 19:20:20] Connected
+[DatabaseInitialization][2024-01-02 19:20:20] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 19:20:20] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 19:20:20] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 19:20:20] Kierowca table created (if didn't exist)
+[Server][2024-01-02 19:20:20] Server started on port: 5000
+[Server][2024-01-02 19:20:22] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-02 20:07:11] Connected
+[DatabaseInitialization][2024-01-02 20:07:11] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 20:07:11] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 20:07:11] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 20:07:11] Kierowca table created (if didn't exist)
+[Server][2024-01-02 20:07:11] Server started on port: 5000
+[Server][2024-01-02 20:07:14] New connection: 127.0.0.1
+[Server][2024-01-02 20:07:21] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-02 20:23:21] Connected
+[DatabaseInitialization][2024-01-02 20:23:21] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 20:23:21] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 20:23:21] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 20:23:21] Kierowca table created (if didn't exist)
+[Server][2024-01-02 20:23:21] Server started on port: 5000
+[Server][2024-01-02 20:23:27] New connection: 127.0.0.1
+[Server][2024-01-02 20:24:20] New connection: 127.0.0.1
+[Server][2024-01-02 20:27:56] New connection: 127.0.0.1
+[Server][2024-01-02 20:28:37] New connection: 127.0.0.1
+[Server][2024-01-02 20:41:21] New connection: 127.0.0.1
+[Server][2024-01-02 20:50:13] New connection: 127.0.0.1
+[Server][2024-01-02 20:52:07] New connection: 127.0.0.1
+[Server][2024-01-02 21:10:32] New connection: 127.0.0.1
+[Server][2024-01-02 21:10:50] New connection: 127.0.0.1
+[Server][2024-01-02 21:36:31] New connection: 127.0.0.1
+[Server][2024-01-02 21:36:45] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-02 21:38:13] Connected
+[DatabaseInitialization][2024-01-02 21:38:13] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:38:13] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:38:13] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:38:13] Kierowca table created (if didn't exist)
+[Server][2024-01-02 21:38:13] Server started on port: 5000
+[Server][2024-01-02 21:38:14] New connection: 127.0.0.1
+[Server][2024-01-02 21:39:15] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-02 21:41:40] Connected
+[DatabaseInitialization][2024-01-02 21:41:40] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:41:40] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:41:40] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:41:40] Kierowca table created (if didn't exist)
+[Server][2024-01-02 21:41:40] Server started on port: 5000
+[Server][2024-01-02 21:41:42] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-02 21:51:40] Connected
+[DatabaseInitialization][2024-01-02 21:51:40] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:51:40] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:51:40] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-02 21:51:40] Kierowca table created (if didn't exist)
+[Server][2024-01-02 21:51:40] Server started on port: 5000
+[Server][2024-01-02 21:51:43] New connection: 127.0.0.1
+[Server][2024-01-02 21:52:27] New connection: 127.0.0.1
+[Server][2024-01-02 21:52:45] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-04 22:00:10] Connected
+[DatabaseInitialization][2024-01-04 22:00:10] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-04 22:00:10] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-04 22:00:10] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-04 22:00:10] Kierowca table created (if didn't exist)
+[Server][2024-01-04 22:00:10] Server started on port: 5000
+[Server][2024-01-04 22:00:14] New connection: 127.0.0.1
+[Server][2024-01-04 22:06:32] New connection: 127.0.0.1
+[Server][2024-01-04 22:17:27] New connection: 127.0.0.1
+[Server][2024-01-04 22:18:13] New connection: 127.0.0.1
+[Server][2024-01-04 22:30:25] New connection: 127.0.0.1
+[Server][2024-01-04 22:34:06] New connection: 127.0.0.1
+[Server][2024-01-04 22:35:26] New connection: 127.0.0.1
+[Server][2024-01-04 22:38:45] New connection: 127.0.0.1
+[Server][2024-01-04 22:40:21] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-05 23:12:35] Connected
+[DatabaseInitialization][2024-01-05 23:12:35] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-05 23:12:35] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-05 23:12:35] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-05 23:12:35] Kierowca table created (if didn't exist)
+[Server][2024-01-05 23:12:35] Server started on port: 5000
+[Server][2024-01-05 23:12:37] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:23:56] Connected
+[DatabaseInitialization][2024-01-06 15:23:56] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:23:56] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:23:56] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:23:56] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:23:56] Server started on port: 5000
+[Server][2024-01-06 15:24:01] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:35:07] Connected
+[DatabaseInitialization][2024-01-06 15:35:07] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:35:07] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:35:07] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:35:07] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:35:07] Server started on port: 5000
+[Server][2024-01-06 15:35:10] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:36:42] Connected
+[DatabaseInitialization][2024-01-06 15:36:42] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:36:42] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:36:42] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:36:42] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:36:42] Server started on port: 5000
+[Server][2024-01-06 15:36:48] New connection: 127.0.0.1
+[Server][2024-01-06 15:37:39] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:41:19] Connected
+[DatabaseInitialization][2024-01-06 15:41:19] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:41:19] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:41:19] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:41:19] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:41:19] Server started on port: 5000
+[Server][2024-01-06 15:41:22] New connection: 127.0.0.1
+[Server][2024-01-06 15:42:20] New connection: 127.0.0.1
+[Server][2024-01-06 15:43:49] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:45:39] Connected
+[DatabaseInitialization][2024-01-06 15:45:39] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:45:39] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:45:39] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:45:39] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:45:39] Server started on port: 5000
+[Server][2024-01-06 15:45:41] New connection: 127.0.0.1
+[Server][2024-01-06 15:47:46] New connection: 127.0.0.1
+[Server][2024-01-06 15:50:01] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:50:22] Connected
+[DatabaseInitialization][2024-01-06 15:50:22] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:50:22] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:50:22] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:50:22] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:50:22] Server started on port: 5000
+[Server][2024-01-06 15:50:25] New connection: 127.0.0.1
+[Server][2024-01-06 15:50:52] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:51:36] Connected
+[DatabaseInitialization][2024-01-06 15:51:36] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:51:36] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:51:36] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:51:36] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:51:36] Server started on port: 5000
+[Server][2024-01-06 15:51:37] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:51:55] Connected
+[DatabaseInitialization][2024-01-06 15:51:55] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:51:55] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:51:55] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:51:55] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:51:55] Server started on port: 5000
+[DatabaseInitialization][2024-01-06 15:52:03] Connected
+[DatabaseInitialization][2024-01-06 15:52:03] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:52:03] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:52:03] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:52:03] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:52:03] Server started on port: 5000
+[Server][2024-01-06 15:52:07] New connection: 127.0.0.1
+[Server][2024-01-06 15:53:48] New connection: 127.0.0.1
+[Server][2024-01-06 15:54:53] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 15:55:13] Connected
+[DatabaseInitialization][2024-01-06 15:55:13] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:55:13] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:55:13] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 15:55:13] Kierowca table created (if didn't exist)
+[Server][2024-01-06 15:55:13] Server started on port: 5000
+[Server][2024-01-06 15:55:18] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:04:02] Connected
+[DatabaseInitialization][2024-01-06 16:04:02] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:04:02] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:04:02] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:04:02] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:04:02] Server started on port: 5000
+[Server][2024-01-06 16:04:05] New connection: 127.0.0.1
+[Server][2024-01-06 16:09:11] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:17:21] Connected
+[DatabaseInitialization][2024-01-06 16:17:21] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:17:21] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:17:21] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:17:21] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:17:21] Server started on port: 5000
+[Server][2024-01-06 16:17:25] New connection: 127.0.0.1
+[Server][2024-01-06 16:17:56] New connection: 127.0.0.1
+[Server][2024-01-06 16:18:19] New connection: 127.0.0.1
+[Server][2024-01-06 16:18:48] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:19:05] Connected
+[DatabaseInitialization][2024-01-06 16:19:05] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:19:05] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:19:05] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:19:05] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:19:05] Server started on port: 5001
+[Server][2024-01-06 16:19:08] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:20:32] Connected
+[DatabaseInitialization][2024-01-06 16:20:32] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:20:32] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:20:32] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:20:32] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:20:32] Server started on port: 5000
+[Server][2024-01-06 16:20:35] New connection: 127.0.0.1
+[Server][2024-01-06 16:20:59] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:27:14] Connected
+[DatabaseInitialization][2024-01-06 16:27:14] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:27:14] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:27:14] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:27:14] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:27:14] Server started on port: 5000
+[Server][2024-01-06 16:27:17] New connection: 127.0.0.1
+[Server][2024-01-06 16:27:48] New connection: 127.0.0.1
+[Server][2024-01-06 16:29:12] New connection: 127.0.0.1
+[Server][2024-01-06 16:29:46] New connection: 127.0.0.1
+[Server][2024-01-06 16:30:03] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:32:58] Connected
+[DatabaseInitialization][2024-01-06 16:32:58] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:32:58] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:32:58] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:32:58] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:32:58] Server started on port: 5000
+[Server][2024-01-06 16:33:01] New connection: 127.0.0.1
+[Server][2024-01-06 16:33:20] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:36:22] Connected
+[DatabaseInitialization][2024-01-06 16:36:22] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:36:22] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:36:22] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:36:22] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:36:22] Server started on port: 5000
+[Server][2024-01-06 16:36:24] New connection: 127.0.0.1
+[Server][2024-01-06 16:36:53] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:38:53] Connected
+[DatabaseInitialization][2024-01-06 16:38:53] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:38:53] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:38:53] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:38:53] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:38:53] Server started on port: 5000
+[Server][2024-01-06 16:38:56] New connection: 127.0.0.1
+[Server][2024-01-06 16:39:16] New connection: 127.0.0.1
+[Server][2024-01-06 16:39:36] New connection: 127.0.0.1
+[Server][2024-01-06 16:40:23] New connection: 127.0.0.1
+[Server][2024-01-06 16:40:47] New connection: 127.0.0.1
+[Server][2024-01-06 16:41:33] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:43:56] Connected
+[DatabaseInitialization][2024-01-06 16:43:56] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:43:56] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:43:56] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:43:56] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:43:56] Server started on port: 5000
+[Server][2024-01-06 16:44:03] New connection: 127.0.0.1
+[Server][2024-01-06 16:45:19] New connection: 127.0.0.1
+[Server][2024-01-06 16:46:34] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:47:43] Connected
+[DatabaseInitialization][2024-01-06 16:47:43] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:47:43] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:47:43] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:47:43] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:47:43] Server started on port: 5000
+[Server][2024-01-06 16:47:46] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:49:31] Connected
+[DatabaseInitialization][2024-01-06 16:49:31] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:49:31] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:49:31] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:49:31] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:49:31] Server started on port: 5000
+[Server][2024-01-06 16:49:33] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:50:29] Connected
+[DatabaseInitialization][2024-01-06 16:50:29] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:50:29] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:50:29] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:50:29] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:50:29] Server started on port: 5000
+[Server][2024-01-06 16:50:31] New connection: 127.0.0.1
+[Server][2024-01-06 16:50:52] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:55:43] Connected
+[DatabaseInitialization][2024-01-06 16:55:43] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:55:43] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:55:43] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:55:43] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:55:43] Server started on port: 5000
+[Server][2024-01-06 16:55:49] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 16:59:58] Connected
+[DatabaseInitialization][2024-01-06 16:59:58] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:59:58] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:59:58] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 16:59:58] Kierowca table created (if didn't exist)
+[Server][2024-01-06 16:59:58] Server started on port: 5000
+[Server][2024-01-06 17:00:00] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 17:07:34] Connected
+[DatabaseInitialization][2024-01-06 17:07:34] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:07:34] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:07:34] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:07:34] Kierowca table created (if didn't exist)
+[Server][2024-01-06 17:07:34] Server started on port: 5000
+[Server][2024-01-06 17:07:37] New connection: 127.0.0.1
+[Server][2024-01-06 17:08:14] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 17:10:31] Connected
+[DatabaseInitialization][2024-01-06 17:10:31] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:10:31] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:10:31] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:10:31] Kierowca table created (if didn't exist)
+[Server][2024-01-06 17:10:31] Server started on port: 5000
+[Server][2024-01-06 17:10:33] New connection: 127.0.0.1
+[Server][2024-01-06 17:10:46] New connection: 127.0.0.1
+[Server][2024-01-06 17:11:00] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 17:25:38] Connected
+[DatabaseInitialization][2024-01-06 17:25:38] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:25:38] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:25:38] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 17:25:38] Kierowca table created (if didn't exist)
+[Server][2024-01-06 17:25:38] Server started on port: 5000
+[Server][2024-01-06 17:25:39] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 18:41:45] Connected
+[DatabaseInitialization][2024-01-06 18:41:45] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 18:41:45] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 18:41:45] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 18:41:45] Kierowca table created (if didn't exist)
+[Server][2024-01-06 18:41:45] Server started on port: 5000
+[Server][2024-01-06 18:41:48] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:06:54] Connected
+[DatabaseInitialization][2024-01-06 19:06:54] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:06:54] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:06:54] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:06:54] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:06:54] Server started on port: 5000
+[Server][2024-01-06 19:06:57] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:07:57] Connected
+[DatabaseInitialization][2024-01-06 19:07:57] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:07:57] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:07:57] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:07:57] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:07:57] Server started on port: 5000
+[Server][2024-01-06 19:07:59] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:09:13] Connected
+[DatabaseInitialization][2024-01-06 19:09:13] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:09:13] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:09:13] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:09:13] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:09:13] Server started on port: 5000
+[Server][2024-01-06 19:09:16] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:12:11] Connected
+[DatabaseInitialization][2024-01-06 19:12:11] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:12:11] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:12:11] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:12:11] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:12:11] Server started on port: 5000
+[Server][2024-01-06 19:12:13] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:15:28] Connected
+[DatabaseInitialization][2024-01-06 19:15:28] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:15:28] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:15:28] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:15:28] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:15:28] Server started on port: 5000
+[Server][2024-01-06 19:15:30] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:17:11] Connected
+[DatabaseInitialization][2024-01-06 19:17:11] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:17:11] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:17:11] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:17:11] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:17:11] Server started on port: 5000
+[Server][2024-01-06 19:17:12] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:19:34] Connected
+[DatabaseInitialization][2024-01-06 19:19:34] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:19:34] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:19:34] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:19:34] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:19:34] Server started on port: 5000
+[Server][2024-01-06 19:19:39] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:28:43] Connected
+[DatabaseInitialization][2024-01-06 19:28:43] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:28:43] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:28:43] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:28:43] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:28:43] Server started on port: 5000
+[Server][2024-01-06 19:28:45] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:30:12] Connected
+[DatabaseInitialization][2024-01-06 19:30:12] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:30:12] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:30:12] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:30:12] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:30:12] Server started on port: 5000
+[Server][2024-01-06 19:30:14] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:32:51] Connected
+[DatabaseInitialization][2024-01-06 19:32:51] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:32:51] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:32:51] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:32:51] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:32:51] Server started on port: 5000
+[Server][2024-01-06 19:32:54] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:33:38] Connected
+[DatabaseInitialization][2024-01-06 19:33:38] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:33:38] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:33:38] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:33:38] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:33:38] Server started on port: 5000
+[Server][2024-01-06 19:33:39] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:35:02] Connected
+[DatabaseInitialization][2024-01-06 19:35:02] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:35:02] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:35:02] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:35:02] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:35:02] Server started on port: 5000
+[DatabaseInitialization][2024-01-06 19:35:05] Connected
+[DatabaseInitialization][2024-01-06 19:35:05] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:35:05] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:35:05] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:35:05] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:35:05] Server started on port: 5000
+[Server][2024-01-06 19:35:07] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:36:29] Connected
+[DatabaseInitialization][2024-01-06 19:36:29] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:36:29] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:36:29] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:36:29] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:36:29] Server started on port: 5000
+[Server][2024-01-06 19:36:31] New connection: 127.0.0.1
+[Server][2024-01-06 19:38:43] New connection: 127.0.0.1
+[Server][2024-01-06 19:38:45] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:40:39] Connected
+[DatabaseInitialization][2024-01-06 19:40:39] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:40:39] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:40:39] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:40:39] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:40:39] Server started on port: 5000
+[Server][2024-01-06 19:40:43] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:41:36] Connected
+[DatabaseInitialization][2024-01-06 19:41:36] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:41:36] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:41:36] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:41:36] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:41:36] Server started on port: 5000
+[Server][2024-01-06 19:41:37] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:45:11] Connected
+[DatabaseInitialization][2024-01-06 19:45:11] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:45:11] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:45:11] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:45:11] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:45:11] Server started on port: 5000
+[Server][2024-01-06 19:45:18] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:46:18] Connected
+[DatabaseInitialization][2024-01-06 19:46:18] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:46:18] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:46:18] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:46:18] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:46:18] Server started on port: 5000
+[Server][2024-01-06 19:46:20] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:49:57] Connected
+[DatabaseInitialization][2024-01-06 19:49:57] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:49:57] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:49:57] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:49:57] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:49:57] Server started on port: 5000
+[Server][2024-01-06 19:49:58] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:55:01] Connected
+[DatabaseInitialization][2024-01-06 19:55:01] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:55:01] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:55:01] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:55:01] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:55:01] Server started on port: 5000
+[Server][2024-01-06 19:55:03] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:56:46] Connected
+[DatabaseInitialization][2024-01-06 19:56:46] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:56:46] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:56:46] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:56:46] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:56:46] Server started on port: 5000
+[Server][2024-01-06 19:56:48] New connection: 127.0.0.1
+[Server][2024-01-06 19:57:43] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 19:59:21] Connected
+[DatabaseInitialization][2024-01-06 19:59:21] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:59:21] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:59:21] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 19:59:21] Kierowca table created (if didn't exist)
+[Server][2024-01-06 19:59:21] Server started on port: 5000
+[Server][2024-01-06 19:59:24] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:02:11] Connected
+[DatabaseInitialization][2024-01-06 20:02:11] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:02:11] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:02:11] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:02:11] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:02:11] Server started on port: 5000
+[Server][2024-01-06 20:02:14] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:05:22] Connected
+[DatabaseInitialization][2024-01-06 20:05:22] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:05:22] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:05:22] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:05:22] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:05:22] Server started on port: 5000
+[Server][2024-01-06 20:05:24] New connection: 127.0.0.1
+[Server][2024-01-06 20:14:12] New connection: 127.0.0.1
+[Server][2024-01-06 20:14:12] New connection: 127.0.0.1
+[Server][2024-01-06 20:14:12] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:14:57] Connected
+[DatabaseInitialization][2024-01-06 20:14:57] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:14:57] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:14:57] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:14:57] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:14:57] Server started on port: 5000
+[Server][2024-01-06 20:14:59] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:16:30] Connected
+[DatabaseInitialization][2024-01-06 20:16:30] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:16:30] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:16:30] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:16:30] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:16:30] Server started on port: 5000
+[Server][2024-01-06 20:16:32] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:24:00] Connected
+[DatabaseInitialization][2024-01-06 20:24:00] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:24:00] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:24:00] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:24:00] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:24:00] Server started on port: 5000
+[Server][2024-01-06 20:24:03] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:25:48] Connected
+[DatabaseInitialization][2024-01-06 20:25:48] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:25:48] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:25:48] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:25:48] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:25:48] Server started on port: 5000
+[Server][2024-01-06 20:25:49] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:26:46] Connected
+[DatabaseInitialization][2024-01-06 20:26:46] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:26:46] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:26:46] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:26:46] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:26:46] Server started on port: 5000
+[Server][2024-01-06 20:26:48] New connection: 127.0.0.1
+[Server][2024-01-06 20:27:28] New connection: 127.0.0.1
+[Server][2024-01-06 20:27:28] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:27:33] Connected
+[DatabaseInitialization][2024-01-06 20:27:33] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:27:33] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:27:33] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:27:33] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:27:33] Server started on port: 5000
+[Server][2024-01-06 20:27:36] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:27:53] Connected
+[DatabaseInitialization][2024-01-06 20:27:53] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:27:53] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:27:53] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:27:53] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:27:53] Server started on port: 5000
+[Server][2024-01-06 20:27:56] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:30:54] Connected
+[DatabaseInitialization][2024-01-06 20:30:54] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:30:54] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:30:54] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:30:54] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:30:54] Server started on port: 5000
+[Server][2024-01-06 20:30:56] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:35:57] Connected
+[DatabaseInitialization][2024-01-06 20:35:57] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:35:57] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:35:57] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:35:57] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:35:57] Server started on port: 5000
+[Server][2024-01-06 20:36:02] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:46:53] Connected
+[DatabaseInitialization][2024-01-06 20:46:53] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:46:53] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:46:53] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:46:53] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:46:53] Server started on port: 5000
+[Server][2024-01-06 20:46:56] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 20:48:46] Connected
+[DatabaseInitialization][2024-01-06 20:48:46] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:48:46] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:48:46] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 20:48:46] Kierowca table created (if didn't exist)
+[Server][2024-01-06 20:48:46] Server started on port: 5000
+[Server][2024-01-06 20:48:48] New connection: 127.0.0.1
+[Server][2024-01-06 20:53:28] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 21:27:53] Connected
+[DatabaseInitialization][2024-01-06 21:27:53] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:27:53] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:27:53] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:27:53] Kierowca table created (if didn't exist)
+[Server][2024-01-06 21:27:53] Server started on port: 5000
+[Server][2024-01-06 21:27:55] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 21:28:31] Connected
+[DatabaseInitialization][2024-01-06 21:28:31] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:28:31] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:28:31] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:28:31] Kierowca table created (if didn't exist)
+[Server][2024-01-06 21:28:31] Server started on port: 5000
+[Server][2024-01-06 21:28:35] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 21:30:14] Connected
+[DatabaseInitialization][2024-01-06 21:30:14] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:30:14] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:30:14] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:30:14] Kierowca table created (if didn't exist)
+[Server][2024-01-06 21:30:14] Server started on port: 5000
+[Server][2024-01-06 21:30:16] New connection: 127.0.0.1
+[Server][2024-01-06 21:30:21] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 21:31:00] Connected
+[DatabaseInitialization][2024-01-06 21:31:00] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:31:00] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:31:00] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:31:00] Kierowca table created (if didn't exist)
+[Server][2024-01-06 21:31:00] Server started on port: 5000
+[Server][2024-01-06 21:31:01] New connection: 127.0.0.1
+[Server][2024-01-06 21:31:17] New connection: 127.0.0.1
+[Server][2024-01-06 21:31:20] New connection: 127.0.0.1
+[Server][2024-01-06 21:31:58] New connection: 127.0.0.1
+[Server][2024-01-06 21:32:20] New connection: 127.0.0.1
+[Server][2024-01-06 21:32:51] New connection: 127.0.0.1
+[Server][2024-01-06 21:33:11] New connection: 127.0.0.1
+[Server][2024-01-06 21:33:29] New connection: 127.0.0.1
+[Server][2024-01-06 21:35:16] New connection: 127.0.0.1
+[Server][2024-01-06 21:35:42] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 21:37:15] Connected
+[DatabaseInitialization][2024-01-06 21:37:15] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:37:15] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:37:15] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:37:15] Kierowca table created (if didn't exist)
+[Server][2024-01-06 21:37:15] Server started on port: 5000
+[Server][2024-01-06 21:37:16] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-06 21:39:18] Connected
+[DatabaseInitialization][2024-01-06 21:39:18] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:39:18] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:39:18] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-06 21:39:18] Kierowca table created (if didn't exist)
+[Server][2024-01-06 21:39:18] Server started on port: 5000
+[Server][2024-01-06 21:39:20] New connection: 127.0.0.1
+[Server][2024-01-06 21:39:36] New connection: 127.0.0.1
+[Server][2024-01-06 21:40:00] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 00:46:40] Connected
+[DatabaseInitialization][2024-01-07 00:46:40] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:46:40] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:46:40] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:46:40] Kierowca table created (if didn't exist)
+[Server][2024-01-07 00:46:40] Server started on port: 5000
+[Server][2024-01-07 00:46:42] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 00:51:06] Connected
+[DatabaseInitialization][2024-01-07 00:51:06] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:51:06] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:51:06] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:51:06] Kierowca table created (if didn't exist)
+[Server][2024-01-07 00:51:06] Server started on port: 5000
+[Server][2024-01-07 00:51:08] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 00:53:12] Connected
+[DatabaseInitialization][2024-01-07 00:53:12] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:53:12] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:53:12] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:53:12] Kierowca table created (if didn't exist)
+[Server][2024-01-07 00:53:12] Server started on port: 5000
+[Server][2024-01-07 00:53:15] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 00:54:03] Connected
+[DatabaseInitialization][2024-01-07 00:54:03] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:54:03] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:54:03] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 00:54:03] Kierowca table created (if didn't exist)
+[Server][2024-01-07 00:54:03] Server started on port: 5000
+[Server][2024-01-07 00:54:05] New connection: 127.0.0.1
+[Server][2024-01-07 00:55:04] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 01:01:41] Connected
+[DatabaseInitialization][2024-01-07 01:01:41] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:01:41] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:01:41] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:01:41] Kierowca table created (if didn't exist)
+[Server][2024-01-07 01:01:41] Server started on port: 5000
+[Server][2024-01-07 01:01:45] New connection: 127.0.0.1
+[Server][2024-01-07 01:13:18] New connection: 127.0.0.1
+[Server][2024-01-07 01:14:05] New connection: 127.0.0.1
+[Server][2024-01-07 01:15:21] New connection: 127.0.0.1
+[Server][2024-01-07 01:17:05] New connection: 127.0.0.1
+[Server][2024-01-07 01:17:22] New connection: 127.0.0.1
+[Server][2024-01-07 01:17:36] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 01:25:37] Connected
+[DatabaseInitialization][2024-01-07 01:25:37] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:25:37] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:25:37] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:25:37] Kierowca table created (if didn't exist)
+[Server][2024-01-07 01:25:37] Server started on port: 5000
+[Server][2024-01-07 01:25:41] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 01:31:57] Connected
+[DatabaseInitialization][2024-01-07 01:31:57] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:31:57] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:31:57] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:31:57] Kierowca table created (if didn't exist)
+[Server][2024-01-07 01:31:57] Server started on port: 5000
+[Server][2024-01-07 01:32:00] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 01:33:04] Connected
+[DatabaseInitialization][2024-01-07 01:33:04] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:33:04] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:33:04] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 01:33:04] Kierowca table created (if didn't exist)
+[Server][2024-01-07 01:33:04] Server started on port: 5000
+[Server][2024-01-07 01:33:08] New connection: 127.0.0.1
+[Server][2024-01-07 01:33:24] New connection: 127.0.0.1
+[Server][2024-01-07 01:33:36] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 03:19:09] Connected
+[DatabaseInitialization][2024-01-07 03:19:09] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:19:09] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:19:09] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:19:09] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:19:09] Server started on port: 5000
+[Server][2024-01-07 03:19:12] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:19:39] User accepted
+[DatabaseInitialization][2024-01-07 03:21:29] Connected
+[DatabaseInitialization][2024-01-07 03:21:29] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:21:29] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:21:29] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:21:29] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:21:29] Server started on port: 5000
+[Server][2024-01-07 03:21:31] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:21:58] User accepted
+[DatabaseInitialization][2024-01-07 03:23:15] Connected
+[DatabaseInitialization][2024-01-07 03:23:15] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:23:15] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:23:15] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:23:15] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:23:15] Server started on port: 5000
+[Server][2024-01-07 03:23:16] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:23:40] User accepted
+[DatabaseInitialization][2024-01-07 03:25:28] Connected
+[DatabaseInitialization][2024-01-07 03:25:28] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:25:28] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:25:28] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:25:28] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:25:28] Server started on port: 5000
+[Server][2024-01-07 03:25:31] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:25:55] User accepted
+[DatabaseInitialization][2024-01-07 03:27:19] Connected
+[DatabaseInitialization][2024-01-07 03:27:19] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:27:19] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:27:19] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:27:19] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:27:19] Server started on port: 5000
+[Server][2024-01-07 03:27:22] New connection: 127.0.0.1
+[Server][2024-01-07 03:27:33] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:27:51] User accepted
+[DatabaseInitialization][2024-01-07 03:29:09] Connected
+[DatabaseInitialization][2024-01-07 03:29:09] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:29:09] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:29:09] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:29:09] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:29:09] Server started on port: 5000
+[Server][2024-01-07 03:29:14] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:29:35] User accepted
+[DatabaseInitialization][2024-01-07 03:30:30] Connected
+[DatabaseInitialization][2024-01-07 03:30:30] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:30:30] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:30:30] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:30:30] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:30:30] Server started on port: 5000
+[Server][2024-01-07 03:30:33] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:30:57] User accepted
+[DatabaseInitialization][2024-01-07 03:32:10] Connected
+[DatabaseInitialization][2024-01-07 03:32:10] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:32:10] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:32:10] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:32:10] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:32:10] Server started on port: 5000
+[Server][2024-01-07 03:32:13] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:32:34] User accepted
+[DatabaseInitialization][2024-01-07 03:34:04] Connected
+[DatabaseInitialization][2024-01-07 03:34:04] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:34:04] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:34:04] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:34:04] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:34:04] Server started on port: 5000
+[Server][2024-01-07 03:34:06] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:34:27] User accepted
+[DatabaseInitialization][2024-01-07 03:35:39] Connected
+[DatabaseInitialization][2024-01-07 03:35:39] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:35:39] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:35:39] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 03:35:39] Kierowca table created (if didn't exist)
+[Server][2024-01-07 03:35:39] Server started on port: 5000
+[Server][2024-01-07 03:35:41] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:36:01] User accepted
+[Server][2024-01-07 03:36:28] New connection: 127.0.0.1
+[ServerVerification][2024-01-07 03:36:51] Verification did not pass
+[DatabaseInitialization][2024-01-07 20:25:46] Connected
+[DatabaseInitialization][2024-01-07 20:25:46] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:25:46] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:25:46] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:25:46] Kierowca table created (if didn't exist)
+[Server][2024-01-07 20:25:46] Server started on port: 5000
+[Server][2024-01-07 20:25:48] New connection: 127.0.0.1
+[Server][2024-01-07 20:26:47] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 20:28:17] Connected
+[DatabaseInitialization][2024-01-07 20:28:17] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:28:17] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:28:17] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:28:17] Kierowca table created (if didn't exist)
+[Server][2024-01-07 20:28:17] Server started on port: 5000
+[Server][2024-01-07 20:28:18] New connection: 127.0.0.1
+[Server][2024-01-07 20:31:05] New connection: 127.0.0.1
+[Server][2024-01-07 20:31:30] New connection: 127.0.0.1
+[Server][2024-01-07 20:37:34] New connection: 127.0.0.1
+[Server][2024-01-07 20:41:01] New connection: 127.0.0.1
+[Server][2024-01-07 20:41:48] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 20:45:05] Connected
+[DatabaseInitialization][2024-01-07 20:45:05] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:45:05] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:45:05] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:45:05] Kierowca table created (if didn't exist)
+[Server][2024-01-07 20:45:05] Server started on port: 5000
+[Server][2024-01-07 20:45:08] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 20:47:57] Connected
+[DatabaseInitialization][2024-01-07 20:47:57] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:47:57] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:47:57] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:47:57] Kierowca table created (if didn't exist)
+[Server][2024-01-07 20:47:57] Server started on port: 5000
+[Server][2024-01-07 20:48:05] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 20:52:12] Connected
+[DatabaseInitialization][2024-01-07 20:52:12] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:52:12] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:52:12] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:52:12] Kierowca table created (if didn't exist)
+[Server][2024-01-07 20:52:12] Server started on port: 5000
+[Server][2024-01-07 20:52:14] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 20:54:54] Connected
+[DatabaseInitialization][2024-01-07 20:54:54] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:54:54] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:54:54] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 20:54:54] Kierowca table created (if didn't exist)
+[Server][2024-01-07 20:54:54] Server started on port: 5000
+[Server][2024-01-07 20:54:55] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 21:02:36] Connected
+[DatabaseInitialization][2024-01-07 21:02:36] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:02:36] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:02:36] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:02:36] Kierowca table created (if didn't exist)
+[Server][2024-01-07 21:02:36] Server started on port: 5000
+[Server][2024-01-07 21:02:38] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 21:04:12] Connected
+[DatabaseInitialization][2024-01-07 21:04:12] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:04:12] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:04:12] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:04:12] Kierowca table created (if didn't exist)
+[Server][2024-01-07 21:04:12] Server started on port: 5000
+[Server][2024-01-07 21:04:15] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 21:07:08] Connected
+[DatabaseInitialization][2024-01-07 21:07:08] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:07:08] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:07:08] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 21:07:08] Kierowca table created (if didn't exist)
+[Server][2024-01-07 21:07:08] Server started on port: 5000
+[Server][2024-01-07 21:07:38] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 23:34:35] Connected
+[DatabaseInitialization][2024-01-07 23:34:35] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:34:35] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:34:35] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:34:35] Kierowca table created (if didn't exist)
+[Server][2024-01-07 23:34:35] Server started on port: 5000
+[Server][2024-01-07 23:34:39] New connection: 127.0.0.1
+[Server][2024-01-07 23:35:39] New connection: 127.0.0.1
+[Server][2024-01-07 23:38:06] New connection: 127.0.0.1
+[Server][2024-01-07 23:39:09] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 23:53:00] Connected
+[DatabaseInitialization][2024-01-07 23:53:00] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:53:00] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:53:00] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:53:00] Kierowca table created (if didn't exist)
+[Server][2024-01-07 23:53:00] Server started on port: 5000
+[Server][2024-01-07 23:53:04] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 23:54:10] Connected
+[DatabaseInitialization][2024-01-07 23:54:10] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:54:10] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:54:10] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:54:10] Kierowca table created (if didn't exist)
+[Server][2024-01-07 23:54:10] Server started on port: 5000
+[Server][2024-01-07 23:54:15] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 23:56:51] Connected
+[DatabaseInitialization][2024-01-07 23:56:51] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:56:51] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:56:51] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:56:51] Kierowca table created (if didn't exist)
+[Server][2024-01-07 23:56:51] Server started on port: 5000
+[Server][2024-01-07 23:57:00] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-07 23:57:27] Connected
+[DatabaseInitialization][2024-01-07 23:57:27] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:57:27] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:57:27] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:57:27] Kierowca table created (if didn't exist)
+[Server][2024-01-07 23:57:27] Server started on port: 5000
+[DatabaseInitialization][2024-01-07 23:57:29] Connected
+[DatabaseInitialization][2024-01-07 23:57:29] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:57:29] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:57:29] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-07 23:57:29] Kierowca table created (if didn't exist)
+[Server][2024-01-07 23:57:29] Server started on port: 5000
+[Server][2024-01-07 23:57:31] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-08 00:51:18] Connected
+[DatabaseInitialization][2024-01-08 00:51:18] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:51:18] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:51:18] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:51:18] Kierowca table created (if didn't exist)
+[Server][2024-01-08 00:51:18] Server started on port: 5000
+[Server][2024-01-08 00:51:23] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-08 00:53:07] Connected
+[DatabaseInitialization][2024-01-08 00:53:07] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:53:07] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:53:07] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:53:07] Kierowca table created (if didn't exist)
+[Server][2024-01-08 00:53:07] Server started on port: 5000
+[Server][2024-01-08 00:53:08] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-08 00:56:53] Connected
+[DatabaseInitialization][2024-01-08 00:56:53] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:56:53] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:56:53] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 00:56:53] Kierowca table created (if didn't exist)
+[Server][2024-01-08 00:56:53] Server started on port: 5000
+[Server][2024-01-08 00:56:54] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-08 01:04:55] Connected
+[DatabaseInitialization][2024-01-08 01:04:55] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:04:55] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:04:55] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:04:55] Kierowca table created (if didn't exist)
+[Server][2024-01-08 01:04:55] Server started on port: 5000
+[Server][2024-01-08 01:04:58] New connection: 127.0.0.1
+[Server][2024-01-08 01:05:09] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-08 01:06:13] Connected
+[DatabaseInitialization][2024-01-08 01:06:13] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:06:13] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:06:13] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:06:13] Kierowca table created (if didn't exist)
+[Server][2024-01-08 01:06:13] Server started on port: 5000
+[Server][2024-01-08 01:06:21] New connection: 127.0.0.1
+[Server][2024-01-08 01:06:26] New connection: 127.0.0.1
+[DatabaseInitialization][2024-01-08 01:06:49] Connected
+[DatabaseInitialization][2024-01-08 01:06:49] Użytkownik table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:06:49] PrawoJazdy table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:06:49] DanePojazdu table created (if didn't exist)
+[DatabaseInitialization][2024-01-08 01:06:49] Kierowca table created (if didn't exist)
+[Server][2024-01-08 01:06:49] Server started on port: 5000
+[Server][2024-01-08 01:06:52] New connection: 127.0.0.1

@@ -1,4 +1,6 @@
 package Server;
+import Data.UserData;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,9 +10,13 @@ import java.time.Period;
 import java.util.List;
 
 public class Verification {
-    public static boolean verify(List<Object> fields) {
-        if(IsFirstNameValid(fields.get(0).toString()) & IsLastNameValid(fields.get(1).toString()) & IsPasswordValid(fields.get(6).toString()) & IsMailValid(fields.get(2).toString())
-                & IsPhoneNumberValid(fields.get(3).toString()) & IsAgeValid(Date.valueOf(fields.get(5).toString())))
+    public static boolean verify(UserData userData) {
+        if(IsFirstNameValid(userData.getName()) &
+                IsLastNameValid(userData.getLastName()) &
+                IsPasswordValid(userData.getPassword()) &
+                IsMailValid(userData.getMail()) &
+                IsPhoneNumberValid(userData.getPhoneNumber()) &
+                IsAgeValid(Date.valueOf(userData.getBirthDate().toString())))
         {
             System.out.println("User accepted");
             Logs.writeLog("ServerVerification", "User accepted");

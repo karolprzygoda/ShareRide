@@ -1,40 +1,44 @@
 package Server;
 
+import Data.DriverData;
+import Data.LicenseData;
+import Data.UserData;
+import Data.VehicleData;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class InsertCommand implements Command{
-    public static  void execute(Scanner scanner, PrintWriter out)
-    {
-        String field = scanner.nextLine();
-        int size = Integer.parseInt(scanner.nextLine());
+    public static  void execute(ObjectInputStream input, ObjectOutputStream out) throws IOException, ClassNotFoundException {
+        String field = (String) input.readObject();
+        Object object = input.readObject();
         boolean response;
-        List<Object> data = new ArrayList<>();
         PasswordEncoder passwordEncoder = PasswordEncoderFactory.createPasswordEncoder();
 
-        for (int i = 0; i < size; i++) {
-            String value = scanner.nextLine();
-            data.add(value);
-        }
+
 
         switch (field) {
             case "USER" -> {
-                if (Verification.verify(data)) {
-                    String encodePassword = passwordEncoder.encodePassword(data.get(6).toString());
-                    data.set(6, encodePassword);
-                    response = PostgreSQL.insert("users", PostgreSQLInitialization.userColumnsToInsert, data);
+                if (Verification.verify((UserData) object)) {
+                    String encodePassword = passwordEncoder.encodePassword(((UserData) object).getPassword());
+                    ((UserData) object).setPassword(encodePassword);
+                    response = InsertHandler.insertUser((UserData) object);
                 } else {
                     response = false;
                 }
             }
-            case "CAR" -> response = PostgreSQL.insert("vehicle", PostgreSQLInitialization.vehicleColumns, data);
-            case "LICENSE" -> response = PostgreSQL.insert("license", PostgreSQLInitialization.licenseColumns, data);
+            case "CAR" -> response = InsertHandler.insertVehicle((VehicleData) object);
+            case "LICENSE" -> response = InsertHandler.insertLicense((LicenseData) object);
+            case "DRIVER" -> response = InsertHandler.insertDriver((DriverData) object);
             default -> throw new IllegalStateException("Unexpected value: " + field);
         }
-        
-        out.println(response);
+        out.writeBoolean(response);
+        out.flush();
     }
 }
 

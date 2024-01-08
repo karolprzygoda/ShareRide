@@ -1,5 +1,8 @@
 package Server;
 
+import Data.LicenseData;
+import Data.UserData;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,40 +12,6 @@ public class PostgreSQL {
 
     private static final Connection connection = PostgreSQLInitialization.getInstance().connection;
 
-    public static List<String> select(int id, String table, String[] keys) {
-        List<String> resultList = new ArrayList<>();
-
-        StringBuilder query = new StringBuilder("SELECT ");
-
-        for (int i = 0; i < keys.length; i++) {
-            query.append(keys[i]);
-            if (i != keys.length - 1) {
-                query.append(", ");
-            }
-        }
-
-        query.append(" FROM ").append(table).append(" WHERE id_uzytkownika = ?;");
-        String sql = query.toString();
-        System.out.println(sql);
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setInt(1, id);
-            System.out.println(preparedStatement);
-
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()) {
-                    for (String key : keys) {
-                        resultList.add(resultSet.getString(key));
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Błąd: " + e.getMessage());
-        }
-
-        return resultList;
-    }
 
     public static boolean update(int id, String table, Map<String, Object> fieldsToUpdate) {
 
@@ -117,59 +86,6 @@ public class PostgreSQL {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Błąd SQL: " + e.getMessage());
-            return false;
-        }
-    }
-
-    public static boolean insert(String table, String[] fields, List<Object> values) {
-
-        StringBuilder query = new StringBuilder("INSERT INTO ");
-        query.append(table).append(" (");
-
-        for (int i = 0; i < fields.length; i++) {
-            query.append(fields[i]);
-            if (i != fields.length - 1) {
-                query.append(", ");
-            }
-        }
-
-        query.append(") VALUES (");
-
-        for (int i = 0; i < values.size(); i++) {
-            query.append("?");
-            if (i != values.size() - 1) {
-                query.append(", ");
-            }
-        }
-
-        query.append(")");
-
-        System.out.println(query);
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query.toString())) {
-            for (int i = 0; i < values.size(); i++)
-            {
-                try
-                {
-                    preparedStatement.setInt(i + 1, Integer.parseInt(values.get(i).toString()));
-                }
-                catch (Exception e)
-                {
-                    try{
-                        preparedStatement.setObject(i + 1, Date.valueOf(values.get(i).toString()));
-                    }catch (Exception ex)
-                    {
-                        preparedStatement.setObject(i + 1, values.get(i));
-                    }
-                }
-            }
-
-            preparedStatement.executeUpdate();
-            System.out.println("Dane zostały dodane do tabeli " + table);
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Błąd: " + e.getMessage());
             return false;
         }
     }

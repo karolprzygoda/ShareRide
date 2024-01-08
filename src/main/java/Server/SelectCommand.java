@@ -1,26 +1,24 @@
 package Server;
 
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class SelectCommand implements Command{
-    public static void execute(Scanner scanner, PrintWriter out)
-    {
-        String field = scanner.nextLine();
-        int id = Integer.parseInt(scanner.nextLine());
-        List<String> list = switch (field) {
-            case "USER" -> PostgreSQL.select(id, "users", PostgreSQLInitialization.userColumns);
-            case "LICENSE" -> PostgreSQL.select(id, "license", PostgreSQLInitialization.licenseColumns);
-            case "CAR" -> PostgreSQL.select(id, "vehicle", PostgreSQLInitialization.vehicleColumns);
-            case "DRIVER" -> PostgreSQL.select(id, "driver", PostgreSQLInitialization.driverColumns);
-            default -> new ArrayList<>();
+
+    public static void execute(ObjectInputStream scanner, ObjectOutputStream out) throws IOException, ClassNotFoundException {
+        String field = (String) scanner.readObject();
+        int id = scanner.readInt();
+        Object object = switch (field) {
+            case "USER" -> SelectHandler.selectUserData(id);
+            case "LICENSE" -> SelectHandler.selectLicenceData(id);
+            case "CAR" -> SelectHandler.selectVehicleData(id);
+            case "DRIVER" -> SelectHandler.selectDriverData(id);
+            default -> null;
         };
 
-        out.println(list.size());
-        for (String result : list) {
-            out.println(result);
-        }
+        out.writeObject(object);
+        out.flush();
     }
 }

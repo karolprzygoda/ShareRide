@@ -17,8 +17,8 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
     protected final Logs log = new Logs("DatabaseInitialization");
     protected static final String[] userColumns = {"imie", "nazwisko", "email", "numer_telefonu", "plec", "data_urodzenia", "data_dolaczenia"};
     protected static final String[] userColumnsToInsert = {"imie", "nazwisko", "email", "numer_telefonu", "plec", "data_urodzenia","haslo", "data_dolaczenia"};
-    protected static final String[] licenseColumns = {"id_uzytkownika","numer", "data_wydania", "data_waznosci", "kategoria"};
-    protected static final String[] vehicleColumns = {"id_uzytkownika","marka", "model", "rejestracja", "vin", "liczba_miejsc", "polisa", "data_wygasniecia_polisy"};
+    protected static final String[] licenseColumns = {"id","numer", "data_wydania", "data_waznosci", "kategoria"};
+    protected static final String[] vehicleColumns = {"id","marka", "model", "rejestracja", "vin", "liczba_miejsc", "polisa", "data_wygasniecia_polisy"};
     protected static final String[] driverColumns = {"id_uzytkownika","id_prawa_jazdy", "id_danych_pojazdu"};
     protected Connection connection;
     private PostgreSQLInitialization()
