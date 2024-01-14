@@ -199,3 +199,24 @@
     -fx-border-width:.0px 0px .0px 5px; /*dodanie niebieskiego paska przed tekstem*/
     -fx-padding: 0 0 0 5px;
 }
+
+
+.scroll-bar{
+    -fx-background-color:transparent;
+    -fx-focus-color: transparent;
+}
+
+.scroll-bar:vertical {
+}
+.scroll-bar:vertical .increment-arrow {
+    -fx-background-color: black;
+}
+
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: black;
+}
+
+.scroll-bar:vertical .thumb{
+    -fx-pref-width: 20px;
+    -fx-background-color: #3a7bd5;
+}

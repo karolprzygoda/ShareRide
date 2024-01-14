@@ -4,20 +4,46 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class LicenseData implements Serializable {
-
+    private int id;
     private int userID;
-    private String licenseNumber;
+    private String serialNumber;
+    private String category;
     private Date dateOfIssueOfTheLicense;
     private Date expirationDateOfTheLicense;
-    private String licenseCategory;
-    int id;
 
-    public LicenseData(int userID, String licenseNumber, Date dateOfIssueOfTheLicense, Date expirationDateOfTheLicense, String licenseCategory) {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUserID(int userID) {
         this.userID = userID;
-        this.licenseNumber = licenseNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setDateOfIssueOfTheLicense(Date dateOfIssueOfTheLicense) {
+        this.dateOfIssueOfTheLicense = dateOfIssueOfTheLicense;
+    }
+
+    public void setExpirationDateOfTheLicense(Date expirationDateOfTheLicense) {
+        this.expirationDateOfTheLicense = expirationDateOfTheLicense;
+    }
+
+    public LicenseData(){}
+
+    public LicenseData(int id, int userID, String serialNumber, String category, Date dateOfIssueOfTheLicense, Date expirationDateOfTheLicense) {
+        this.id = id;
+        this.userID = userID;
+        this.serialNumber = serialNumber;
+        this.category = category;
         this.dateOfIssueOfTheLicense = dateOfIssueOfTheLicense;
         this.expirationDateOfTheLicense = expirationDateOfTheLicense;
-        this.licenseCategory = licenseCategory;
     }
 
     public int getId() {
@@ -28,8 +54,12 @@ public class LicenseData implements Serializable {
         return userID;
     }
 
-    public String getLicenseNumber() {
-        return licenseNumber;
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public Date getDateOfIssueOfTheLicense() {
@@ -39,13 +69,4 @@ public class LicenseData implements Serializable {
     public Date getExpirationDateOfTheLicense() {
         return expirationDateOfTheLicense;
     }
-
-    public String getLicenseCategory() {
-        return licenseCategory;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
 }

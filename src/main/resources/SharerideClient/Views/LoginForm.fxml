@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="215.0" prefWidth="450.0" styleClass="right-form" stylesheets="@../../formsDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SharerideClient.Controllers.LoginFormController">
+   <children>
+      <Button fx:id="loginBtn" layoutX="155.0" layoutY="145.0" mnemonicParsing="false" onAction="#login" prefHeight="56.0" prefWidth="140.0" styleClass="login-btn" stylesheets="@../../formsDesign.css" text="Zaloguj Się" textFill="#4dc3b7">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="mailTextField" layoutX="61.0" layoutY="26.0" prefHeight="40.0" prefWidth="332.0" promptText="E-mail" styleClass="textfield" stylesheets="@../../formsDesign.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </TextField>
+      <PasswordField fx:id="passwordTextField" layoutX="61.0" layoutY="81.0" prefHeight="40.0" prefWidth="332.0" promptText="Hasło" styleClass="textfield" stylesheets="@../../formsDesign.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </PasswordField>
+      <Label layoutX="62.0" layoutY="6.0" text="zaloguj się" textFill="#656161">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

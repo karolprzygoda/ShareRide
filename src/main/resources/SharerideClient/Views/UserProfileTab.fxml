@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="profilePane" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SharerideClient.Controllers.UserProfileController">
+   <children>
+      <AnchorPane layoutX="95.0" layoutY="10.0" prefHeight="580.0" prefWidth="765.0" stylesheets="@../../dashBoardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="610.0" AnchorPane.topAnchor="10.0">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <TextField fx:id="profile_updateNameField" layoutX="24.0" layoutY="80.0" onKeyPressed="#checkName" onKeyReleased="#checkName" onKeyTyped="#checkName" prefHeight="40.0" prefWidth="332.0" promptText="Imie" styleClass="textfield" stylesheets="@../../formsDesign.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="profile_updateLastNameField" layoutX="24.0" layoutY="140.0" onKeyPressed="#checkLastName" onKeyReleased="#checkLastName" onKeyTyped="#checkLastName" prefHeight="40.0" prefWidth="332.0" promptText="Nazwisko" styleClass="textfield" stylesheets="@../../formsDesign.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="profile_updateMailField" layoutX="24.0" layoutY="200.0" onKeyPressed="#checkMail" onKeyReleased="#checkMail" onKeyTyped="#checkMail" prefHeight="40.0" prefWidth="332.0" promptText="Adres Mailowy" styleClass="textfield" stylesheets="@../../formsDesign.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="profile_updatePhoneNumberField" layoutX="24.0" layoutY="260.0" onKeyPressed="#checkPhoneNumber" onKeyReleased="#checkPhoneNumber" onKeyTyped="#checkPhoneNumber" prefHeight="40.0" prefWidth="332.0" promptText="Numer Telefonu" styleClass="textfield" stylesheets="@../../formsDesign.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TextField>
+            <PasswordField fx:id="profile_updatePasswordField" accessibleRole="TEXT_FIELD" layoutX="24.0" layoutY="320.0" onKeyPressed="#checkPassword" onKeyReleased="#checkPassword" onKeyTyped="#checkPassword" prefHeight="40.0" prefWidth="332.0" promptText="Hasło" styleClass="textfield" stylesheets="@../../formsDesign.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </PasswordField>
+            <PasswordField fx:id="profile_updateConfirmPasswordField" accessibleRole="TEXT_FIELD" layoutX="24.0" layoutY="380.0" prefHeight="40.0" prefWidth="332.0" promptText="Potwierdź Hasło" styleClass="textfield" stylesheets="@../../formsDesign.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </PasswordField>
+            <Label layoutX="13.0" layoutY="14.0" styleClass="register-form-head-label" stylesheets="@../../formsDesign.css" text="Edytuj Dane Osobiste">
+               <font>
+                  <Font name="Tahoma Bold" size="30.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="profile_updateGenderComboBox" layoutX="24.0" layoutY="440.0" minHeight="30.0" prefHeight="40.0" prefWidth="332.0" promptText="Wybierz Płeć" styleClass="combo-box" stylesheets="@../../profileDesign.css" />
+            <Button fx:id="profile_updateProfileBtn" layoutX="24.0" layoutY="500.0" mnemonicParsing="false" onAction="#update" prefHeight="56.0" prefWidth="140.0" styleClass="updateAcc-btn" stylesheets="@../../profileDesign.css" text="Zaktualizuj Dane" textFill="#4dc3b7">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="profile_deleteAccBtn" layoutX="210.0" layoutY="500.0" mnemonicParsing="false" onAction="#deleteAccount" prefHeight="56.0" prefWidth="140.0" styleClass="deleteAcc-btn" stylesheets="@../../profileDesign.css" text="Usuń konto" textFill="#4dc3b7">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="profile_nameFieldValidationInfo" layoutX="25.0" layoutY="122.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono niedozwolone znaki w polu Imię !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="profile_lastNameFieldValidationInfo" layoutX="25.0" layoutY="182.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono niedozwolone znaki w polu Nazwisko !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="profile_mailFieldValidationInfo" layoutX="25.0" layoutY="242.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono nieprawidłowy format adresu mailowego !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="profile_phoneNumberFieldValidationInfo" layoutX="25.0" layoutY="302.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono nieprawidłowy format numeru telefonu !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="profile_passwordFieldValidationInfo" layoutX="22.0" layoutY="362.0" prefHeight="17.0" prefWidth="360.0" text="Hasło musi zawierać 1 małą oraz dużą literę, cyfrę oraz znak specjalny !" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameFieldStringLengthValidationInfo" layoutX="25.0" layoutY="122.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono za długi ciąg znaków" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastNameFieldStringLengthValidationInfo" layoutX="25.0" layoutY="182.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono za długi ciąg znaków" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="mailFieldStringLengthValidationInfo" layoutX="25.0" layoutY="242.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono za długi ciąg znaków" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordFieldStringLengthValidationInfo" layoutX="25.0" layoutY="362.0" prefHeight="17.0" prefWidth="332.0" text="Wprowadzono za długi ciąg znaków" textFill="RED" visible="false">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="410.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" stylesheets="@../../dashBoardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="412.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <styleClass>
+            <String fx:value="shadow" />
+            <String fx:value="white-bg" />
+         </styleClass>
+         <children>
+            <Label layoutX="40.0" layoutY="80.0" text="Imię: ">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="130.0" text="Nazwisko: ">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="180.0" text="Płeć: ">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="230.0" text="Data urodzenia:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="280.0" text="Adres mailowy:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="330.0" text="Numer telefonu:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="380.0" text="Data dołączenia:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="430.0" text="Status kierowcy:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="5.0" text="Aktualne Dane Osobiste">
+               <font>
+                  <Font name="Tahoma Bold" size="37.0" />
+               </font>
+            </Label>
+            <Line endX="349.0" fill="#3b7dd4" layoutX="119.0" layoutY="60.0" startX="-103.0" stroke="#3b7bd5" strokeLineCap="ROUND" strokeWidth="3.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="115.0" opacity="0.2" startX="-103.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="165.0" opacity="0.2" startX="-103.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="215.0" opacity="0.2" startX="-103.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="265.0" opacity="0.2" startX="-103.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="315.0" opacity="0.2" startX="-103.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="365.0" opacity="0.2" startX="-103.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="415.0" opacity="0.2" startX="-103.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="465.0" opacity="0.2" startX="-103.0" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="97.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="147.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="197.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="247.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="297.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="347.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="397.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="447.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Label fx:id="nameLabel" layoutX="95.0" layoutY="81.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="lastNameLabel" layoutX="150.0" layoutY="131.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="genderLabel" layoutX="95.0" layoutY="181.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="birthDateLabel" layoutX="210.0" layoutY="231.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="mailLabel" layoutX="205.0" layoutY="281.0" text="Label" wrapText="true">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="phoneNumberLabel" layoutX="215.0" layoutY="331.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="joinDateLabel" layoutX="215.0" layoutY="381.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="driverStatusLabel" layoutX="215.0" layoutY="431.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="480.0" text="Liczba przejazdów:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="530.0" text="Średnia ocena:">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="547.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="497.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Line endX="410.0" layoutX="144.0" layoutY="515.0" opacity="0.2" startX="-103.0" />
+            <Line endX="410.0" layoutX="144.0" layoutY="565.0" opacity="0.2" startX="-103.0" />
+            <Label fx:id="ridesCountLabel" layoutX="240.0" layoutY="481.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="avgRatingLabel" layoutX="195.0" layoutY="531.0" text="Label">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
