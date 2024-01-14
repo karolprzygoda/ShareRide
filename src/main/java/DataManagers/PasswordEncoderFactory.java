@@ -1,4 +1,4 @@
-package Server;
+package DataManagers;
 
 public class PasswordEncoderFactory {
     public static PasswordEncoder createPasswordEncoder() {

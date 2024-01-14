@@ -1,4 +1,4 @@
-package Server;
+package DataManagers;
 
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 

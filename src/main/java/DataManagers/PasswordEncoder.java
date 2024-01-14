@@ -1,4 +1,4 @@
-package Server;
+package DataManagers;
 
 public interface PasswordEncoder {
 

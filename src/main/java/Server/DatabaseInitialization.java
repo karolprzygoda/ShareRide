@@ -1,7 +1,9 @@
 package Server;
 
+import java.sql.Connection;
+
 public interface DatabaseInitialization {
-    void startConnection(); //connect to database
+    Connection startConnection(); //connect to database
     void closeConnection(); //close connection with database
     void createTables();
 

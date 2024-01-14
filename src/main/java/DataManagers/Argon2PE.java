@@ -1,5 +1,6 @@
-package Server;
+package DataManagers;
 
+import DataManagers.PasswordEncoder;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 
 public class Argon2PE implements PasswordEncoder {

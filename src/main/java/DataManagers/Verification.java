@@ -1,30 +1,27 @@
-package Server;
+package DataManagers;
 import Data.UserData;
+import Server.PostgreSQLInitialization;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
 
 public class Verification {
+
+    private static final PostgreSQLInitialization databaseConnection = PostgreSQLInitialization.getInstance();
     public static boolean verify(UserData userData) {
         if(IsFirstNameValid(userData.getName()) &
                 IsLastNameValid(userData.getLastName()) &
                 IsPasswordValid(userData.getPassword()) &
-                IsMailValid(userData.getMail()) &
+                IsMailValid(userData.getEmail()) &
                 IsPhoneNumberValid(userData.getPhoneNumber()) &
                 IsAgeValid(Date.valueOf(userData.getBirthDate().toString())))
         {
             System.out.println("User accepted");
-            Logs.writeLog("ServerVerification", "User accepted");
             return true;
         }
         else {
             System.out.println("Verification did not pass");
-            Logs.writeLog("ServerVerification", "Verification did not pass");
             return false;
         }
     }
@@ -41,8 +38,10 @@ public class Verification {
         boolean validMail = input.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}");
         boolean isMailRegistered;
 
-        String sql = "SELECT id_uzytkownika FROM users WHERE email = ?";
-        try (PreparedStatement preparedStatement = PostgreSQLInitialization.getInstance().connection.prepareStatement(sql)) {
+        Connection connection = databaseConnection.startConnection();
+
+        String sql = "SELECT id FROM users WHERE email = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, input);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 isMailRegistered = resultSet.next();
@@ -59,6 +58,8 @@ public class Verification {
             e.printStackTrace();
             System.out.println("Błędny email: " + e.getMessage());
             isMailRegistered = true;
+        }finally {
+            databaseConnection.closeConnection();
         }
 
         return validMail & !IsLongerThan(input,1,50) & !isMailRegistered;
@@ -78,7 +79,7 @@ public class Verification {
             return true;
     }
     static boolean HaveIllegalChar(String input) {
-        return input.matches(".*[\\*!;@#$%^&()-=+{}|:',.<>/?].*");
+        return input.matches(".*[*!;@#$%^&()-=+{}|:',.<>/?].*");
     }
     static boolean IsLongerThan(String login, int min, int max) {
         int length = login.length();
