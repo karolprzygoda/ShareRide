@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" styleClass="borders" stylesheets="@../../regulationsDesign.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SharerideClient.Controllers.AddNewAnnouncementFormController">
+   <children>
+      <TextField fx:id="startingStationTextField" layoutX="89.0" layoutY="70.0" maxHeight="-Infinity" prefHeight="40.0" prefWidth="412.0" promptText="Stacja Początkowa" styleClass="textfield" stylesheets="@../../formsDesign.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </TextField>
+      <TextField fx:id="destinationTextField" layoutX="89.0" layoutY="130.0" maxHeight="-Infinity" prefHeight="40.0" prefWidth="412.0" promptText="Stacja Końcowa" styleClass="textfield" stylesheets="@../../formsDesign.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </TextField>
+      <DatePicker fx:id="departureDatePicker" editable="false" layoutX="89.0" layoutY="190.0" prefHeight="40.0" prefWidth="412.0" promptText="Wybierz Date Rozpoczęcia Wyjazdu" stylesheets="@../../formsDesign.css">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </DatePicker>
+      <Spinner fx:id="seatsAvailableSpinner" layoutX="89.0" layoutY="250.0" prefHeight="40.0" prefWidth="412.0" stylesheets="@../../dashBoardDesign.css" />
+      <Label layoutX="14.0" layoutY="14.0" styleClass="register-form-head-label" stylesheets="@../../formsDesign.css" text="Uzupełnij Formularz Nowego Ogłoszenia">
+         <font>
+            <Font name="Tahoma Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="102.0" layoutY="262.0" styleClass="label-spinner" stylesheets="@../../dashBoardDesign.css" text="Liczba dostępnych miejsc: " />
+      <Button fx:id="addNewAnnouncementBtn" layoutX="89.0" layoutY="318.0" mnemonicParsing="false" onAction="#addNewAnnouncement" prefHeight="56.0" prefWidth="140.0" styleClass="accept-btn" stylesheets="@../../regulationsDesign.css" text="Dodaj Ogłoszenie" />
+      <Button fx:id="cancelBtn" layoutX="361.0" layoutY="318.0" mnemonicParsing="false" onAction="#cancelAddingNewAnnouncement" prefHeight="56.0" prefWidth="140.0" styleClass="decline-btn" text="Anuluj" />
+   </children>
+</AnchorPane>

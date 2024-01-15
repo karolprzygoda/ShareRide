@@ -201,22 +201,22 @@
 }
 
 
-.scroll-bar{
+.scroll-pane{
     -fx-background-color:transparent;
     -fx-focus-color: transparent;
 }
 
-.scroll-bar:vertical {
+.scroll-pane .scroll-bar:vertical {
 }
-.scroll-bar:vertical .increment-arrow {
+.scroll-pane .scroll-bar:vertical .increment-arrow {
     -fx-background-color: black;
 }
 
-.scroll-bar:vertical .decrement-arrow {
+.scroll-pane .scroll-bar:vertical .decrement-arrow {
     -fx-background-color: black;
 }
 
-.scroll-bar:vertical .thumb{
+.scroll-pane .scroll-bar:vertical .thumb{
     -fx-pref-width: 20px;
     -fx-background-color: #3a7bd5;
 }

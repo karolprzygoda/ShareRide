@@ -1,10 +1,7 @@
 package SharerideClient.Controllers;
 
 import ChainOfResponsibility.Request;
-import Data.DriverData;
-import Data.LicenseData;
-import Data.UserData;
-import Data.VehicleData;
+import Data.*;
 import SharerideClient.Alerts;
 
 import java.io.*;
@@ -55,7 +52,8 @@ public class ServerController {
 
         try{
 
-            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData || dataToManage instanceof DriverData ) {
+            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
 
                 Request request = new Request(Request.RequestType.SELECT);
                 request.setDataToManage(dataToManage);
@@ -82,7 +80,8 @@ public class ServerController {
 
         try{
 
-            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData || dataToManage instanceof DriverData) {
+            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
 
                 Request request = new Request(Request.RequestType.INSERT);
                 request.setDataToManage(dataToManage);
@@ -113,7 +112,8 @@ public class ServerController {
     static protected <T> int sendUpdateRequest(T dataToManage) {
         try{
 
-            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData || dataToManage instanceof DriverData) {
+            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
 
                 Request request = new Request(Request.RequestType.UPDATE);
                 request.setDataToManage(dataToManage);
@@ -143,7 +143,8 @@ public class ServerController {
     static protected <T> int  sendDeleteRequest(T dataToManage) {
         try {
 
-            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData || dataToManage instanceof DriverData) {
+            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
 
                 Request request = new Request(Request.RequestType.DELETE);
                 request.setDataToManage(dataToManage);

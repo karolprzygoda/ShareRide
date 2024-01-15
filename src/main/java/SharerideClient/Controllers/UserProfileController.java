@@ -423,7 +423,7 @@ public class UserProfileController implements Initializable {
      * @see UserProfileController#update()
      * @author Karol Przygoda
      */
-    @FXML
+
     private boolean checkIfEmpty() {
         return profile_updateNameField.getText().isEmpty()
                 && profile_updateLastNameField.getText().isEmpty()

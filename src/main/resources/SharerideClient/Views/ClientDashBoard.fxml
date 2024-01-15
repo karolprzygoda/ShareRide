@@ -143,7 +143,7 @@
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="profilePane" prefHeight="600.0" prefWidth="1000.0" visible="false" />
-                        <ScrollPane fx:id="driverPaneContainer" hbarPolicy="NEVER" styleClass="scroll-bar" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fx:id="driverPaneContainer" hbarPolicy="NEVER" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
                               <AnchorPane fx:id="driverPane" prefHeight="600.0" prefWidth="1000.0" />
                            </content>

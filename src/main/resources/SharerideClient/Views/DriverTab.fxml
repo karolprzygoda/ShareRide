@@ -348,7 +348,7 @@
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <Spinner fx:id="seatsAvailableSpinner" layoutX="40.0" layoutY="360.0" prefHeight="40.0" prefWidth="412.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <Spinner fx:id="seatsAvailableSpinner" layoutX="40.0" layoutY="360.0" prefHeight="40.0" prefWidth="412.0" stylesheets="@../../dashBoardDesign.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
             <Label layoutX="29.0" layoutY="372.0" styleClass="label-spinner" text="Liczba dostępnych miejsc: " />
             <DatePicker fx:id="productionDateDatePicker" editable="false" layoutX="20.0" layoutY="180.0" prefHeight="40.0" prefWidth="430.0" promptText="Wybierz date wygaśnięcia polisy ubezpieczeniowej" stylesheets="@../../formsDesign.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <cursor>
