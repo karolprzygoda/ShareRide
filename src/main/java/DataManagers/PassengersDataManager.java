@@ -1,6 +1,7 @@
 package DataManagers;
 
-import Data.DriverData;
+import Data.AnnouncementsData;
+import Data.PassengersData;
 import Server.PostgreSQLInitialization;
 
 import java.sql.Connection;
@@ -8,22 +9,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DriverDataManager {
-
+public class PassengersDataManager {
     private static final PostgreSQLInitialization databaseConnection = PostgreSQLInitialization.getInstance();
+    public static boolean insertPassenger(PassengersData passengersData) {
 
-    public static boolean insertDriver(DriverData driverData) {
-
-        String query = "INSERT INTO driver (user_id, license_id, vehicle_id) VALUES ( ?, ?, ?);";
+        String query = "INSERT INTO passengers (announcements_id, user_id) VALUES ( ?, ?);";
 
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,UserDataManager.userId);
-            preparedStatement.setInt(2,driverData.getLicenseID());
-            preparedStatement.setInt(3,driverData.getVehicleID());
-
-
+            preparedStatement.setInt(1,passengersData.getAnnouncementId());
+            preparedStatement.setInt(2,passengersData.getUserId());
 
             preparedStatement.executeUpdate();
             return true;
@@ -37,40 +33,42 @@ public class DriverDataManager {
 
     }
 
-    public static DriverData selectDriverData()
+    public static AnnouncementsData selectAnnouncement()//TODO
     {
-        DriverData driverData = new DriverData();
-        String query = "SELECT id, user_id, license_id, vehicle_id FROM driver WHERE user_id = ?;";
+        AnnouncementsData announcementsData = new AnnouncementsData();
+        String query = "SELECT MAX(id) AS lastId, starting_station, destination, departure_date, seats_available FROM announcements " +
+                "WHERE driver_id = ? GROUP BY starting_station, destination, departure_date, seats_available;";
 
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
             preparedStatement.setInt(1, UserDataManager.userId);
-            ResultSet resultSet = preparedStatement.executeQuery();
 
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next())
                 {
-                    driverData.setId(resultSet.getInt("id"));
-                    driverData.setLicenseID(resultSet.getInt("license_id"));
-                    driverData.setVehicleID(resultSet.getInt("vehicle_id"));
+                    announcementsData.setId(resultSet.getInt("lastId"));
+                    announcementsData.setStartingStation(resultSet.getString("starting_station"));
+                    announcementsData.setDestination(resultSet.getString("destination"));
+                    announcementsData.setDepartureDate(resultSet.getDate("departure_date"));
+                    announcementsData.setSeatsAvailable(resultSet.getInt("seats_available"));
 
-                    return driverData;
-
+                    return announcementsData;
                 }
-
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Błąd: " + e.getMessage());
         }finally {
             databaseConnection.closeConnection();
         }
+
         return null;
     }
 
-    public static boolean deleteDriver() {
+    public static boolean deleteAnnouncement() { //TODO
 
-        String query= "DELETE FROM driver WHERE user_id = ?";
+        String query= "DELETE FROM announcements WHERE id = ?";
 
         Connection connection = databaseConnection.startConnection();
 

@@ -20,5 +20,6 @@ public class LoginCommand extends Command{
 
         output.writeBoolean(response);
         output.flush();
+        output.reset();
     }
 }

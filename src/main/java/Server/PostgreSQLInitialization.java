@@ -111,12 +111,37 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
         executeCreateTable(createTableSQL, "Users");
     }
 
+    private  void createTableAnnouncements(){
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS announcements ("
+                + "id SERIAL PRIMARY KEY,"
+                + "driver_id INT REFERENCES driver(id),"
+                + "starting_station VARCHAR(60) NOT NULL,"
+                + "destination VARCHAR(60) NOT NULL,"
+                + "date_of_add_announcement DATE NOT NULL,"
+                + "departure_date DATE NOT NULL,"
+                + "seats_available INT NOT NULL"
+                + ")";
+        executeCreateTable(createTableSQL, "Announcements");
+    }
+
+    private  void createTablePassengers(){
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS passengers ("
+                + "id SERIAL PRIMARY KEY,"
+                + "announcements_id INT REFERENCES announcements(id),"
+                + "user_id INT REFERENCES users(id)"
+                + ")";
+        executeCreateTable(createTableSQL, "Passengers");
+    }
+
+
     public  void createTables()
     {
         createTableUser();
         createTableLicense();
         createTableVehicle();
         createTableDriver();
+        createTableAnnouncements();
+        createTablePassengers();
     }
 
     private void executeCreateTable(String createTableSQL, String tableName) {

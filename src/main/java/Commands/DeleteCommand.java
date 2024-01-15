@@ -32,6 +32,6 @@ public class DeleteCommand extends Command {
 
         output.writeBoolean(response);
         output.flush();
-
+        output.reset();
     }
 }

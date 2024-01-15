@@ -30,5 +30,6 @@ public class UpdateCommand extends Command{
 
         output.writeBoolean(response);
         output.flush();
+        output.reset();
     }
 }
