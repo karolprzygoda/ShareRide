@@ -23,7 +23,7 @@ public class Request implements Serializable {
     }
 
     public enum RequestType {
-        LOGIN,INSERT,SELECT,UPDATE,DELETE
+        LOGIN,INSERT,SELECT,SELECT_ALL,SELECT_ID,UPDATE,DELETE,CHECK_IF_ALREADY_IN_RIDE
     }
 
 }

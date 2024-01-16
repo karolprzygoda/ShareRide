@@ -23,10 +23,10 @@ public class DeleteCommand extends Command {
         boolean response;
 
         switch (objectToManage) {
-            case UserData ignored       -> response = UserDataManager.deleteUser();
-            case VehicleData ignored    -> response = VehicleDataManager.deleteVehicle();
-            case LicenseData ignored    -> response = LicenseDataManger.deleteLicense();
-            case DriverData ignored     -> response = DriverDataManager.deleteDriver();
+            case UserData ignored       -> response = UserDataManager.deleteUser((UserData) objectToManage);
+            case VehicleData ignored    -> response = VehicleDataManager.deleteVehicle((VehicleData) objectToManage);
+            case LicenseData ignored    -> response = LicenseDataManger.deleteLicense((LicenseData) objectToManage);
+            case DriverData ignored     -> response = DriverDataManager.deleteDriver((DriverData) objectToManage);
             default                     -> throw new IllegalArgumentException("Unrecognized object");
         }
 

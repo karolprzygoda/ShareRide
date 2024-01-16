@@ -61,9 +61,9 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
     private  void createTableDriver() {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS driver ("
                 + "id SERIAL PRIMARY KEY,"
-                + "user_id INT REFERENCES users(id),"
-                + "license_id INT REFERENCES license(id),"
-                + "vehicle_id INT REFERENCES vehicle(id)"
+                + "user_id INT REFERENCES users(id) ON DELETE CASCADE,"
+                + "license_id INT REFERENCES license(id) ON DELETE CASCADE,"
+                + "vehicle_id INT REFERENCES vehicle(id) ON DELETE CASCADE"
                 + ")";
         executeCreateTable(createTableSQL, "Driver");
     }
@@ -71,7 +71,7 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
     private  void createTableLicense() {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS license ("
                 + "id SERIAL PRIMARY KEY,"
-                + "user_id INT REFERENCES users(id),"
+                + "user_id INT REFERENCES users(id) ON DELETE CASCADE,"
                 + "serial_number VARCHAR(20) NOT NULL,"
                 + "category VARCHAR(10) NOT NULL,"
                 + "date_of_issue DATE NOT NULL,"
@@ -83,7 +83,7 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
     private  void createTableVehicle() {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS vehicle ("
                 + "id SERIAL PRIMARY KEY,"
-                + "user_id INT REFERENCES users(id),"
+                + "user_id INT REFERENCES users(id) ON DELETE CASCADE,"
                 + "brand VARCHAR(50) NOT NULL,"
                 + "model VARCHAR(50) NOT NULL,"
                 + "production_date DATE NOT NULL,"
@@ -114,7 +114,7 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
     private  void createTableAnnouncements(){
         String createTableSQL = "CREATE TABLE IF NOT EXISTS announcements ("
                 + "id SERIAL PRIMARY KEY,"
-                + "driver_id INT REFERENCES driver(id),"
+                + "driver_id INT REFERENCES driver(id) ON DELETE CASCADE,"
                 + "starting_station VARCHAR(60) NOT NULL,"
                 + "destination VARCHAR(60) NOT NULL,"
                 + "date_of_add_announcement DATE NOT NULL,"
@@ -127,8 +127,8 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
     private  void createTablePassengers(){
         String createTableSQL = "CREATE TABLE IF NOT EXISTS passengers ("
                 + "id SERIAL PRIMARY KEY,"
-                + "announcements_id INT REFERENCES announcements(id),"
-                + "user_id INT REFERENCES users(id)"
+                + "announcements_id INT REFERENCES announcements(id) ON DELETE CASCADE,"
+                + "user_id INT REFERENCES users(id) ON DELETE CASCADE"
                 + ")";
         executeCreateTable(createTableSQL, "Passengers");
     }

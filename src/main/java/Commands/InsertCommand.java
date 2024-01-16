@@ -23,8 +23,8 @@ public class InsertCommand extends Command{
             case VehicleData ignored            -> response = VehicleDataManager.insertVehicle((VehicleData) objectToManage);
             case LicenseData ignored            -> response = LicenseDataManger.insertLicense((LicenseData) objectToManage);
             case DriverData ignored             -> response = DriverDataManager.insertDriver((DriverData) objectToManage);
-             case AnnouncementsData ignored     -> response = AnnouncementDataManager.insertAnnouncement((AnnouncementsData) objectToManage);
-             case PassengersData ignored        -> response = PassengersDataManager.insertPassenger((PassengersData) objectToManage);
+            case AnnouncementsData ignored     -> response = AnnouncementDataManager.insertAnnouncement((AnnouncementsData) objectToManage);
+            case PassengersData ignored        -> response = PassengersDataManager.insertPassenger((PassengersData) objectToManage);
             default                             -> throw new IllegalStateException("Unexpected value: ");
         }
         output.writeBoolean(response);

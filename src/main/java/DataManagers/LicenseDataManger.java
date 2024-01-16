@@ -20,7 +20,7 @@ public class LicenseDataManger {
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,UserDataManager.userId);
+            preparedStatement.setInt(1,licenseData.getUserID());
             preparedStatement.setString(2,licenseData.getSerialNumber());
             preparedStatement.setString(3,licenseData.getCategory());
             preparedStatement.setDate(4,licenseData.getDateOfIssueOfTheLicense());
@@ -36,14 +36,14 @@ public class LicenseDataManger {
         }
     }
 
-    public static LicenseData selectLicenceData() {
+    public static LicenseData selectLicenceData(LicenseData licenseData) {
 
         String query = "SELECT id, user_id, serial_number, category, date_of_issue, expiration_date FROM license WHERE user_id = ?;";
 
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, UserDataManager.userId);
+            preparedStatement.setInt(1, licenseData.getUserID());
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next())
@@ -82,7 +82,7 @@ public class LicenseDataManger {
                 preparedStatement.setString(2, licenseData.getCategory());
                 preparedStatement.setDate(3, licenseData.getDateOfIssueOfTheLicense());
                 preparedStatement.setDate(4, licenseData.getExpirationDateOfTheLicense());
-                preparedStatement.setInt(5, UserDataManager.userId);
+                preparedStatement.setInt(5, licenseData.getUserID());
 
                 preparedStatement.executeUpdate();
                 return true;
@@ -99,14 +99,14 @@ public class LicenseDataManger {
         }
     }
 
-    public static boolean deleteLicense() {
+    public static boolean deleteLicense(LicenseData licenseData) {
 
         String query= "DELETE FROM license WHERE user_id = ?";
 
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,UserDataManager.userId);
+            preparedStatement.setInt(1,licenseData.getUserID());
 
             preparedStatement.executeUpdate();
             return true;

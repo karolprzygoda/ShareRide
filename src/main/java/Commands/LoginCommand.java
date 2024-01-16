@@ -16,9 +16,9 @@ public class LoginCommand extends Command{
 
     public void execute(ObjectOutputStream output) throws IOException {
         UserData userData = (UserData)objectToManage;
-        boolean response = UserDataManager.loginUser(userData);
+        UserData response = UserDataManager.loginUser(userData);
 
-        output.writeBoolean(response);
+        output.writeObject(response);
         output.flush();
         output.reset();
     }

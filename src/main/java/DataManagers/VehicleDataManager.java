@@ -21,7 +21,7 @@ public class VehicleDataManager {
 
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, UserDataManager.userId);
+            preparedStatement.setInt(1, vehicleData.getUserID());
             preparedStatement.setString(2,vehicleData.getBrand());
             preparedStatement.setString(3,vehicleData.getModel());
             preparedStatement.setDate(4,vehicleData.getProductionDate());
@@ -43,14 +43,14 @@ public class VehicleDataManager {
         }
     }
 
-    public static VehicleData selectVehicleData() {
+    public static VehicleData selectVehicleData(VehicleData vehicleData) {
 
         String query = "SELECT id, user_id, brand, model, production_date, plates_number, vin, seats_available, insurance_number, expiration_date FROM vehicle WHERE user_id = ?;";
 
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, UserDataManager.userId);
+            preparedStatement.setInt(1, vehicleData.getUserID());
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next())
@@ -101,7 +101,7 @@ public class VehicleDataManager {
                 preparedStatement.setInt(6, vehicleData.getAvailableSeats());
                 preparedStatement.setString(7, vehicleData.getInsuranceNumber());
                 preparedStatement.setDate(8, vehicleData.getInsuranceExpirationDate());
-                preparedStatement.setInt(9, UserDataManager.userId);
+                preparedStatement.setInt(9, vehicleData.getUserID());
 
                 preparedStatement.executeUpdate();
                 return true;
@@ -118,14 +118,14 @@ public class VehicleDataManager {
             return false;
     }
 
-    public static boolean deleteVehicle() {
+    public static boolean deleteVehicle(VehicleData vehicleData) {
 
         String query= "DELETE FROM vehicle WHERE user_id = ?";
 
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,UserDataManager.userId);
+            preparedStatement.setInt(1,vehicleData.getUserID());
 
             preparedStatement.executeUpdate();
             return true;

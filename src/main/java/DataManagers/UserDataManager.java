@@ -10,8 +10,6 @@ import java.sql.SQLException;
 
 public class UserDataManager {
 
-    protected static int userId;
-
     private static String password;
 
     private static final PostgreSQLInitialization databaseConnection = PostgreSQLInitialization.getInstance();
@@ -55,7 +53,7 @@ public class UserDataManager {
         }
     }
 
-    public static boolean loginUser(UserData userData) {
+    public static UserData loginUser(UserData userData) {
         String sql = "SELECT id , password FROM users WHERE email = ?";
 
         Connection connection = databaseConnection.startConnection();
@@ -69,37 +67,35 @@ public class UserDataManager {
 
                 if(Password.matchPassword(userData.getPassword(), storedPassword))
                 {
-                    userId = resultSet.getInt("id");
-                    return  true;
+                    userData.setId(resultSet.getInt("id"));
+                    return userData;
                 }
                 else
-                    return false;
+                    return null;
 
             }
             else {
                 System.out.println("Błąd logowania. Nieprawidłowe dane.");
-                return false;
+                return null;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return null;
         }finally {
             databaseConnection.closeConnection();
         }
     }
 
-    public static UserData selectUserData() {
+    public static UserData selectUserData(UserData userData) {
 
-        UserData userData = new UserData();
-
-        String query = "SELECT name, last_name, email, phone_number, gender, birth_date, registration_date FROM users WHERE id = ?;";
+        String query = "SELECT  name, last_name, email, phone_number, gender, birth_date, registration_date FROM users WHERE id = ?;";
 
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1,userId);
+            preparedStatement.setInt(1,userData.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -162,7 +158,7 @@ public class UserDataManager {
                 preparedStatement.setString(6,userData.getGender());
                 preparedStatement.setDate(7,userData.getBirthDate());
                 preparedStatement.setDate(8,userData.getRegisterDate());
-                preparedStatement.setInt(9,userId);
+                preparedStatement.setInt(9,userData.getId());
 
                 preparedStatement.executeUpdate();
                 return true;
@@ -178,14 +174,14 @@ public class UserDataManager {
             return false;
     }
 
-    public static boolean deleteUser() {
+    public static boolean deleteUser(UserData userData) {
 
         String query= "DELETE FROM users WHERE id = ?";
 
         Connection connection = databaseConnection.startConnection();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1,userId);
+            preparedStatement.setInt(1,userData.getId());
 
             preparedStatement.executeUpdate();
             return true;

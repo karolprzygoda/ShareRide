@@ -17,12 +17,12 @@ public class SelectCommand extends Command {
 
 
         objectToManage = switch (objectToManage) {
-            case UserData ignored           -> UserDataManager.selectUserData();
-            case LicenseData ignored        -> LicenseDataManger.selectLicenceData();
-            case VehicleData ignored        -> VehicleDataManager.selectVehicleData();
-            case DriverData ignored         -> DriverDataManager.selectDriverData();
-            case AnnouncementsData ignored  -> AnnouncementDataManager.selectAnnouncement();
-            //case PassengersData ignored   -> PassengersDataManager.selectPassenger();TODO
+            case UserData ignored           -> UserDataManager.selectUserData((UserData)objectToManage);
+            case LicenseData ignored        -> LicenseDataManger.selectLicenceData((LicenseData) objectToManage);
+            case VehicleData ignored        -> VehicleDataManager.selectVehicleData((VehicleData) objectToManage);
+            case DriverData ignored         -> DriverDataManager.selectDriverData((DriverData)objectToManage);
+            case AnnouncementsData ignored  -> AnnouncementDataManager.selectAnnouncement((AnnouncementsData)objectToManage);
+            case PassengersData ignored     -> PassengersDataManager.selectPassengers((PassengersData) objectToManage);
             default                         -> throw new IllegalArgumentException("Unrecognized object");
         };
 

@@ -14,6 +14,8 @@ public class UserData implements Serializable{
     private Date birthDate;
     private Date registerDate;
 
+    private int Age;
+
     public UserData(){}
 
     protected UserData(int id, String name, String lastName, String email, String password, String phoneNumber, String gender, Date birthDate, Date registerDate) {
@@ -98,5 +100,13 @@ public class UserData implements Serializable{
 
     public void setRegisterDate(Date registerDate) {
         this.registerDate = registerDate;
+    }
+
+    public int getAge() {
+        return Age;
+    }
+
+    public void setAge(int age) {
+        Age = age;
     }
 }
