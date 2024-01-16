@@ -48,6 +48,7 @@ public class AddNewAnnouncementFormController implements Initializable {
 
     public void seatsAvailableSpinner() {
         VehicleData vehicleData = new VehicleData();
+        vehicleData.setUserID(ServerController.currentSessionUser.getId());
         vehicleData = ServerController.sendSelectRequest(vehicleData);
         SpinnerValueFactory<Integer> spinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, vehicleData.getAvailableSeats(), 1);
         seatsAvailableSpinner.setValueFactory(spinner);
@@ -57,6 +58,7 @@ public class AddNewAnnouncementFormController implements Initializable {
         AnnouncementsData announcementsData = new AnnouncementsData();
         PassengersData passengersData = new PassengersData();
         DriverData driverData = new DriverData();
+        driverData.setUserID(ServerController.currentSessionUser.getId());
         if(! checkIfEmpty())
         {
             java.util.Date currentDate = new java.util.Date();
@@ -66,21 +68,26 @@ public class AddNewAnnouncementFormController implements Initializable {
             announcementsData.setDepartureDate(Date.valueOf(departureDatePicker.getValue()));
             announcementsData.setDateOfAddAnnouncement(sqlDate);
             announcementsData.setSeatsAvailable(seatsAvailableSpinner.getValue());
-            announcementsData.setDriverId(ServerController.sendSelectRequest(driverData).getId());
+            DriverData upToDateDriverData = ServerController.sendSelectRequest(driverData);
+            announcementsData.setDriverId(upToDateDriverData.getId());
 
             ServerController.sendInsertRequest(announcementsData);
 
-            announcementsData = ServerController.sendSelectRequest(announcementsData);
+            AnnouncementsData  upToDateAnnouncementData = ServerController.sendSelectRequest(announcementsData);
 
-            passengersData.setAnnouncementId(announcementsData.getId());
+            passengersData.setAnnouncementId(upToDateAnnouncementData.getId());
+            passengersData.setUserId(upToDateDriverData.getUserID());
 
             ServerController.sendInsertRequest(passengersData);
 
             Alerts.successAlert("Pomyślnie dodano nowe ogłoszenie !");
 
+            addNewAnnouncementBtn.getScene().getWindow().hide();
+
         }else
             Alerts.failureAlert("Proszę uzupełnić wszystkie pola formularza");
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {

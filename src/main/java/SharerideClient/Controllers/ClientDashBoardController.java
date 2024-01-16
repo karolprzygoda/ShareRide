@@ -443,6 +443,7 @@ public class ClientDashBoardController implements Initializable {
         try {
 
             userData = new UserData();
+            userData.setId(ServerController.currentSessionUser.getId());
 
             userData = ServerController.sendSelectRequest(userData);
 

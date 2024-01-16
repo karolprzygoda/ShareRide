@@ -585,6 +585,7 @@ public class UserProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+        userDataBuffer.setId(ServerController.currentSessionUser.getId());
         gender();
         selectUserData(ClientDashBoardController.userData);
     }

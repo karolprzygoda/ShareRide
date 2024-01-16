@@ -1,6 +1,8 @@
 package SharerideClient;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class Alerts {
     public static void successAlert(String text){
@@ -18,5 +20,4 @@ public class Alerts {
         alert.setContentText(text);
         alert.showAndWait();
     }
-
 }

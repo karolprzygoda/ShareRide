@@ -14,10 +14,7 @@ import static SharerideClient.Views.FormsContainer.*;
  */
 public class ServerController {
 
-
-    /**
-     * @author Karol Przygoda
-     */
+    public static UserData currentSessionUser = new UserData();
 
     static protected int sendLoginRequest(UserData userData) {
         try{
@@ -28,9 +25,11 @@ public class ServerController {
             out.flush();
             out.reset();//wazne zapobiega cachowaniu obiektow
 
-            boolean response = input.readBoolean();
+            UserData response = (UserData) input.readObject();
 
-            if(response)
+            currentSessionUser = response;
+
+            if(response != null)
             {
                 return 1;
             }
@@ -40,7 +39,7 @@ public class ServerController {
             }
 
 
-        }catch (IOException  | RuntimeException  e )
+        }catch (IOException  | RuntimeException | ClassNotFoundException  e )
         {
             e.printStackTrace();
             Alerts.failureAlert("Serwer napotkał problem");
@@ -75,6 +74,63 @@ public class ServerController {
             return null;
         }
     }
+
+    static protected <T> T sendSelectAllRequest(T dataToManage) {
+
+        try{
+
+            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
+
+                Request request = new Request(Request.RequestType.SELECT_ALL);
+                request.setDataToManage(dataToManage);
+                out.writeObject(request);
+                out.flush();
+                out.reset();
+
+                return (T) input.readObject();
+            }
+            else {
+                throw new IllegalArgumentException("Nieprawidłowy typ danych");
+            }
+
+
+        }catch (IOException | ClassNotFoundException e )
+        {
+            e.printStackTrace();
+            Alerts.failureAlert("Serwer napotkał problem");
+            return null;
+        }
+    }
+
+    static protected <T> T sendSelectUserIdByDriverIdRequest(T dataToManage) {
+
+        try{
+
+            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
+
+                Request request = new Request(Request.RequestType.SELECT_ID);
+                request.setDataToManage(dataToManage);
+                out.writeObject(request);
+                out.flush();
+                out.reset();
+
+                return (T) input.readObject();
+            }
+            else {
+                throw new IllegalArgumentException("Nieprawidłowy typ danych");
+            }
+
+
+        }catch (IOException | ClassNotFoundException e )
+        {
+            e.printStackTrace();
+            Alerts.failureAlert("Serwer napotkał problem");
+            return null;
+        }
+    }
+
 
     static protected <T> int sendInsertRequest(T dataToManage) {
 
@@ -162,6 +218,29 @@ public class ServerController {
             {
                 throw new IllegalArgumentException("Nieprawidłowy typ danych");
             }
+        }catch (IOException | RuntimeException e)
+        {
+            Alerts.failureAlert("Serwer napotkał problem");
+            return -1;
+        }
+    }
+
+    public static int sendCheckIfAlreadyInRideRequest(PassengersData passengersData){
+        try {
+            Request request = new Request(Request.RequestType.CHECK_IF_ALREADY_IN_RIDE);
+            request.setDataToManage(passengersData);
+            out.writeObject(request);
+            out.flush();
+            out.reset();
+
+            boolean response = input.readBoolean();
+
+            if (response) {
+                return 1;
+            } else {
+                return 0;
+            }
+
         }catch (IOException | RuntimeException e)
         {
             Alerts.failureAlert("Serwer napotkał problem");

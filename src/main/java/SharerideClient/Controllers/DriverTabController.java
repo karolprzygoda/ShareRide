@@ -164,6 +164,7 @@ public class DriverTabController implements Initializable {
 
         LicenseData licenseData = new LicenseData();
 
+        licenseData.setUserID(licenseDataBuffer.getUserID());
         licenseData.setSerialNumber(licensceNumberTextField.getText());
         licenseData.setDateOfIssueOfTheLicense(Date.valueOf(dateOfIssueDatePicker.getValue()));
         licenseData.setExpirationDateOfTheLicense(Date.valueOf(expirationDateOfTheLicenseDatePicker.getValue()));
@@ -177,6 +178,7 @@ public class DriverTabController implements Initializable {
 
         VehicleData vehicleData = new VehicleData();
 
+        vehicleData.setUserID(vehicleDataBuffer.getUserID());
         vehicleData.setBrand(brandTextField.getText());
         vehicleData.setModel(modelTextField.getText());
         vehicleData.setProductionDate(Date.valueOf(productionDateDatePicker.getValue()));
@@ -329,7 +331,6 @@ public class DriverTabController implements Initializable {
 
             if(response == 1) {
                 Alerts.successAlert("Pomyślnie usunięto prawo jazdy");
-                ServerController.sendDeleteRequest(driverDataBuffer);
                 seeActualDriverData();
             }
             else if(response == 0)
@@ -353,7 +354,6 @@ public class DriverTabController implements Initializable {
 
             if(response == 1) {
                 Alerts.successAlert("Pomyślnie usunięto pojazd");
-                ServerController.sendDeleteRequest(driverDataBuffer);
                 seeActualDriverData();
             }
             else if(response == 0)
@@ -432,6 +432,7 @@ public class DriverTabController implements Initializable {
     {
         DriverData driverData = new DriverData();
 
+        driverData.setUserID(driverDataBuffer.getUserID());
         driverData.setLicenseID(licenseDataBuffer.getId());
         driverData.setVehicleID(vehicleDataBuffer.getId());
 
@@ -610,6 +611,10 @@ public class DriverTabController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+        licenseDataBuffer.setUserID(ServerController.currentSessionUser.getId());
+        vehicleDataBuffer.setUserID(ServerController.currentSessionUser.getId());
+        driverDataBuffer.setUserID(ServerController.currentSessionUser.getId());
+
         licenceCategory();
         seatsAvailableSpinner();
         seeActualDriverData();
