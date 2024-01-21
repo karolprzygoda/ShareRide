@@ -2,6 +2,8 @@ package DataManagers;
 
 import Data.UserData;
 import Server.PostgreSQLInitialization;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDataManager {
+
+    private static final Logger logger = LogManager.getLogger(UserDataManager.class);
 
     private static String password;
 
@@ -43,10 +47,11 @@ public class UserDataManager {
 
 
             preparedStatement.executeUpdate();
+            logger.info("New user with email: " + userData.getEmail() + " has registered");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
             return false;
         }finally {
             databaseConnection.closeConnection();
@@ -75,12 +80,11 @@ public class UserDataManager {
 
             }
             else {
-                System.out.println("Błąd logowania. Nieprawidłowe dane.");
                 return null;
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Server caught an error: " + e.getCause());
             return null;
         }finally {
             databaseConnection.closeConnection();
@@ -89,7 +93,20 @@ public class UserDataManager {
 
     public static UserData selectUserData(UserData userData) {
 
-        String query = "SELECT  name, last_name, email, phone_number, gender, birth_date, registration_date FROM users WHERE id = ?;";
+        String query = "SELECT " +
+                "u.name, " +
+                "u.last_name, " +
+                "u.email, " +
+                "u.phone_number, " +
+                "u.gender, " +
+                "u.birth_date, " +
+                "u.registration_date, " +
+                "COALESCE(AVG(r.rating), 0) AS average_rating " +
+                "FROM users u " +
+                "LEFT JOIN passengers p ON u.id = p.user_id " +
+                "LEFT JOIN ratings r ON u.id = r.user_id " +
+                "WHERE u.id = ? " +
+                "GROUP BY u.id";
 
         Connection connection = databaseConnection.startConnection();
 
@@ -108,6 +125,7 @@ public class UserDataManager {
                 userData.setGender(resultSet.getString("gender"));
                 userData.setBirthDate(resultSet.getDate("birth_date"));
                 userData.setRegisterDate(resultSet.getDate("registration_date"));
+                userData.setRating(resultSet.getDouble("average_rating"));
 
             }
 
@@ -115,7 +133,7 @@ public class UserDataManager {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
             return null;
         }finally {
             databaseConnection.closeConnection();
@@ -164,7 +182,7 @@ public class UserDataManager {
                 return true;
             } catch(SQLException e){
                 e.printStackTrace();
-                System.out.println("Błąd: " + e.getMessage());
+                logger.error("Server caught an error: " + e.getCause());
                 return false;
              }finally {
                 databaseConnection.closeConnection();
@@ -184,12 +202,13 @@ public class UserDataManager {
             preparedStatement.setInt(1,userData.getId());
 
             preparedStatement.executeUpdate();
+            logger.info("User: " + userData.getId() + " has deleted his account" );
             return true;
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd SQL: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
             return false;
         }finally {
             databaseConnection.closeConnection();

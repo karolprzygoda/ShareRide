@@ -2,6 +2,8 @@ package DataManagers;
 
 import Data.VehicleData;
 import Server.PostgreSQLInitialization;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class VehicleDataManager {
+
+    private static final Logger logger = LogManager.getLogger(VehicleDataManager.class);
 
     private static final PostgreSQLInitialization databaseConnection = PostgreSQLInitialization.getInstance();
 
@@ -33,10 +37,11 @@ public class VehicleDataManager {
 
 
             preparedStatement.executeUpdate();
+            logger.info("User: " + vehicleData.getUserID() + " has added a vehicle");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
             return false;
         } finally {
             databaseConnection.closeConnection();
@@ -71,7 +76,7 @@ public class VehicleDataManager {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
         }
         finally {
             databaseConnection.closeConnection();
@@ -108,7 +113,7 @@ public class VehicleDataManager {
 
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println("Błąd: " + e.getMessage());
+                logger.error("Server caught an error: " + e.getCause());
                 return false;
             } finally {
                 databaseConnection.closeConnection();
@@ -128,12 +133,13 @@ public class VehicleDataManager {
             preparedStatement.setInt(1,vehicleData.getUserID());
 
             preparedStatement.executeUpdate();
+            logger.info("User: " + vehicleData.getUserID() + " has deleted a vehicle");
             return true;
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd SQL: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
             return false;
         }finally {
             databaseConnection.closeConnection();

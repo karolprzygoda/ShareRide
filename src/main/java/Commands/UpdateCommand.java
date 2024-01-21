@@ -1,9 +1,11 @@
 package Commands;
 
 
+import Data.AnnouncementsData;
 import Data.LicenseData;
 import Data.UserData;
 import Data.VehicleData;
+import DataManagers.AnnouncementDataManager;
 import DataManagers.LicenseDataManger;
 import DataManagers.UserDataManager;
 import DataManagers.VehicleDataManager;
@@ -22,9 +24,10 @@ public class UpdateCommand extends Command{
         boolean response;
 
         switch (objectToManage) {
-            case UserData ignored       -> response = UserDataManager.updateUserData((UserData) objectToManage);
-            case VehicleData ignored    -> response = VehicleDataManager.updateVehicle((VehicleData) objectToManage);
-            case LicenseData ignored    -> response = LicenseDataManger.updateLicense((LicenseData) objectToManage);
+            case UserData ignored           -> response = UserDataManager.updateUserData((UserData) objectToManage);
+            case VehicleData ignored        -> response = VehicleDataManager.updateVehicle((VehicleData) objectToManage);
+            case LicenseData ignored        -> response = LicenseDataManger.updateLicense((LicenseData) objectToManage);
+            case AnnouncementsData ignored  -> response = AnnouncementDataManager.updateSeatsAvailable((AnnouncementsData) objectToManage);
             default                     -> throw new IllegalArgumentException("Unrecognized object");
         }
 

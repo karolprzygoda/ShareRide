@@ -1,13 +1,7 @@
 package Commands;
 
-import Data.DriverData;
-import Data.LicenseData;
-import Data.UserData;
-import Data.VehicleData;
-import DataManagers.DriverDataManager;
-import DataManagers.LicenseDataManger;
-import DataManagers.UserDataManager;
-import DataManagers.VehicleDataManager;
+import Data.*;
+import DataManagers.*;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -23,10 +17,12 @@ public class DeleteCommand extends Command {
         boolean response;
 
         switch (objectToManage) {
-            case UserData ignored       -> response = UserDataManager.deleteUser((UserData) objectToManage);
-            case VehicleData ignored    -> response = VehicleDataManager.deleteVehicle((VehicleData) objectToManage);
-            case LicenseData ignored    -> response = LicenseDataManger.deleteLicense((LicenseData) objectToManage);
-            case DriverData ignored     -> response = DriverDataManager.deleteDriver((DriverData) objectToManage);
+            case UserData ignored           -> response = UserDataManager.deleteUser((UserData) objectToManage);
+            case VehicleData ignored        -> response = VehicleDataManager.deleteVehicle((VehicleData) objectToManage);
+            case LicenseData ignored        -> response = LicenseDataManger.deleteLicense((LicenseData) objectToManage);
+            case DriverData ignored         -> response = DriverDataManager.deleteDriver((DriverData) objectToManage);
+            case PassengersData ignored     -> response = PassengersDataManager.deletePassenger((PassengersData) objectToManage);
+            case AnnouncementsData ignored  -> response = AnnouncementDataManager.deleteAnnouncement((AnnouncementsData) objectToManage);
             default                     -> throw new IllegalArgumentException("Unrecognized object");
         }
 

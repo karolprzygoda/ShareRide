@@ -3,6 +3,8 @@ package DataManagers;
 import Data.LicenseData;
 import Data.VehicleData;
 import Server.PostgreSQLInitialization;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +13,7 @@ import java.sql.SQLException;
 
 public class LicenseDataManger {
 
+    private static final Logger logger = LogManager.getLogger(LicenseDataManger.class);
     private static final PostgreSQLInitialization databaseConnection = PostgreSQLInitialization.getInstance();
 
     public static boolean insertLicense(LicenseData licenseData) {
@@ -28,10 +31,11 @@ public class LicenseDataManger {
 
 
             preparedStatement.executeUpdate();
+            logger.info("User: " + licenseData.getUserID() + " added license");
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
             return false;
         }
     }
@@ -59,7 +63,7 @@ public class LicenseDataManger {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
         }
         finally {
             databaseConnection.closeConnection();
@@ -89,7 +93,7 @@ public class LicenseDataManger {
 
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println("Błąd: " + e.getMessage());
+                logger.error("Server caught an error: " + e.getCause());
                 return false;
             } finally {
                 databaseConnection.closeConnection();
@@ -109,12 +113,13 @@ public class LicenseDataManger {
             preparedStatement.setInt(1,licenseData.getUserID());
 
             preparedStatement.executeUpdate();
+            logger.info("User: " + licenseData.getUserID() + " deleted license");
             return true;
 
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Błąd SQL: " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
             return false;
         }finally {
             databaseConnection.closeConnection();

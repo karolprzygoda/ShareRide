@@ -1,0 +1,5 @@
+23:46:06.782 [main] INFO  Server.ServerConnection - Server starts on port: 5000
+23:53:41.271 [main] INFO  Server.ServerConnection - Server starts on port: 5000
+23:53:48.407 [main] INFO  Server.ServerConnection - New Client connect from  port: Socket[addr=/127.0.0.1,port=65100,localport=5000]
+23:54:11.317 [main] INFO  Server.ServerConnection - Server starts on port: 5000
+23:54:18.251 [main] INFO  Server.ServerConnection - New Client connect from  port: 65118

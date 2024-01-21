@@ -1,10 +1,7 @@
 package ChainOfResponsibility;
 
 
-import Commands.CheckIfAlreadyInRideCommand;
-import Commands.SelectAllCommand;
-import Commands.SelectCommand;
-import Commands.SelectUserIdByDriverIdCommand;
+import Commands.*;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -25,7 +22,13 @@ public class SelectRequestHandler extends BaseHandler {
             CheckIfAlreadyInRideCommand checkIfAlreadyInRideCommand = new CheckIfAlreadyInRideCommand(request.getDataToManage());
             checkIfAlreadyInRideCommand.execute(output);
         }
-        else {
+        else if(request.getType() == Request.RequestType.USER_INCOMING_RIDES){
+            SelectUserIncomingRidesCommand selectUserIncomingRidesCommand = new SelectUserIncomingRidesCommand(request.getDataToManage());
+            selectUserIncomingRidesCommand.execute(output);
+        } else if (request.getType() == Request.RequestType.USER_FINISHED_RIDES) {
+            SelectFinishedRidesCommand selectFinishedRidesCommand = new SelectFinishedRidesCommand(request.getDataToManage());
+            selectFinishedRidesCommand.execute(output);
+        } else {
             super.handleRequest(request,output);
         }
     }

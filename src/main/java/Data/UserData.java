@@ -14,6 +14,7 @@ public class UserData implements Serializable{
     private Date birthDate;
     private Date registerDate;
 
+    private double rating;
     private int Age;
 
     public UserData(){}
@@ -109,4 +110,13 @@ public class UserData implements Serializable{
     public void setAge(int age) {
         Age = age;
     }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
 }

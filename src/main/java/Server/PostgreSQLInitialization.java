@@ -1,4 +1,7 @@
 package Server;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,6 +18,8 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
     private String user;
     private String password;
     private  Connection connection;
+
+    private static final Logger logger = LogManager.getLogger(PostgreSQLInitialization.class);
     private PostgreSQLInitialization()
     {
         Properties properties = new Properties();
@@ -26,6 +31,7 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
             this.password = properties.getProperty("password");
 
         } catch (IOException e) {
+            logger.error("Server caught an error: " + e.getCause());
             e.printStackTrace();
         }
 
@@ -44,6 +50,7 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
             System.out.println("Połączono z bazą danych." + connection);
             return connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
+            logger.error("Server caught an error: " + e.getCause());
             System.out.println(e.getMessage());
             return null;
         }
@@ -54,6 +61,7 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
                 connection.close();
                 System.out.println("Rozłączono z bazą danych.");
             } catch (SQLException e) {
+                logger.error("Server caught an error: " + e.getCause());
                 System.out.println("Błąd zamykania bazy danych: " + e.getMessage());
             }
         }
@@ -106,7 +114,8 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
                 + "phone_number VARCHAR(15)  NOT NULL,"
                 + "gender VARCHAR(16),"
                 + "birth_date DATE  NOT NULL,"
-                + "registration_date DATE NOT NULL"
+                + "registration_date DATE NOT NULL,"
+                + "rating DOUBLE PRECISION "
                 + ")";
         executeCreateTable(createTableSQL, "Users");
     }
@@ -133,6 +142,17 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
         executeCreateTable(createTableSQL, "Passengers");
     }
 
+    private  void createTableRatings(){
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS ratings ("
+                + "id SERIAL PRIMARY KEY,"
+                + "announcements_id INT REFERENCES announcements(id) ON DELETE CASCADE,"
+                + "user_id INT REFERENCES users(id) ON DELETE CASCADE,"
+                + "rater_id INT REFERENCES users(id) ON DELETE CASCADE,"
+                + "rating INT NOT NULL"
+                + ")";
+        executeCreateTable(createTableSQL, "Ratings");
+    }
+
 
     public  void createTables()
     {
@@ -142,6 +162,7 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
         createTableDriver();
         createTableAnnouncements();
         createTablePassengers();
+        createTableRatings();
     }
 
     private void executeCreateTable(String createTableSQL, String tableName) {
@@ -150,12 +171,11 @@ public class PostgreSQLInitialization implements DatabaseInitialization {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(createTableSQL)) {
             preparedStatement.execute();
-            System.out.println("Tabela " + tableName + " została utworzona (jeśli nie istniała).");
         } catch (SQLException e) {
 
             closeConnection();
             e.printStackTrace();
-            System.out.println("Błąd SQL przy tworzeniu tabeli " + tableName + ": " + e.getMessage());
+            logger.error("Server caught an error: " + e.getCause());
         }finally {
             closeConnection();
         }
