@@ -5,13 +5,18 @@ import Data.DriverData;
 import Data.PassengersData;
 import Data.VehicleData;
 import SharerideClient.Alerts;
+import SharerideClient.Views.AnnouncementsTabView;
+import SharerideClient.Views.RidesTabView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import java.time.ZoneId;
 
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class AddNewAnnouncementFormController implements Initializable {
@@ -61,28 +66,42 @@ public class AddNewAnnouncementFormController implements Initializable {
         driverData.setUserID(ServerController.currentSessionUser.getId());
         if(! checkIfEmpty())
         {
-            java.util.Date currentDate = new java.util.Date();
-            java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
-            announcementsData.setStartingStation(startingStationTextField.getText());
-            announcementsData.setDestination(destinationTextField.getText());
-            announcementsData.setDepartureDate(Date.valueOf(departureDatePicker.getValue()));
-            announcementsData.setDateOfAddAnnouncement(sqlDate);
-            announcementsData.setSeatsAvailable(seatsAvailableSpinner.getValue());
-            DriverData upToDateDriverData = ServerController.sendSelectRequest(driverData);
-            announcementsData.setDriverId(upToDateDriverData.getId());
+            LocalDate today = LocalDate.now();
 
-            ServerController.sendInsertRequest(announcementsData);
+            LocalDate selectedDate = departureDatePicker.getValue();
 
-            AnnouncementsData  upToDateAnnouncementData = ServerController.sendSelectRequest(announcementsData);
+            Date selectedJavaSqlDate = Date.valueOf(selectedDate);
 
-            passengersData.setAnnouncementId(upToDateAnnouncementData.getId());
-            passengersData.setUserId(upToDateDriverData.getUserID());
+            if (selectedJavaSqlDate.before(Date.valueOf(today))) {
+                Alerts.failureAlert("Wybrano datę, która już miała miejsce! Proszę wybrać poprawną datę");
+            } else {
 
-            ServerController.sendInsertRequest(passengersData);
+                java.util.Date currentDate = new java.util.Date();
+                java.sql.Date sqlDate = new java.sql.Date(currentDate.getTime());
+                announcementsData.setStartingStation(startingStationTextField.getText());
+                announcementsData.setDestination(destinationTextField.getText());
+                announcementsData.setDepartureDate(Date.valueOf(departureDatePicker.getValue()));
+                announcementsData.setDateOfAddAnnouncement(sqlDate);
+                announcementsData.setSeatsAvailable(seatsAvailableSpinner.getValue());
+                DriverData upToDateDriverData = ServerController.sendSelectRequest(driverData);
+                announcementsData.setDriverId(upToDateDriverData.getId());
 
-            Alerts.successAlert("Pomyślnie dodano nowe ogłoszenie !");
+                ServerController.sendInsertRequest(announcementsData);
 
-            addNewAnnouncementBtn.getScene().getWindow().hide();
+                AnnouncementsData upToDateAnnouncementData = ServerController.sendSelectRequest(announcementsData);
+
+                passengersData.setAnnouncementId(upToDateAnnouncementData.getId());
+                passengersData.setUserId(upToDateDriverData.getUserID());
+
+                ServerController.sendInsertRequest(passengersData);
+
+                Alerts.successAlert("Pomyślnie dodano nowe ogłoszenie !");
+
+                AnnouncementsTabView.announcementsTabController.announcementsShowListData();
+                RidesTabView.ridesController.incomingRidesShowListData();
+
+                addNewAnnouncementBtn.getScene().getWindow().hide();
+            }
 
         }else
             Alerts.failureAlert("Proszę uzupełnić wszystkie pola formularza");

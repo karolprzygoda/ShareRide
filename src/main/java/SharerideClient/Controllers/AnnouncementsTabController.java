@@ -2,9 +2,14 @@ package SharerideClient.Controllers;
 
 import Data.*;
 import SharerideClient.Alerts;
+import SharerideClient.Views.AnnouncementsTabView;
 import SharerideClient.Views.FormsContainer;
+import SharerideClient.Views.RidesTabView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +23,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -48,9 +53,6 @@ public class AnnouncementsTabController  implements Initializable {
 
     @FXML
     private TableColumn<UserData, String> phoneNumberColumn;
-
-    @FXML
-    private TableColumn<UserData, Integer> ridesCountColumn;
 
     @FXML
     private Button addNewAnnouncementBtn;
@@ -132,6 +134,29 @@ public class AnnouncementsTabController  implements Initializable {
     private ObservableList<UserData> passengersDataObservableList;
 
     @FXML
+    private void handleSearchAnnouncementsBtn(ActionEvent event) {
+
+        String startingStation = startingStationTextField.getText().toLowerCase();
+        String destination = destinationTextField.getText().toLowerCase();
+        LocalDate departureDate = departureDateDatePicker.getValue();
+        String seatsAvailableStr = seatsAvailableTextField.getText();
+        
+        FilteredList<AnnouncementsData> filteredData = announcementsDataObservableList.filtered(announcement -> {
+            boolean matchStartingStation = startingStation.isEmpty() || announcement.getStartingStation().toLowerCase().contains(startingStation);
+            boolean matchDestination = destination.isEmpty() || announcement.getDestination().toLowerCase().contains(destination);
+            boolean matchDepartureDate = departureDate == null || announcement.getDepartureDate().equals(departureDate);
+            boolean matchSeatsAvailable = seatsAvailableStr.isEmpty() || announcement.getSeatsAvailable() >= Integer.parseInt(seatsAvailableStr);
+
+            return matchStartingStation && matchDestination && matchDepartureDate && matchSeatsAvailable;
+        });
+        
+        SortedList<AnnouncementsData> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind( annoucementsTableView.comparatorProperty());
+        
+        annoucementsTableView.setItems(sortedData);
+    }
+
+    @FXML
     private void addNewAnnouncement() throws IOException {
         DriverData driverData = new DriverData();
         driverData.setUserID(ServerController.currentSessionUser.getId());
@@ -154,7 +179,7 @@ public class AnnouncementsTabController  implements Initializable {
         }
     }
 
-    private void announcementsShowListData(){
+    public void announcementsShowListData(){
         AnnouncementsData announcementsData = new AnnouncementsData();
 
         List<AnnouncementsData> records = (List<AnnouncementsData>) ServerController.sendSelectAllRequest(announcementsData);
@@ -167,6 +192,7 @@ public class AnnouncementsTabController  implements Initializable {
         departureDateColumn.setCellValueFactory(new PropertyValueFactory<>("departureDate"));
         seatAvailableColumn.setCellValueFactory(new PropertyValueFactory<>("seatsAvailable"));
         announcementDateOfAddColumn.setCellValueFactory(new PropertyValueFactory<>("DateOfAddAnnouncement"));
+        avgRatingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
         joinBtnColumn.setCellFactory(new Callback<TableColumn<AnnouncementsData, Integer>, TableCell<AnnouncementsData, Integer>>() {
             @Override
             public TableCell<AnnouncementsData, Integer> call(TableColumn<AnnouncementsData, Integer> param) {
@@ -201,19 +227,24 @@ public class AnnouncementsTabController  implements Initializable {
         annoucementsTableView.setItems(announcementsDataObservableList);
     }
 
-    public static void joinToRide(int announcementId){
+    public void joinToRide(int announcementId){
         PassengersData passengersData = new PassengersData();
+        AnnouncementsData announcementsData = new AnnouncementsData();
+        announcementsData.setId(announcementId);
         passengersData.setAnnouncementId(announcementId);
         passengersData.setUserId(ServerController.currentSessionUser.getId());
         int response = ServerController.sendCheckIfAlreadyInRideRequest(passengersData);
         if(response == 0)
         {
             int response2 = ServerController.sendInsertRequest(passengersData);
+            int response3 = ServerController.sendUpdateRequest(announcementsData);
 
-            if(response2 == 1)
+            if(response2 == 1 && response3 == 1)
             {
                 Alerts.successAlert("Pomyślnie dołączono do przejazdu");
-            } else if (response2 == 0) {
+                RidesTabView.ridesController.incomingRidesShowListData();
+                announcementsShowListData();
+            } else if (response2 == 0 && response3 == 0) {
                 Alerts.failureAlert("Dołączenie do przejazdu nie powiodło się");
             }
 
@@ -279,9 +310,25 @@ public class AnnouncementsTabController  implements Initializable {
         passengersShowListData();
     }
 
+    private void refreshAction() {
+        announcementsShowListData();
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+
+
+        Button headerButton = new Button("Odśwież");
+
+        headerButton.setOnAction(event -> refreshAction() );
+
+        headerButton.getStylesheets().add("dashBoardDesign.css");
+        headerButton.getStyleClass().add("refresh-btn");
+
+        joinBtnColumn.setGraphic(headerButton);
+
         announcementsShowListData();
     }
 

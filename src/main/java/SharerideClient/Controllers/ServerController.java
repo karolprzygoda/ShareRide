@@ -5,6 +5,7 @@ import Data.*;
 import SharerideClient.Alerts;
 
 import java.io.*;
+import java.util.List;
 
 import static SharerideClient.Views.FormsContainer.*;
 
@@ -131,13 +132,71 @@ public class ServerController {
         }
     }
 
+    static protected <T> T sendSelectUserIncomingRidesRequest(T dataToManage) {
+
+        try{
+
+            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
+
+                Request request = new Request(Request.RequestType.USER_INCOMING_RIDES);
+                request.setDataToManage(dataToManage);
+                out.writeObject(request);
+                out.flush();
+                out.reset();
+
+                return (T) input.readObject();
+            }
+            else {
+                throw new IllegalArgumentException("Nieprawidłowy typ danych");
+            }
+
+
+        }catch (IOException | ClassNotFoundException e )
+        {
+            e.printStackTrace();
+            Alerts.failureAlert("Serwer napotkał problem");
+            return null;
+        }
+    }
+
+    static protected <T> T sendSelectUserFinishedRidesRequest(T dataToManage) {
+
+        try{
+
+            if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
+
+                Request request = new Request(Request.RequestType.USER_FINISHED_RIDES);
+                request.setDataToManage(dataToManage);
+                out.writeObject(request);
+                out.flush();
+                out.reset();
+
+                return (T) input.readObject();
+            }
+            else {
+                throw new IllegalArgumentException("Nieprawidłowy typ danych");
+            }
+
+
+        }catch (IOException | ClassNotFoundException e )
+        {
+            e.printStackTrace();
+            Alerts.failureAlert("Serwer napotkał problem");
+            return null;
+        }
+    }
+
+
 
     static protected <T> int sendInsertRequest(T dataToManage) {
 
         try{
 
             if(dataToManage instanceof UserData || dataToManage instanceof LicenseData || dataToManage instanceof VehicleData
-                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData) {
+                    || dataToManage instanceof DriverData || dataToManage instanceof AnnouncementsData || dataToManage instanceof PassengersData
+            || dataToManage instanceof List) {
 
                 Request request = new Request(Request.RequestType.INSERT);
                 request.setDataToManage(dataToManage);
@@ -164,6 +223,7 @@ public class ServerController {
             return -1;
         }
     }
+
 
     static protected <T> int sendUpdateRequest(T dataToManage) {
         try{

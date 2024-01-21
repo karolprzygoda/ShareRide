@@ -468,6 +468,15 @@ public class UserProfileController implements Initializable {
             phoneNumberLabel.setText(user.getPhoneNumber());
             birthDateLabel.setText(user.getBirthDate().toString());
             joinDateLabel.setText(user.getRegisterDate().toString());
+
+            if(user.getRating() <= 0)
+            {
+                avgRatingLabel.setText("Brak");
+            }else{
+                avgRatingLabel.setText(String.valueOf(user.getRating()));
+            }
+
+
             if(ServerController.sendSelectRequest(driverData) != null)
             {
                 driverStatusLabel.setText("Aktywny");

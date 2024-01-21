@@ -227,26 +227,14 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="480.0" text="Liczba przejazdów:">
+            <Label layoutX="40.0" layoutY="480.0" text="Średnia ocena:">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
             </Label>
-            <Label layoutX="40.0" layoutY="530.0" text="Średnia ocena:">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Label>
-            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="547.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
-            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="497.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
+            <Circle fill="#3a7bd5" layoutX="23.0" layoutY="495.0" radius="6.0" stroke="#ffffff00" strokeType="INSIDE" />
             <Line endX="410.0" layoutX="144.0" layoutY="515.0" opacity="0.2" startX="-103.0" />
-            <Line endX="410.0" layoutX="144.0" layoutY="565.0" opacity="0.2" startX="-103.0" />
-            <Label fx:id="ridesCountLabel" layoutX="240.0" layoutY="481.0" text="Label">
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Label>
-            <Label fx:id="avgRatingLabel" layoutX="195.0" layoutY="531.0" text="Label">
+            <Label fx:id="avgRatingLabel" layoutX="195.0" layoutY="481.0" text="Label">
                <font>
                   <Font size="21.0" />
                </font>
